@@ -65,7 +65,7 @@ const Home = () => {
       name: 'Sarah Johnson',
       location: 'Downtown',
       rating: 5,
-      text: 'ML expresstäd AB transformed my home! Their team is professional, thorough, and always on time. I highly recommend their services.',
+      text: 'Sparkle Clean transformed my home! Their team is professional, thorough, and always on time. I highly recommend their services.',
       image: '👩‍💼'
     },
     {
@@ -79,7 +79,7 @@ const Home = () => {
       name: 'Emily Rodriguez',
       location: 'Suburbia',
       rating: 5,
-      text: 'I love coming home to a spotless house! ML expresstäd AB has made my life so much easier. Worth every penny!',
+      text: 'I love coming home to a spotless house! Sparkle Clean has made my life so much easier. Worth every penny!',
       image: '👩‍🏫'
     }
   ];
@@ -98,7 +98,7 @@ const Home = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Your Home Deserves a
               <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Professional Clean
+                Sparkle Clean
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -141,26 +141,51 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white pt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Professional Cleaning Services You Can Trust
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              Reliable, efficient, and eco-friendly cleaning solutions for your home and office
+            </p>
+            <div className="space-x-4">
+              <Link
+                to="/contact"
+                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block"
+              >
+                Get Free Quote
+              </Link>
+              <Link
+                to="/services"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-block"
+              >
+                Our Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose ML expresstäd AB?
+              Why Choose MLExpress?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We're committed to providing exceptional cleaning services that exceed your expectations
+            <p className="text-lg text-gray-600">
+              We're committed to providing the best cleaning experience
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
-                <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <div key={index} className="text-center p-6 bg-white rounded-lg shadow-md">
+                <feature.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -168,37 +193,27 @@ const Home = () => {
       </section>
 
       {/* Services Preview */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Popular Services
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional cleaning solutions tailored to meet your specific needs and schedule
+            <p className="text-lg text-gray-600">
+              Professional cleaning solutions for every need
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                  <service.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+              <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <div className="text-6xl mb-4 text-center">{service.image}</div>
+                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-blue-600">{service.price}</span>
+                  <span className="text-lg font-bold text-blue-600">{service.price}</span>
                   <Link
                     to="/contact"
-                    className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
                   >
                     Book Now
                   </Link>
@@ -206,75 +221,30 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <Link
-              to="/services"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg"
-            >
-              View All Services
-              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Our Customers Say
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it - hear from our satisfied customers
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl">
-                <div className="flex items-center mb-4">
-                  <div className="text-4xl mr-4">{testimonial.image}</div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-gray-600 text-sm">{testimonial.location}</p>
-                    <div className="flex text-yellow-400 mt-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <StarIcon key={i} className="h-4 w-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-700 italic leading-relaxed">"{testimonial.text}"</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
+      <section className="bg-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Experience the ML expresstäd AB Difference?
+            Ready to Get Started?
           </h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Join hundreds of satisfied customers who trust us with their cleaning needs. 
-            Get your free estimate today and see why we're the top choice for professional cleaning services.
+          <p className="text-xl mb-8 text-blue-100">
+            Contact us today for a free, no-obligation quote
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="space-x-4">
             <Link
               to="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block"
             >
-              Get Free Estimate
+              Get Free Quote
             </Link>
             <a
-              href="tel:+1234567890"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
+              href="tel:555-123-4567"
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-block"
             >
-              Call (123) 456-7890
+              Call (555) 123-4567
             </a>
           </div>
         </div>
