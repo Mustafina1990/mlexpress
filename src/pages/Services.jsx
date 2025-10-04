@@ -15,209 +15,433 @@ import {
 const Services = () => {
   const mainServices = [
     {
-      title: 'Residential Cleaning',
-      description: 'Complete home cleaning services designed to keep your living space spotless and comfortable. Our residential cleaning covers every corner of your home with meticulous attention to detail.',
+      title: 'Hemstädning',
+      description: 'Regelbunden hemstädning för att hålla ditt hem fräscht och rent. Vi tar hand om alla vardagsliga städuppgifter så att du kan fokusera på det som är viktigt för dig.',
       icon: HomeIcon,
-      price: 'Starting at $80',
-      duration: '1-3 hours',
-      frequency: 'Weekly, Bi-weekly, Monthly',
+      price: '350 kr/timme + moms',
+      duration: '1-3 timmar',
+      frequency: 'Veckovis, Varannan vecka, Månadsvis',
       features: [
-        'Kitchen deep cleaning and sanitization',
-        'Bathroom cleaning and disinfection',
-        'Bedroom and living room cleaning',
-        'Floor vacuuming and mopping',
-        'Dusting all surfaces and furniture',
-        'Trash removal and bin cleaning',
-        'Window sill and mirror cleaning',
-        'Custom cleaning upon request'
+        'Entré och alla rum - komplett rengöring',
+        'Kök - vitvaror, spis, mikro, kakel och bänkar',
+        'Badrum, toalett och tvättstuga - fullständig sanering',
+        'Dammsugning och våtmoppning av alla golv',
+        'Dammtorkning av lampor, tavlor och hyllor',
+        'Rengöring av handfat, kranar och polering',
+        'Tömning av sopkorgar',
+        'Extra tjänster: tvättning, strykning, byten av lakan'
       ],
+      detailedFeatures: {
+        'Entré och alla rum': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Lampor – dammtorkning',
+          'Tavlor – dammtorkning',
+          'Speglar – putsning',
+          'Hyllor – dammtorkning',
+          'Golvlister – avtorkning',
+          'Mattor – dammsugning',
+          'Golv – dammsugning och våttorkning'
+        ],
+        'Kök': [
+          'Vitvaror – avtorkning av utsidor',
+          'Fläkt – avtorkning av utsidor',
+          'Spis – avtorkning av utsidor',
+          'Mikro – avtorkning in och utvändig',
+          'Skåpluckor – avtorkning',
+          'Kakel – avtorkning',
+          'Disk och blandare – rengöring och polering',
+          'Köksbänk – avtorkning',
+          'Skåp för sopor – rengöring invändig'
+        ],
+        'Badrum och tvättstuga': [
+          'Badkar/dusch – rengöring',
+          'Kakel – avtorkning',
+          'Toalett – rengöring',
+          'Skåp – avtorkning',
+          'Handfat och blandare – rengöring och polering',
+          'Vitvaror – avtorkning av utsidor'
+        ],
+        'Övrigt': [
+          'Tömning av sopkorgar',
+          'Tvättning',
+          'Strykning',
+          'Byte av lakan',
+          'Byte av handdukar'
+        ]
+      },
       addOns: [
-        { name: 'Inside oven cleaning', price: '+$25' },
-        { name: 'Inside refrigerator cleaning', price: '+$20' },
-        { name: 'Inside windows', price: '+$3 per window' },
-        { name: 'Garage cleaning', price: '+$40' }
+        { name: 'Fönsterputsning' },
+        { name: 'Ugnsrengöring invändigt' },
+        { name: 'Kylskåpsrengöring' },
+        { name: 'Strykservice' }
       ]
     },
     {
-      title: 'Commercial Cleaning',
-      description: 'Professional office and commercial space cleaning services for businesses of all sizes. We maintain a clean, healthy, and productive work environment for your team and clients.',
+      title: 'Företagsstädning & Trapphusstädning',
+      description: 'Professionell kontors- och kommersiell lokalstädning samt trapphusstädning för företag och bostadsrättsföreningar. Vi säkerställer en ren och professionell miljö.',
       icon: BuildingOfficeIcon,
-      price: 'Starting at $120',
-      duration: '2-4 hours',
-      frequency: 'Daily, Weekly, Custom schedule',
+      price: '350 kr/timme + moms',
+      duration: '2-4 timmar',
+      frequency: 'Dagligen, Veckovis, Anpassat schema',
       features: [
-        'Office space cleaning and organization',
-        'Conference room and meeting space cleaning',
-        'Restroom cleaning and sanitization',
-        'Break room and kitchen area cleaning',
-        'Floor cleaning and maintenance',
-        'Trash and recycling management',
-        'Surface disinfection and sanitization',
-        'After-hours cleaning available'
+        'Kontorsstädning - entré och alla rum',
+        'Kök och personalutrymmen',
+        'Toalett och sanitära utrymmen',
+        'Trapphusstädning för bostadsrätter',
+        'Fönsterputsning vid behov',
+        'Specialstädning efter behov',
+        'Flexibel schemaläggning',
+        'Miljövänliga produkter'
       ],
+      detailedFeatures: {
+        'Kontorsstädning': [
+          'Entré och alla rum - komplett rengöring',
+          'Skrivbord och arbetsstationer',
+          'Konferensrum och möteslokaler',
+          'Reception och väntområden',
+          'Dammsugning av mattor och golv',
+          'Tömning av papperskorgar'
+        ],
+        'Kök och personalrum': [
+          'Köksbänkar och diskhoar',
+          'Mikrovågsugnar och kylskåp (utvändigt)',
+          'Kakel och väggytor',
+          'Golvrengöring',
+          'Sophantering'
+        ],
+        'Toaletter': [
+          'WC-stolar och tvättställ',
+          'Kakel och spegelputsning',
+          'Påfyllning av pappersprodukter',
+          'Golvrengöring och desinfektion'
+        ],
+        'Trapphusstädning': [
+          'Trappor och räcken',
+          'Entréer och gemensamma utrymmen',
+          'Hiss (invändigt)',
+          'Soprum och återvinning'
+        ]
+      },
       addOns: [
-        { name: 'Carpet deep cleaning', price: '+$50' },
-        { name: 'Window cleaning (exterior)', price: '+$5 per window' },
-        { name: 'Warehouse cleaning', price: 'Custom quote' },
-        { name: 'Event cleanup', price: 'Custom quote' }
+        { name: 'Fönsterputsning (utvändigt)' },
+        { name: 'Mattdjuprengöring' },
+        { name: 'Parkettpolering' },
+        { name: 'Kvällsstädning' }
       ]
     },
     {
-      title: 'Deep Cleaning',
-      description: 'Comprehensive deep cleaning service that goes beyond regular maintenance. Perfect for move-ins, post-construction cleanup, seasonal cleaning, or when you need a fresh start.',
+      title: 'Storstädning',
+      description: 'Grundlig storstädning som täcker alla detaljer som ofta missas i vardagsstädning. Perfekt för säsongsrengöring eller när ditt hem behöver extra omsorg.',
       icon: WrenchScrewdriverIcon,
-      price: 'Starting at $150',
-      duration: '4-8 hours',
-      frequency: 'One-time, Seasonal',
+      price: '350 kr/timme + moms',
+      duration: '4-8 timmar',
+      frequency: 'Säsongsvis, Efter behov',
       features: [
-        'Detailed cleaning of all rooms',
-        'Inside appliance cleaning',
-        'Cabinet and drawer cleaning',
-        'Baseboards and trim cleaning',
-        'Light fixture cleaning',
-        'Air vent cleaning',
-        'Behind furniture cleaning',
-        'Detailed bathroom and kitchen deep clean'
+        'Komplett rengöring av alla rum och ytor',
+        'Invändig rengöring av vitvaror',
+        'Djuprengöring av kök och badrum',
+        'Fönsterputsning ingår',
+        'Rengöring av avlopp',
+        'Extra grundlig dammtorkning',
+        'Polering av kranar och handfat',
+        'Specialrengöring efter dina önskemål'
       ],
+      detailedFeatures: {
+        'Entré och alla rum': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Lampor – dammtorkning',
+          'Tavlor – dammtorkning',
+          'Speglar – putsning',
+          'Hyllor – dammtorkning',
+          'Golvlister – avtorkning',
+          'Mattor – dammsugning',
+          'Golv – dammsugning och våttorkning'
+        ],
+        'Kök (förstärkt)': [
+          'Vitvaror – avtorkning av utsidor',
+          'Fläkt – avtorkning av utsidor',
+          'Spis – avtorkning utvändigt och invändigt',
+          'Mikro – avtorkning in och utvändig',
+          'Skåpluckor – avtorkning',
+          'Kakel – avtorkning',
+          'Disk och blandare – rengöring och polering',
+          'Köksbänk – avtorkning',
+          'Skåp för sopor – rengöring invändig'
+        ],
+        'Badrum (förstärkt)': [
+          'Badkar/dusch – rengöring',
+          'Kakel – avtorkning',
+          'Toalett – rengöring',
+          'Skåp – avtorkning',
+          'Handfat och blandare – rengöring och polering',
+          'Vitvaror – avtorkning av utsidor',
+          'Avlopp – rengöring'
+        ],
+        'Övrigt': [
+          'Tömning av sopkorgar',
+          'Fönsterputsning'
+        ]
+      },
       addOns: [
-        { name: 'Pressure washing', price: '+$100' },
-        { name: 'Carpet steam cleaning', price: '+$75' },
-        { name: 'Upholstery cleaning', price: '+$60' },
-        { name: 'Attic/basement cleaning', price: '+$80' }
+        { name: 'Balkong/terrass rengöring' },
+        { name: 'Garderob organisation' },
+        { name: 'Köksluckor invändigt' },
+        { name: 'Lampor (detalj)' }
       ]
-    }
-  ];
-
-  const specialtyServices = [
+    },
     {
-      title: 'Post-Construction Cleanup',
-      description: 'Specialized cleaning after renovation or construction work',
+      title: 'Byggstädning',
+      description: 'Specialiserad städning efter renovering eller byggnadsarbete. Vi tar hand om byggdamm och återställer ditt hem till perfekt skick.',
       icon: ClipboardDocumentCheckIcon,
-      price: 'Custom Quote'
+      price: '350 kr/timme + moms',
+      duration: '4-6 timmar',
+      frequency: 'Efter behov, Renovering',
+      features: [
+        'Specialiserad rengöring efter byggarbete',
+        'Byggdamm och skräp borttagning',
+        'Komplett rengöring alla ytor',
+        'Fönsterputsning ingår',
+        'Djuprengöring av kök och badrum',
+        'Element och vägg dammtorkning',
+        'Professionell utrustning',
+        'Miljövänliga produkter'
+      ],
+      detailedFeatures: {
+        'Entré och alla rum': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Garderober – avtorkning',
+          'Väggar – dammtorkning',
+          'Golvlister – avtorkning',
+          'Golv – dammsugning och våttorkning',
+          'Element – dammtorkning'
+        ],
+        'Kök': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Lampor – dammtorkning',
+          'Fläkt – avtorkning utvändigt',
+          'Spis – avtorkning utvändigt',
+          'Mikro – avtorkning',
+          'Skåpluckor – avtorkning utvändigt och invändigt',
+          'Kakel – avtorkning',
+          'Disk och blandare – rengöring och polering',
+          'Köksbänk – avtorkning',
+          'Skåp för sopor – rengöring invändig',
+          'Golvet – dammsugning och våttorkning'
+        ],
+        'Badrum, toalett och tvättstuga': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Lampor – dammtorkning',
+          'Badkar/dusch – rengöring',
+          'Kakel – avtorkning',
+          'Toalett – rengöring',
+          'Skåp – avtorkning utvändigt och invändigt',
+          'Handfat och blandare – rengöring och polering',
+          'Vitvaror – avtorkning av utsidor',
+          'Golvet – dammsugning och våttorkning',
+          'Avlopp'
+        ],
+        'Övrigt': [
+          'Fönsterputsning'
+        ]
+      },
+      addOns: [
+        { name: 'Balkong/terrass djuprengöring' },
+        { name: 'Garageuppstädning' },
+        { name: 'Exteriör fönsterputsning' },
+        { name: 'Trädgårdsuppstädning' }
+      ]
     },
     {
-      title: 'Move-In/Move-Out',
-      description: 'Complete cleaning for property transitions',
-      icon: UserGroupIcon,
-      price: 'Starting at $200'
-    },
-    {
-      title: 'Event Cleanup',
-      description: 'Pre and post-event cleaning services',
+      title: 'Flyttstädning',
+      description: 'Komplett städning för inflyttning eller utflyttning. Vi säkerställer att bostaden lämnas i perfekt skick.',
       icon: CalendarDaysIcon,
-      price: 'Starting at $100'
-    },
-    {
-      title: 'Emergency Cleaning',
-      description: '24/7 emergency cleaning services',
-      icon: ClockIcon,
-      price: 'Starting at $120'
+      price: '350 kr/timme + moms',
+      duration: '6-8 timmar',
+      frequency: 'Inflyttning, Utflyttning',
+      features: [
+        'Komplett genomgång hela bostaden',
+        'Invändig rengöring alla vitvaror',
+        'Djuprengöring kök och badrum',
+        'Fönsterputsning ingår',
+        'Garderober och skåp invändigt',
+        'Avloppsrengöring',
+        'Kvalitetsgaranti',
+        'Godkänd för hyreskontrakt'
+      ],
+      detailedFeatures: {
+        'Entré och alla rum': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Garderober – avtorkning',
+          'Väggar – dammtorkning',
+          'Golvlister – avtorkning',
+          'Golv – dammsugning och våttorkning'
+        ],
+        'Kök': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Lampor – dammtorkning',
+          'Fläkt – avtorkning utvändigt och invändigt',
+          'Spis – avtorkning utvändigt och invändigt',
+          'Mikro – avtorkning in och utvändig',
+          'Skåpluckor – avtorkning utvändigt och invändigt',
+          'Kakel – avtorkning',
+          'Disk och blandare – rengöring och polering',
+          'Köksbänk – avtorkning',
+          'Skåp för sopor – rengöring invändig',
+          'Golvet – dammsugning och våttorkning'
+        ],
+        'Badrum, toalett och tvättstuga': [
+          'Fönsterbrädor – avtorkning',
+          'Dörrar och handtag – avtorkning',
+          'Lampor – dammtorkning',
+          'Badkar/dusch – rengöring',
+          'Kakel – avtorkning',
+          'Toalett – rengöring',
+          'Skåp – avtorkning utvändigt och invändigt',
+          'Handfat och blandare – rengöring och polering',
+          'Vitvaror – avtorkning av utsidor',
+          'Golvet – dammsugning och våttorkning',
+          'Avlopp'
+        ],
+        'Övrigt': [
+          'Tömning av sopkorgar',
+          'Fönsterputsning'
+        ]
+      },
+      addOns: [
+        { name: 'Balkong/terrass rengöring' },
+        { name: 'Källare eller vind' },
+        { name: 'Garage eller förråd' },
+        { name: 'Mattdjuprengöring' }
+      ]
     }
   ];
 
   const cleaningProcess = [
     {
       step: 1,
-      title: 'Initial Consultation',
-      description: 'We assess your space and discuss your specific cleaning needs and preferences.'
+      title: 'Första Konsultation',
+      description: 'Vi bedömer ditt utrymme och diskuterar dina specifika städbehov och önskemål.'
     },
     {
       step: 2,
-      title: 'Custom Cleaning Plan',
-      description: 'We create a tailored cleaning plan that fits your schedule and budget.'
+      title: 'Anpassad Städplan',
+      description: 'Vi skapar en skräddarsydd städplan som passar ditt schema och din budget.'
     },
     {
       step: 3,
-      title: 'Professional Service',
-      description: 'Our trained team arrives with all supplies and delivers exceptional results.'
+      title: 'Professionell Service',
+      description: 'Vårt utbildade team kommer med all utrustning och levererar exceptionella resultat.'
     },
     {
       step: 4,
-      title: 'Quality Assurance',
-      description: 'We perform a final inspection to ensure everything meets our high standards.'
+      title: 'Kvalitetssäkring',
+      description: 'Vi utför en slutlig inspektion för att säkerställa att allt uppfyller våra höga standarder.'
     }
   ];
 
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Luxury Hero Section */}
+      <section className="relative overflow-hidden" style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
+      }}>
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-gradient-to-br from-yellow-300/15 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}}></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <SparklesIcon className="h-4 w-4" />
-              <span>Professional Cleaning Services</span>
+            <div className="flex justify-center mb-12">
+              <div className="relative">
+                <div className="bg-gradient-to-r from-yellow-400 to-yellow-200 p-4 rounded-full shadow-2xl">
+                  <SparklesIcon className="h-16 w-16 text-blue-900" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/50 to-yellow-200/50 rounded-full blur-xl animate-pulse"></div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our Cleaning
-              <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Services
+            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8">
+              <span className="text-white">Våra Premium</span>
+              <span className="block bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+                Städtjänster
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              From regular home maintenance to deep commercial cleaning, we offer comprehensive 
-              services tailored to meet your specific needs and exceed your expectations.
+            <p className="text-xl text-gray-200 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+              Från regelbundet hemunderhåll till djup kommersiell städning, vi erbjuder omfattande 
+              lyxiga tjänster skräddarsydda för att möta dina specifika behov och överträffa dina förväntningar.
             </p>
             <Link
-              to="/contact"
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              to="/contact#contact-form"
+              className="bg-white text-blue-900 px-10 py-5 text-xl font-semibold rounded-xl border-2 border-yellow-400 hover:bg-yellow-50 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              Get Custom Quote
+              Få Anpassad Offert
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Main Services */}
-      <section className="py-16 bg-white">
+      {/* Luxury Main Services */}
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Main Services
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">
+              Våra Huvudtjänster
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Choose from our comprehensive range of professional cleaning services
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+              Välj från vårt omfattande utbud av professionella lyxiga städtjänster
             </p>
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-24">
             {mainServices.map((service, index) => (
-              <div key={index} className={`flex flex-col lg:flex-row items-center gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <div key={index} className={`flex flex-col lg:flex-row items-center gap-16 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                 <div className="lg:w-1/2">
-                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl">
-                    <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                      <service.icon className="h-8 w-8 text-white" />
+                  <div className="luxury-card p-10">
+                    <div className="relative mb-8">
+                      <div className="bg-gradient-to-r from-yellow-400 to-yellow-200 w-20 h-20 rounded-full flex items-center justify-center shadow-2xl">
+                        <service.icon className="h-10 w-10 text-blue-900" />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-yellow-200/30 rounded-full blur-xl animate-pulse"></div>
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                    <h3 className="text-4xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">{service.title}</h3>
+                    <p className="text-gray-600 mb-8 leading-relaxed text-lg font-light">{service.description}</p>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                      <div className="bg-white p-4 rounded-lg">
-                        <div className="text-lg font-bold text-blue-600">{service.price}</div>
-                        <div className="text-sm text-gray-600">Base Price</div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                      <div className="luxury-card-small">
+                        <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.price}</div>
+                        <div className="text-sm text-gray-500 font-medium">Baspris</div>
                       </div>
-                      <div className="bg-white p-4 rounded-lg">
-                        <div className="text-lg font-bold text-blue-600">{service.duration}</div>
-                        <div className="text-sm text-gray-600">Duration</div>
+                      <div className="luxury-card-small">
+                        <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.duration}</div>
+                        <div className="text-sm text-gray-500 font-medium">Varaktighet</div>
                       </div>
-                      <div className="bg-white p-4 rounded-lg">
-                        <div className="text-lg font-bold text-blue-600">{service.frequency}</div>
-                        <div className="text-sm text-gray-600">Frequency</div>
+                      <div className="luxury-card-small">
+                        <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.frequency}</div>
+                        <div className="text-sm text-gray-500 font-medium">Frekvens</div>
                       </div>
                     </div>
 
                     <Link
-                      to="/contact"
+                      to={`/contact#contact-form?service=${encodeURIComponent(service.title)}`}
                       className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg inline-block"
                     >
-                      Book This Service
+                      Boka Denna Tjänst
                     </Link>
                   </div>
                 </div>
 
                 <div className="lg:w-1/2">
                   <div className="bg-white p-8 rounded-2xl shadow-lg">
-                    <h4 className="text-xl font-bold text-gray-900 mb-6">What's Included:</h4>
+                    <h4 className="text-xl font-bold text-gray-900 mb-6">Detta Ingår:</h4>
                     <div className="grid grid-cols-1 gap-3 mb-8">
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start">
@@ -227,12 +451,13 @@ const Services = () => {
                       ))}
                     </div>
 
-                    <h4 className="text-xl font-bold text-gray-900 mb-4">Optional Add-ons:</h4>
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">Tilläggsservice:</h4>
                     <div className="space-y-2">
                       {service.addOns.map((addon, idx) => (
-                        <div key={idx} className="flex justify-between items-center py-2 border-b border-gray-100">
+                        <div key={idx} className="flex items-center py-2 border-b border-gray-100">
+                          <CheckCircleIcon className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
                           <span className="text-gray-700">{addon.name}</span>
-                          <span className="text-blue-600 font-semibold">{addon.price}</span>
+                          <span className="text-sm text-gray-500 ml-auto">Inkluderat i timpris</span>
                         </div>
                       ))}
                     </div>
@@ -244,35 +469,55 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Specialty Services */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Specialty Services
+      {/* Pricing Information */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="luxury-card p-10 text-center">
+            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-yellow-400/20 to-yellow-200/20 px-6 py-3 rounded-full text-sm font-medium mb-8 border border-yellow-400/30">
+              <SparklesIcon className="h-5 w-5 text-yellow-600" />
+              <span className="text-gray-700">Transparent Prissättning</span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">
+              Enkel Timprissättning
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Additional services for special situations and unique cleaning needs
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {specialtyServices.map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <service.icon className="h-6 w-6 text-white" />
+            
+            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-8 rounded-2xl mb-8">
+              <div className="text-6xl font-bold mb-4">350 kr</div>
+              <div className="text-xl mb-2">per timme + moms</div>
+              <div className="text-blue-100">för alla våra tjänster</div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+              <div className="flex items-start">
+                <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <div className="font-semibold text-gray-900">Inga dolda avgifter</div>
+                  <div className="text-gray-600">Vad du ser är vad du betalar</div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <div className="text-lg font-bold text-blue-600 mb-4">{service.price}</div>
-                <Link
-                  to="/contact"
-                  className="text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors"
-                >
-                  Learn More →
-                </Link>
               </div>
-            ))}
+              <div className="flex items-start">
+                <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <div className="font-semibold text-gray-900">Flexibel tid</div>
+                  <div className="text-gray-600">Betala bara för den tid vi arbetar</div>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                <div>
+                  <div className="font-semibold text-gray-900">Allt inkluderat</div>
+                  <div className="text-gray-600">Material och utrustning ingår</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-xl">
+              <p className="text-gray-700">
+                <strong>Estimerad tid:</strong> Vi ger dig en uppskattning baserat på hem storlek och tjänst typ, 
+                men du betalar bara för faktisk arbetstid.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -282,10 +527,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Cleaning Process
+              Vår Städprocess
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We follow a systematic approach to ensure consistent, high-quality results every time
+              Vi följer ett systematiskt tillvägagångssätt för att säkerställa konsekventa, högkvalitativa resultat varje gång
             </p>
           </div>
 
@@ -307,24 +552,24 @@ const Services = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Get Started?
+            Redo Att Komma Igång?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Contact us today for a free consultation and custom quote. We'll help you choose 
-            the perfect cleaning plan for your needs and budget.
+            Kontakta oss idag för en kostnadsfri konsultation och anpassad offert. Vi hjälper dig att välja 
+            den perfekta städplanen för dina behov och budget.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/contact"
+              to="/contact#contact-form"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Get Free Quote
+              Få Kostnadsfri Offert
             </Link>
             <a
-              href="tel:+1234567890"
+              href="sms:+46765523187"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
             >
-              Call (123) 456-7890
+              SMS: +46 76 552 31 87
             </a>
           </div>
         </div>

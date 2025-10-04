@@ -16,151 +16,159 @@ const Home = () => {
   const features = [
     {
       icon: CheckCircleIcon,
-      title: 'Professional Quality',
-      description: 'Our trained professionals deliver exceptional cleaning results every time with attention to detail.'
+      title: 'Professionell Kvalitet',
+      description: 'Våra utbildade proffs levererar exceptionella städresultat varje gång med uppmärksamhet på detaljer.'
     },
     {
       icon: SparklesIcon,
-      title: 'Eco-Friendly Products',
-      description: 'We use environmentally safe cleaning products that are safe for your family and pets.'
+      title: 'Miljövänliga Produkter',
+      description: 'Vi använder miljösäkra städprodukter som är säkra för din familj och husdjur.'
     },
     {
       icon: ClockIcon,
-      title: 'Reliable & Punctual',
-      description: 'We arrive on time and complete our work efficiently, respecting your valuable time.'
+      title: 'Pålitlig & Punktlig',
+      description: 'Vi kommer i tid och slutför vårt arbete effektivt, respekterar din värdefulla tid.'
     },
     {
       icon: ShieldCheckIcon,
       title: 'Fully Insured',
-      description: 'All our staff are background-checked, insured, and bonded for your peace of mind.'
+      description: 'All vår personal är bakgrundskontrollerad, försäkrad och bonded för din trygghet.'
     }
   ];
 
   const services = [
     {
-      title: 'Residential Cleaning',
-      description: 'Complete home cleaning services including kitchens, bathrooms, bedrooms, and living areas.',
-      price: 'Starting at $80',
+      title: 'Hemstädning',
+      description: 'Regelbunden hemstädning med alla vardagsliga uppgifter - kök, badrum, dammsugning och våttorkning.',
+      price: '350 kr/timme + moms',
       icon: HomeIcon,
-      features: ['Weekly/Bi-weekly/Monthly', 'Custom cleaning plans', 'Same team every visit']
+      features: ['Veckovis/Varannan vecka', 'Tvättning & strykning', 'Byte av lakan & handdukar']
     },
     {
-      title: 'Commercial Cleaning',
-      description: 'Professional office and commercial space cleaning for businesses of all sizes.',
-      price: 'Starting at $120',
-      icon: BuildingOfficeIcon,
-      features: ['Flexible scheduling', 'After-hours service', 'Customized protocols']
-    },
-    {
-      title: 'Deep Cleaning',
-      description: 'Thorough deep cleaning service perfect for move-ins, post-construction, or seasonal cleaning.',
-      price: 'Starting at $150',
+      title: 'Storstädning',
+      description: 'Grundlig storstädning med invändig rengöring av vitvaror, fönsterputsning och avloppsrengöring.',
+      price: '350 kr/timme + moms',
       icon: WrenchScrewdriverIcon,
-      features: ['Move-in/move-out', 'Post-construction', 'One-time service']
+      features: ['Komplett djuprengöring', 'Fönsterputsning ingår', 'Invändig vitvaror']
+    },
+    {
+      title: 'Flyttstädning',
+      description: 'Professionell flyttstädning för inflyttning eller utflyttning med garanti för godkännande.',
+      price: '350 kr/timme + moms',
+      icon: BuildingOfficeIcon,
+      features: ['Garderober invändigt', 'Skåp in- & utvändigt', 'Komplett fönsterputsning']
     }
   ];
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      location: 'Downtown',
+      name: 'Anna Andersson',
+      location: 'Östermalm',
       rating: 5,
-      text: 'ML expresstäd AB transformed my home! Their team is professional, thorough, and always on time. I highly recommend their services.',
+      text: 'ML expresstäd AB förvandlade mitt hem! Deras team är professionellt, grundligt och alltid i tid. Jag rekommenderar starkt deras tjänster.',
       image: '👩‍💼'
     },
     {
       name: 'Michael Chen',
-      location: 'Business District',
+      location: 'Södermalm',
       rating: 5,
-      text: 'Outstanding commercial cleaning service. Our office has never looked better. The team is reliable and pays attention to every detail.',
+      text: 'Enastående kommersiell städservice. Vårt kontor har aldrig sett bättre ut. Teamet är pålitligt och uppmärksammar varje detalj.',
       image: '👨‍💻'
     },
     {
-      name: 'Emily Rodriguez',
-      location: 'Suburbia',
+      name: 'Emily Johansson',
+      location: 'Vasastan',
       rating: 5,
-      text: 'I love coming home to a spotless house! ML expresstäd AB has made my life so much easier. Worth every penny!',
+      text: 'Jag älskar att komma hem till ett fläckfritt hus! ML expresstäd AB har gjort mitt liv så mycket enklare. Värt varenda krona!',
       image: '👩‍🏫'
     }
   ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-50 pt-20 pb-16 overflow-hidden">
-        <div className="absolute inset-0 opacity-40"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Luxury Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" 
+               style={{
+                 background: `linear-gradient(135deg, 
+                   rgba(254, 252, 232, 0.95) 0%, 
+                   rgba(254, 243, 199, 0.9) 25%,
+                   rgba(255, 255, 255, 0.95) 50%,
+                   rgba(254, 243, 199, 0.9) 75%,
+                   rgba(254, 252, 232, 0.95) 100%)`
+               }}>
+        {/* Luxury Background Pattern */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-yellow-200/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-yellow-200/20 to-blue-200/20 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <SparklesIcon className="h-4 w-4" />
-              <span>Professional Cleaning Services Since 2020</span>
+            <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-semibold mb-8 border-2 border-yellow-200">
+              <div className="w-3 h-3 gold-gradient rounded-full animate-pulse"></div>
+              <span className="luxury-text-gradient">Luxury Cleaning Services Since 2020</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Your Home Deserves a
-              <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Professional Clean
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 font-['Playfair_Display']">
+              <span className="text-gray-800 block mb-2">Ditt Utrymme Förtjänar</span>
+              <span className="luxury-text-gradient block relative">
+                Exceptionell Excellens
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-yellow-500/20 blur-lg -z-10"></div>
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Transform your space with our professional cleaning services. We deliver exceptional results 
-              with eco-friendly products, giving you more time to focus on what matters most.
+            
+            <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+              Förvandla din miljö med våra <span className="font-bold gold-accent">premium städtjänster</span>. 
+              Vi levererar ojämförliga resultat med lyxig omsorg, ger dig ultimat sinnesro.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
               <Link
-                to="/contact"
-                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                to="/contact#contact-form"
+                className="luxury-button text-lg px-10 py-5 font-bold tracking-wide"
               >
-                Get Free Estimate
+                ✨ Få Premium Offert
               </Link>
               <a
-                href="tel:+1234567890"
-                className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold text-lg transition-colors"
+                href="sms:+46765523187"
+                className="flex items-center space-x-3 luxury-card px-6 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 border border-yellow-200"
               >
-                <span>📞</span>
-                <span>Call Now: (123) 456-7890</span>
+                <div className="w-10 h-10 gold-gradient rounded-full flex items-center justify-center text-white">
+                  �
+                </div>
+                <span className="text-gray-700">SMS: +46 76 552 31 87</span>
               </a>
-            </div>
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-blue-600">500+</div>
-                <div className="text-gray-600">Happy Customers</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-600">5★</div>
-                <div className="text-gray-600">Average Rating</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-600">24/7</div>
-                <div className="text-gray-600">Support</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-600">100%</div>
-                <div className="text-gray-600">Satisfaction</div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose ML expresstäd AB?
+      {/* Luxury Features Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-yellow-50"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display']">
+              <span className="text-gray-800">Varför Välja </span>
+              <span className="luxury-text-gradient">ML expresstäd AB?</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We're committed to providing exceptional cleaning services that exceed your expectations
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Upplev toppen av <span className="gold-accent font-bold">lyxiga städtjänster</span> 
+              som förvandlar din miljö till en fristad av excellens
             </p>
           </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
-                <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="h-8 w-8 text-white" />
+              <div key={index} className="group text-center luxury-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border border-yellow-100">
+                <div className="relative mb-6">
+                  <div className="royal-gradient w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 elegant-shadow">
+                    <feature.icon className="h-10 w-10 text-white" />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 gold-gradient rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-bold mb-4 text-gray-900 font-['Playfair_Display']">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-medium">{feature.description}</p>
+                <div className="mt-4 h-1 w-0 gold-gradient mx-auto rounded-full group-hover:w-12 transition-all duration-500"></div>
               </div>
             ))}
           </div>
@@ -172,10 +180,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Popular Services
+              Våra Populära Tjänster
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professional cleaning solutions tailored to meet your specific needs and schedule
+              Professionella städlösningar anpassade för att möta dina specifika behov och schema
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -197,10 +205,10 @@ const Home = () => {
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-bold text-blue-600">{service.price}</span>
                   <Link
-                    to="/contact"
+                    to="/contact#contact-form"
                     className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
                   >
-                    Book Now
+                    Boka Nu
                   </Link>
                 </div>
               </div>
@@ -211,7 +219,7 @@ const Home = () => {
               to="/services"
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg"
             >
-              View All Services
+              Se Alla Tjänster
               <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -220,35 +228,59 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 bg-white">
+      {/* Service Areas Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Our Customers Say
+            <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-medium mb-8 border border-blue-200">
+              <SparklesIcon className="h-5 w-5 text-blue-600" />
+              <span className="text-gray-700">Våra Serviceområden</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display']">
+              <span className="text-gray-800">Vi Täcker </span>
+              <span className="luxury-text-gradient">Stockholm & Närområden</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it - hear from our satisfied customers
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Professionella städtjänster i <span className="font-bold text-blue-600">Stockholm</span> och omkringliggande kommuner. 
+              Vi levererar samma höga kvalitet överallt vi verkar.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl">
-                <div className="flex items-center mb-4">
-                  <div className="text-4xl mr-4">{testimonial.image}</div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-gray-600 text-sm">{testimonial.location}</p>
-                    <div className="flex text-yellow-400 mt-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <StarIcon key={i} className="h-4 w-4 fill-current" />
-                      ))}
-                    </div>
-                  </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12">
+            {[
+              'Stockholm City', 'Östermalm', 'Södermalm', 'Vasastan', 'Norrmalm',
+              'Gamla Stan', 'Kungsholmen', 'Djurgården', 'Bromma', 'Solna',
+              'Sundbyberg', 'Nacka', 'Lidingö', 'Danderyd', 'Täby',
+              'Sollentuna', 'Upplands Väsby', 'Järfälla', 'Huddinge', 'Tyresö'
+            ].map((area, index) => (
+              <div key={index} className="group luxury-card p-4 rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-100">
+                <div className="text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                  {area}
                 </div>
-                <p className="text-gray-700 italic leading-relaxed">"{testimonial.text}"</p>
+                <div className="mt-2 h-1 w-0 bg-gradient-to-r from-blue-600 to-cyan-600 mx-auto rounded-full group-hover:w-8 transition-all duration-500"></div>
               </div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <div className="luxury-card p-8 max-w-2xl mx-auto border border-blue-200">
+              <CheckCircleIcon className="h-12 w-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Ser du inte ditt område?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Vi utökar ständigt våra serviceområden. Kontakta oss så berättar vi om vi kan hjälpa dig!
+              </p>
+              <Link
+                to="/contact#contact-form"
+                className="inline-flex items-center luxury-button text-base px-6 py-3 font-semibold"
+              >
+                Kontakta Oss
+                <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -257,24 +289,24 @@ const Home = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Experience the ML expresstäd AB Difference?
+            Redo att Uppleva ML expresstäd AB Skillnaden?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Join hundreds of satisfied customers who trust us with their cleaning needs. 
-            Get your free estimate today and see why we're the top choice for professional cleaning services.
+            Gå med hundratals nöjda kunder som litar på oss för sina städbehov. 
+            Fyll i vårt formulär idag för din kostnadsfria offert och se varför vi är förstahandsvalet för professionella städtjänster.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/contact"
+              to="/contact#contact-form"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Get Free Estimate
+              Fyll i Formulär för Offert
             </Link>
             <a
-              href="tel:+1234567890"
+              href="sms:+46765523187"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
             >
-              Call (123) 456-7890
+              SMS: +46 76 552 31 87
             </a>
           </div>
         </div>

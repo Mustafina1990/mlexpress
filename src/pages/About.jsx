@@ -16,37 +16,37 @@ const About = () => {
   const values = [
     {
       icon: HeartIcon,
-      title: 'Customer First',
-      description: 'Your satisfaction is our top priority. We go above and beyond to exceed your expectations with every service.'
+      title: 'Kunden Först',
+      description: 'Din tillfredsställelse är vår högsta prioritet. Vi går utöver för att överträffa dina förväntningar med varje tjänst.'
     },
     {
       icon: ShieldCheckIcon,
-      title: 'Trust & Reliability',
-      description: 'All our team members are background-checked, insured, and bonded. Your home and business are safe with us.'
+      title: 'Förtroende & Pålitlighet',
+      description: 'All vår personal är bakgrundskontrollerad, försäkrad och bonded. Ditt hem och företag är säkert hos oss.'
     },
     {
       icon: SparklesIcon,
-      title: 'Excellence',
-      description: 'We maintain the highest standards in everything we do, from our cleaning techniques to customer service.'
+      title: 'Excellens',
+      description: 'Vi upprätthåller högsta standard i allt vi gör, från våra städtekniker till kundservice.'
     },
     {
       icon: GlobeAltIcon,
-      title: 'Eco-Friendly',
-      description: 'We use environmentally responsible cleaning products that are safe for your family, pets, and the planet.'
+      title: 'Miljövänlig',
+      description: 'Vi använder miljöansvariga städprodukter som är säkra för din familj, husdjur och planeten.'
     }
   ];
 
   const teamMembers = [
     {
-      name: 'Sarah Thompson',
-      role: 'Founder & CEO',
+      name: 'Anna Lindström',
+      role: 'Grundare & VD',
       image: '👩‍💼',
-      bio: 'With over 10 years in the cleaning industry, Sarah founded ML expresstäd AB with a vision to provide exceptional cleaning services that busy families and businesses can rely on.',
-      experience: '10+ years'
+      bio: 'Med över 10 års erfarenhet inom städbranschen grundade Anna ML expresstäd AB med en vision att erbjuda exceptionella städtjänster som upptagna familjer och företag kan lita på.',
+      experience: '10+ år'
     },
     {
-      name: 'Mike Rodriguez',
-      role: 'Operations Manager',
+      name: 'Erik Johansson',
+      role: 'Operationschef',
       image: '👨‍💻',
       bio: 'Mike ensures our cleaning teams are properly trained and equipped to deliver consistent, high-quality results. He oversees quality control and customer satisfaction.',
       experience: '7+ years'
@@ -98,182 +98,181 @@ const About = () => {
   ];
 
   const whyChooseUs = [
-    'Experienced and trained cleaning professionals',
-    'Eco-friendly and safe cleaning products',
-    'Flexible scheduling to fit your needs',
-    'Satisfaction guarantee on all services',
-    'Competitive pricing with no hidden fees',
-    'Fully insured and bonded team',
-    'Same team for consistency and trust',
-    'Emergency and last-minute cleaning available'
+    'Erfarna och utbildade städproffs',
+    'Miljövänliga och säkra städprodukter',
+    'Flexibel schemaläggning som passar dina behov',
+    'Tillfredsställelsegaranti på alla tjänster',
+    'Konkurrenskraftiga priser utan dolda avgifter',
+    'Fullt försäkrat och certifierat team',
+    'Samma team för konsistens och förtroende',
+    'Akut- och sista minuten-städning tillgänglig'
   ];
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Luxury Hero Section */}
+      <section className="relative overflow-hidden min-h-screen flex items-center" style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
+      }}>
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
           <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <SparklesIcon className="h-4 w-4" />
-              <span>About ML expresstäd AB</span>
+            <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-medium mb-8 border border-yellow-400/30">
+              <SparklesIcon className="h-5 w-5 text-yellow-400" />
+              <span className="text-yellow-400">Om ML expresstäd AB</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Trusted Cleaning Professionals
-              <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Since 2020
+            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8">
+              <span className="text-white block mb-2">Pålitliga Städproffs</span>
+              <span className="block relative" style={{
+                background: 'linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #FBBF24 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>
+                Med Passion för Renhet
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-yellow-500/20 blur-lg -z-10"></div>
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              We're more than just a cleaning company. We're your trusted partners in creating 
-              clean, healthy, and comfortable spaces where you can thrive. Our commitment to 
-              excellence has made us the preferred choice for hundreds of satisfied customers.
+            <p className="text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+              Vi tror att renhet är mer än bara ordning i hemmet eller på kontoret. Det är ett friare andetag, 
+              klarare tankar och en känsla av lugn. När omgivningen är välskött och fräsch finns det mer plats 
+              i livet för glädje, inspiration och nya möjligheter.
             </p>
           </div>
         </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl">
-                <div className="text-4xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </div>
-            ))}
+        {/* Decorative Wave Transition */}
+        <div className="absolute bottom-0 left-0 w-full">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-24">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="fill-yellow-400"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="fill-blue-400"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" className="fill-yellow-300"></path>
+          </svg>
+          
+          {/* Floating Confetti Elements */}
+          <div className="absolute bottom-4 left-0 w-full overflow-hidden pointer-events-none">
+            <div className="absolute bottom-0 left-1/4 w-3 h-3 bg-yellow-400 rounded-full animate-bounce" style={{animationDelay: '0s', animationDuration: '3s'}}></div>
+            <div className="absolute bottom-2 left-1/3 w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '1s', animationDuration: '2.5s'}}></div>
+            <div className="absolute bottom-1 left-1/2 w-4 h-1 bg-yellow-300 rounded-full animate-bounce" style={{animationDelay: '0.5s', animationDuration: '2.8s'}}></div>
+            <div className="absolute bottom-3 left-2/3 w-2 h-2 bg-blue-300 rounded-full animate-bounce" style={{animationDelay: '1.5s', animationDuration: '3.2s'}}></div>
+            <div className="absolute bottom-0 left-3/4 w-3 h-3 bg-yellow-500 rounded-full animate-bounce" style={{animationDelay: '2s', animationDuration: '2.7s'}}></div>
+            <div className="absolute bottom-2 right-1/4 w-2 h-4 bg-blue-500 rounded-full animate-bounce" style={{animationDelay: '0.8s', animationDuration: '3.1s'}}></div>
+            <div className="absolute bottom-1 right-1/3 w-3 h-2 bg-yellow-400 rounded-full animate-bounce" style={{animationDelay: '1.2s', animationDuration: '2.9s'}}></div>
+            <div className="absolute bottom-4 right-1/2 w-1 h-3 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.3s', animationDuration: '2.6s'}}></div>
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <div className="space-y-6 text-gray-600 leading-relaxed">
-                <p>
-                  ML expresstäd AB was founded in 2020 with a simple mission: to provide reliable, 
-                  high-quality cleaning services that give people more time to focus on what matters 
-                  most to them. What started as a small local business has grown into a trusted name 
-                  in professional cleaning services.
-                </p>
-                <p>
-                  Our founder, Sarah Thompson, recognized the need for a cleaning service that truly 
-                  cared about its customers' homes and businesses. She assembled a team of dedicated 
-                  professionals who share her commitment to excellence and attention to detail.
-                </p>
-                <p>
-                  Today, we're proud to serve hundreds of customers across the community, from busy 
-                  families to growing businesses. Our success is built on trust, reliability, and 
-                  an unwavering commitment to delivering exceptional results every time.
-                </p>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-8 rounded-2xl">
-              <div className="text-6xl mb-6 text-center">🏆</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Our Mission</h3>
-              <p className="text-gray-700 text-center leading-relaxed">
-                To transform spaces and lives through exceptional cleaning services, 
-                giving our customers the gift of time and peace of mind while maintaining 
-                the highest standards of quality, trust, and environmental responsibility.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values */}
-      <section className="py-16 bg-white">
+      {/* Vår Historia */}
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Core Values
+            <div className="flex items-center justify-center gap-8 mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text">
+                Vår Historia
+              </h2>
+              <div className="flex-shrink-0 relative top-2 left-4">
+                <div className="relative">
+                  <img 
+                    src="/src/assets/logo.png" 
+                    alt="ML expresstäd AB" 
+                    className="h-28 md:h-32 w-auto transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
+                  />
+                  <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/30 to-blue-400/30 rounded-lg blur-lg opacity-60"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="luxury-card p-10">
+              <div className="space-y-8 text-gray-700 leading-relaxed text-lg font-light">
+                <p>
+                  Vårt uppdrag är enkelt: att städa snabbt, noggrant och utan onödigt besvär för dig. 
+                  Vi värdesätter förtroende och gör allt för att varje kund ska vara nöjd. 
+                  <span className="font-semibold gold-accent">Renlighet är vårt arbete, din komfort är vårt mål.</span>
+                </p>
+                <p>
+                  Vår historia började med en liten dröm: att hjälpa människor leva i harmoni. 
+                  Steg för steg växte denna dröm till vår livsuppgift. Vi insåg att varje städning 
+                  inte bara handlar om borttagna fläckar eller rena golv.
+                </p>
+                <p>
+                  Det är leendet hos en mamma som äntligen får tid för sina barn. Det är lättnaden 
+                  hos en person som kommer hem efter jobbet till en ren och trivsam bostad. Det är 
+                  kontoret där medarbetarna arbetar med energi eftersom ordningen inspirerar.
+                </p>
+              </div>
+            </div>
+            
+            <div className="luxury-card p-10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-2xl"></div>
+              <div className="relative">
+                <div className="text-6xl mb-8 text-center">
+                  <span className="luxury-text-gradient">✨</span>
+                </div>
+                <h3 className="text-3xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6 text-center">
+                  Vårt Uppdrag
+                </h3>
+                <div className="space-y-6 text-gray-700 leading-relaxed text-lg font-light">
+                  <p>
+                    Vi har byggt ett team som tror att renhet inspirerar. Varje kund är för oss inte 
+                    bara ett uppdrag, utan en människa vi ger komfort, lugn och mer tid för livet.
+                  </p>
+                  <p className="text-center font-semibold text-xl luxury-text-gradient">
+                    "För ett rent utrymme är grunden för stora drömmar."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Våra Värderingar */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">
+              Våra Kärnvärden
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              These values guide everything we do and shape how we serve our customers
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+              Dessa värderingar styr allt vi gör och formar hur vi betjänar våra kunder
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
-                <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="h-8 w-8 text-white" />
+              <div key={index} className="luxury-card text-center p-8 group hover:shadow-2xl transition-all duration-300">
+                <div className="relative mb-8">
+                  <div className="bg-gradient-to-r from-yellow-400 to-yellow-200 w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                    <value.icon className="h-10 w-10 text-blue-900" />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 to-yellow-200/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                <h3 className="text-2xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-4">{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Leadership Team
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experienced professionals dedicated to delivering exceptional cleaning services
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">{member.image}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-blue-600 font-semibold mb-2">{member.role}</p>
-                  <div className="text-sm text-gray-500 mb-4">{member.experience} experience</div>
-                  <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Achievements
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Recognition and credentials that demonstrate our commitment to excellence
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl">
-                <achievement.icon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{achievement.title}</h3>
-                <p className="text-gray-600 text-sm">{achievement.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
+      {/* Varför Välja Oss */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Why Choose ML expresstäd AB?
+                Varför Välja ML expresstäd AB?
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                We understand that inviting someone into your home or business is a big decision. 
-                Here's why hundreds of customers trust us with their cleaning needs:
+                Vi förstår att bjuda in någon i ditt hem eller företag är ett stort beslut. 
+                Här är varför hundratals kunder litar på oss med sina städbehov:
               </p>
               <div className="grid grid-cols-1 gap-4">
                 {whyChooseUs.map((reason, index) => (
@@ -287,14 +286,14 @@ const About = () => {
             <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-8 rounded-2xl">
               <div className="text-center">
                 <HandRaisedIcon className="h-16 w-16 text-blue-600 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">100% Satisfaction Guarantee</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">100% Tillfredsställelsegaranti</h3>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  We stand behind our work. If you're not completely satisfied with our service, 
-                  we'll return within 24 hours to make it right at no additional cost.
+                  Vi står bakom vårt arbete. Om du inte är helt nöjd med vår service 
+                  återkommer vi inom 24 timmar för att göra det rätt utan extra kostnad.
                 </p>
                 <div className="bg-white p-4 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-600">24-Hour</div>
-                  <div className="text-gray-600">Service Guarantee</div>
+                  <div className="text-3xl font-bold text-blue-600">24-Timmar</div>
+                  <div className="text-gray-600">Servicegaranti</div>
                 </div>
               </div>
             </div>
@@ -306,24 +305,24 @@ const About = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Experience the Difference?
+            Redo att Uppleva Skillnaden?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Join our family of satisfied customers and discover why ML expresstäd AB is the 
-            trusted choice for professional cleaning services. Get your free estimate today!
+            Gå med i vår familj av nöjda kunder och upptäck varför ML expresstäd AB är det 
+            pålitliga valet för professionella städtjänster. Få din gratis offert idag!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Get Free Estimate
+              Få Gratis Offert
             </Link>
             <a
-              href="tel:+1234567890"
+              href="sms:+46765523187"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
             >
-              Call (123) 456-7890
+              SMS: +46 76 552 31 87
             </a>
           </div>
         </div>

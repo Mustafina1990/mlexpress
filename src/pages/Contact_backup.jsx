@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   PhoneIcon,
   EnvelopeIcon,
@@ -11,13 +10,10 @@ import {
   HomeIcon,
   BuildingOfficeIcon,
   WrenchScrewdriverIcon,
-  CalendarDaysIcon,
-  ClipboardDocumentCheckIcon
+  CalendarDaysIcon
 } from '@heroicons/react/24/outline';
 
 const Contact = () => {
-  const location = useLocation();
-  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,18 +30,6 @@ const Contact = () => {
 
   const [formStatus, setFormStatus] = useState('');
 
-  // Handle URL parameters to pre-fill service
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const serviceParam = searchParams.get('service');
-    if (serviceParam) {
-      setFormData(prev => ({
-        ...prev,
-        service: serviceParam
-      }));
-    }
-  }, [location.search]);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -58,88 +42,8 @@ const Contact = () => {
     e.preventDefault();
     setFormStatus('sending');
     
-    try {
-      // EmailJS configuration for Gmail
-      // You'll need to replace these with your actual EmailJS credentials
-      const serviceID = 'gmail'; // or your custom service ID
-      const templateID = 'template_mlexpress';
-      const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';
-      
-      // Prepare template parameters for Gmail sending
-      const templateParams = {
-        to_email: 'mystafinayulija@gmail.com',
-        from_name: formData.name,
-        from_email: formData.email,
-        reply_to: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        property_type: formData.propertyType,
-        square_footage: formData.squareFootage,
-        frequency: formData.frequency,
-        preferred_date: formData.date,
-        preferred_time: formData.time,
-        address: formData.address,
-        message: formData.message,
-        subject: 'Ny förfrågan från ML expresstäd AB webbplats',
-        // Formatted message for email body
-        email_body: `
-Ny förfrågan från ML expresstäd AB webbplats:
-
-📧 KONTAKTINFORMATION:
-• Namn: ${formData.name}
-• E-post: ${formData.email}
-• Telefon: ${formData.phone}
-
-🏠 TJÄNSTINFORMATION:
-• Tjänst: ${formData.service}
-• Fastighetstyp: ${formData.propertyType}
-• Kvadratmeter: ${formData.squareFootage}
-• Frekvens: ${formData.frequency}
-
-📅 SCHEMA:
-• Önskat datum: ${formData.date}
-• Tid: ${formData.time}
-• Adress: ${formData.address}
-
-💬 MEDDELANDE:
-${formData.message}
-
----
-Skickat automatiskt från ML expresstäd AB webbplats
-        `
-      };
-
-      // Send email using EmailJS (will use your Gmail account)
-      const result = await emailjs.send(serviceID, templateID, templateParams, publicKey);
-      
-      if (result.status === 200) {
-        setFormStatus('success');
-        // Reset form after successful submission
-        setTimeout(() => {
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            service: '',
-            propertyType: '',
-            squareFootage: '',
-            frequency: '',
-            date: '',
-            time: '',
-            message: '',
-            address: ''
-          });
-          setFormStatus('');
-        }, 3000);
-      } else {
-        throw new Error('Email sending failed');
-      }
-    } catch (error) {
-      console.error('Email sending error:', error);
-      setFormStatus('error');
-      
-      // Fallback to mailto as backup
-      const emailBody = `
+    // Create email content
+    const emailBody = `
 Ny förfrågan från ML expresstäd AB webbplats:
 
 Namn: ${formData.name}
@@ -155,15 +59,32 @@ Adress: ${formData.address}
 
 Meddelande:
 ${formData.message}
-      `;
-      
-      const mailtoLink = `mailto:mystafinayulija@gmail.com?subject=Ny förfrågan från ML expresstäd AB&body=${encodeURIComponent(emailBody)}`;
-      window.location.href = mailtoLink;
-      
-      setTimeout(() => {
-        setFormStatus('');
-      }, 3000);
-    }
+    `;
+    
+    // Create mailto link for testing
+    const mailtoLink = `mailto:mystafinayulija@gmail.com?subject=Ny förfrågan från ML expresstäd AB&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    setFormStatus('success');
+    // Reset form after successful submission
+    setTimeout(() => {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        propertyType: '',
+        squareFootage: '',
+        frequency: '',
+        date: '',
+        time: '',
+        message: '',
+        address: ''
+      });
+      setFormStatus('');
+    }, 3000);
   };
 
   const contactInfo = [
@@ -182,37 +103,35 @@ ${formData.message}
     {
       icon: MapPinIcon,
       title: 'Serviceområde',
-      details: ['Stockholm & Närområden', 'Premium service täckning'],
+      details: ['Stockholm & Närområden', 'Premium service coverage'],
       link: '#service-area'
     },
     {
       icon: ClockIcon,
-      title: 'Öppettider',
-      details: ['Mån-Fre: 08:00-18:00', 'Lör-Sön: 09:00-16:00'],
+      title: 'Office Hours',
+      details: ['Mon-Fri: 8AM-6PM', 'Sat-Sun: 9AM-4PM'],
       link: null
     }
   ];
 
   const serviceAreas = [
-    'Stockholm City', 'Östermalm', 'Södermalm', 'Vasastan', 'Norrmalm',
-    'Gamla Stan', 'Kungsholmen', 'Djurgården', 'Bromma', 'Solna',
-    'Sundbyberg', 'Nacka', 'Lidingö', 'Danderyd', 'Täby',
-    'Sollentuna', 'Upplands Väsby', 'Järfälla', 'Huddinge', 'Tyresö'
+    'Downtown', 'Midtown', 'Uptown', 'East Side', 'West End', 
+    'Suburbs North', 'Suburbs South', 'Business District', 
+    'Historic District', 'University Area'
   ];
 
   const services = [
-    { value: 'Hemstädning', label: 'Hemstädning', icon: HomeIcon },
-    { value: 'Företagsstädning & Trapphusstädning', label: 'Företagsstädning & Trapphusstädning', icon: BuildingOfficeIcon },
-    { value: 'Storstädning', label: 'Storstädning', icon: WrenchScrewdriverIcon },
-    { value: 'Byggstädning', label: 'Byggstädning', icon: ClipboardDocumentCheckIcon },
-    { value: 'Flyttstädning', label: 'Flyttstädning', icon: CalendarDaysIcon }
+    { value: 'residential', label: 'Residential Cleaning', icon: HomeIcon },
+    { value: 'commercial', label: 'Commercial Cleaning', icon: BuildingOfficeIcon },
+    { value: 'deep', label: 'Deep Cleaning', icon: WrenchScrewdriverIcon },
+    { value: 'movein', label: 'Move-in/Move-out', icon: CalendarDaysIcon }
   ];
 
   const frequencies = [
-    { value: 'weekly', label: 'Veckovis' },
-    { value: 'biweekly', label: 'Varannan vecka' },
-    { value: 'monthly', label: 'Månadsvis' },
-    { value: 'onetime', label: 'Engångstjänst' }
+    { value: 'weekly', label: 'Weekly' },
+    { value: 'biweekly', label: 'Bi-weekly' },
+    { value: 'monthly', label: 'Monthly' },
+    { value: 'onetime', label: 'One-time' }
   ];
 
   const timeSlots = [
@@ -235,29 +154,23 @@ ${formData.message}
           <div className="text-center">
             <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-medium mb-8 border border-yellow-400/30">
               <SparklesIcon className="h-5 w-5 text-yellow-400" />
-              <span className="text-yellow-400">Få Din Kostnadsfria Offert</span>
+              <span className="text-gray-200">Få Din Kostnadsfria Offert</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8">
               <span className="text-white block mb-2">Redo att</span>
-              <span className="block relative pb-2" style={{
-                background: 'linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #FBBF24 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                lineHeight: '1.1'
-              }}>
+              <span className="luxury-text-gradient block relative">
                 Komma igång?
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-yellow-500/20 blur-lg -z-10"></div>
               </span>
             </h1>
-            <p className="text-xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-              <strong className="text-yellow-300">Fyll i formuläret nedan</strong> för att få din kostnadsfria, 
+            <p className="text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+              <strong className="text-yellow-400">Fyll i formuläret nedan</strong> för att få din kostnadsfria, 
               förpliktelsefria offert. Vi skapar en anpassad städplan som passar dina behov och budget. 
               Snabbt svar garanterat!
             </p>
             <div className="mb-8">
-              <p className="text-lg text-gray-200 font-medium">
-                🔽 <span className="text-yellow-300">Huvudsättet att beställa:</span> Fyll i formuläret nedan 🔽
+              <p className="text-lg text-gray-300 font-medium">
+                🔽 <span className="text-yellow-400">Huvudsättet att beställa:</span> Fyll i formuläret nedan 🔽
               </p>
             </div>
           </div>
@@ -319,7 +232,7 @@ ${formData.message}
       </section>
 
       {/* Huvudformulär för Beställning */}
-      <section id="contact-form" className="py-16 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Form Introduction */}
@@ -360,21 +273,11 @@ ${formData.message}
                 </div>
               )}
 
-              {formStatus === 'error' && (
-                <div className="bg-yellow-50 border border-yellow-200 p-6 rounded-lg mb-8 flex items-center">
-                  <ClockIcon className="h-6 w-6 text-yellow-600 mr-3" />
-                  <div>
-                    <p className="text-yellow-800 font-semibold">Automatisk e-post misslyckades</p>
-                    <p className="text-yellow-700 text-sm">Din e-postklient öppnas som backup. Skicka e-posten manuellt.</p>
-                  </div>
-                </div>
-              )}
-
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Fullständigt Namn *
+                        Full Name *
                       </label>
                       <input
                         type="text"
@@ -383,12 +286,12 @@ ${formData.message}
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="Ditt fullständiga namn"
+                        placeholder="Your full name"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        E-postadress *
+                        Email Address *
                       </label>
                       <input
                         type="email"
@@ -397,7 +300,7 @@ ${formData.message}
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        placeholder="din@email.com"
+                        placeholder="your@email.com"
                       />
                     </div>
                   </div>
@@ -420,7 +323,7 @@ ${formData.message}
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Tjänsttyp *
+                        Service Type *
                       </label>
                       <select
                         name="service"
@@ -429,7 +332,7 @@ ${formData.message}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       >
-                        <option value="">Välj en tjänst</option>
+                        <option value="">Select a service</option>
                         {services.map((service) => (
                           <option key={service.value} value={service.value}>
                             {service.label}
@@ -441,7 +344,7 @@ ${formData.message}
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Fastighetsadress *
+                      Property Address *
                     </label>
                     <input
                       type="text"
@@ -450,14 +353,14 @@ ${formData.message}
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      placeholder="Fullständig adress inklusive stad och postnummer"
+                      placeholder="Full address including city and zip code"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Fastighetstyp
+                        Property Type
                       </label>
                       <select
                         name="propertyType"
@@ -465,18 +368,18 @@ ${formData.message}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       >
-                        <option value="">Välj typ</option>
-                        <option value="apartment">Lägenhet</option>
-                        <option value="house">Hus</option>
-                        <option value="condo">Bostadsrätt</option>
-                        <option value="office">Kontor</option>
-                        <option value="retail">Butik</option>
-                        <option value="other">Annat</option>
+                        <option value="">Select type</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="house">House</option>
+                        <option value="condo">Condo</option>
+                        <option value="office">Office</option>
+                        <option value="retail">Retail</option>
+                        <option value="other">Other</option>
                       </select>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Kvadratmeter
+                        Square Footage
                       </label>
                       <select
                         name="squareFootage"
@@ -484,17 +387,17 @@ ${formData.message}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       >
-                        <option value="">Välj storlek</option>
-                        <option value="under50">Under 50 kvm</option>
-                        <option value="50-100">50-100 kvm</option>
-                        <option value="100-150">100-150 kvm</option>
-                        <option value="150-200">150-200 kvm</option>
-                        <option value="over200">Över 200 kvm</option>
+                        <option value="">Select size</option>
+                        <option value="under1000">Under 1,000 sq ft</option>
+                        <option value="1000-2000">1,000-2,000 sq ft</option>
+                        <option value="2000-3000">2,000-3,000 sq ft</option>
+                        <option value="3000-4000">3,000-4,000 sq ft</option>
+                        <option value="over4000">Over 4,000 sq ft</option>
                       </select>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Frekvens
+                        Frequency
                       </label>
                       <select
                         name="frequency"
@@ -502,7 +405,7 @@ ${formData.message}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       >
-                        <option value="">Välj frekvens</option>
+                        <option value="">Select frequency</option>
                         {frequencies.map((freq) => (
                           <option key={freq.value} value={freq.value}>
                             {freq.label}
@@ -515,7 +418,7 @@ ${formData.message}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Önskat Datum
+                        Preferred Date
                       </label>
                       <input
                         type="date"
@@ -528,7 +431,7 @@ ${formData.message}
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Önskad Tid
+                        Preferred Time
                       </label>
                       <select
                         name="time"
@@ -536,7 +439,7 @@ ${formData.message}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       >
-                        <option value="">Välj tid</option>
+                        <option value="">Select time</option>
                         {timeSlots.map((time) => (
                           <option key={time} value={time}>
                             {time}
@@ -548,7 +451,7 @@ ${formData.message}
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Ytterligare Detaljer
+                      Additional Details
                     </label>
                     <textarea
                       name="message"
@@ -556,39 +459,78 @@ ${formData.message}
                       onChange={handleInputChange}
                       rows={4}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      placeholder="Eventuella särskilda önskemål, fokusområden eller frågor..."
+                      placeholder="Any special requests, areas of focus, or questions..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 text-lg font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
-                    Skicka Min Förfrågan
+                    Get My Free Quote
                   </button>
                 </form>
+              </div>
+            </div>
+
+            {/* Emergency Contact & Info */}
+            <div className="space-y-8">
+              {/* Emergency Contact */}
+              <div className="bg-red-50 border border-red-200 p-6 rounded-xl">
+                <h3 className="text-xl font-bold text-red-800 mb-4 flex items-center">
+                  <ClockIcon className="h-6 w-6 mr-2" />
+                  Emergency Cleaning
+                </h3>
+                <p className="text-red-700 mb-4">
+                  Need immediate cleaning services? We offer 24/7 emergency cleaning for urgent situations.
+                </p>
+                <a
+                  href="tel:+1234567890"
+                  className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block"
+                >
+                  Call Emergency Line
+                </a>
+              </div>
 
               {/* Quick Tips */}
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl mt-8">
-                <h3 className="text-xl font-bold text-blue-800 mb-4">Tips för Bättre Offert</h3>
+              <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl">
+                <h3 className="text-xl font-bold text-blue-800 mb-4">Quick Tips for Better Quotes</h3>
                 <ul className="space-y-3 text-blue-700">
                   <li className="flex items-start">
                     <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Ange korrekt kvadratmeter</span>
+                    <span>Provide accurate square footage</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Nämn speciella krav</span>
+                    <span>Mention any special requirements</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Inkludera önskat schema</span>
+                    <span>Include preferred schedule</span>
                   </li>
-                                    <li className="flex items-start">
+                  <li className="flex items-start">
                     <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Notera husdjur eller allergier</span>
+                    <span>Note any pets or allergies</span>
                   </li>
                 </ul>
+              </div>
+
+              {/* Response Time */}
+              <div className="bg-green-50 border border-green-200 p-6 rounded-xl">
+                <h3 className="text-xl font-bold text-green-800 mb-4">Response Guarantee</h3>
+                <p className="text-green-700">
+                  Vi garanterar att kontakta dig inom 2 timmar under vardagar (8-18) 
+                  och inom 4 timmar helger. Ditt formulär skickas direkt till vårt team.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+                <div className="text-green-700">
+                  <div className="text-3xl font-bold mb-2">2 Hours</div>
+                  <p>Average response time for quotes during business hours</p>
+                </div>
               </div>
             </div>
           </div>
@@ -600,10 +542,10 @@ ${formData.message}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Områden Vi Täcker
+              Areas We Serve
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vi betjänar Stockholm och omkringliggande områden med stolthet
+              We proudly serve the greater metro area and surrounding communities
             </p>
           </div>
 
@@ -617,13 +559,13 @@ ${formData.message}
 
           <div className="text-center">
             <p className="text-gray-600 mb-4">
-              Ser du inte ditt område i listan? Vi kan fortfarande hjälpa dig!
+              Don't see your area listed? We may still be able to help!
             </p>
             <a
-              href="sms:+46765523187"
+              href="tel:+1234567890"
               className="text-blue-600 hover:text-blue-700 font-semibold"
             >
-              SMS oss för att kolla: +46 76 552 31 87
+              Call us to check: (123) 456-7890
             </a>
           </div>
         </div>
@@ -634,48 +576,48 @@ ${formData.message}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Vanliga Frågor
+              Frequently Asked Questions
             </h2>
           </div>
 
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Hur långt i förväg ska jag boka?
+                How far in advance should I book?
               </h3>
               <p className="text-gray-600">
-                Vi rekommenderar att boka minst 48 timmar i förväg för vanliga städtjänster. 
-                För djupstädning eller speciella evenemang föredrar vi 1 veckas förvarning.
+                We recommend booking at least 48 hours in advance for regular cleaning services. 
+                For deep cleaning or special events, 1 week advance notice is preferred.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Behöver jag tillhandahålla städmaterial?
+                Do I need to provide cleaning supplies?
               </h3>
               <p className="text-gray-600">
-                Nej! Vi tar med alla våra egna professionella, miljövänliga städprodukter och utrustning. 
-                Du behöver inte tillhandahålla något.
+                No! We bring all our own professional-grade, eco-friendly cleaning supplies and equipment. 
+                You don't need to provide anything.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Är er personal försäkrad och certifierad?
+                Are your staff insured and bonded?
               </h3>
               <p className="text-gray-600">
-                Ja, alla våra teammedlemmar är fullt försäkrade, certifierade och bakgrundskontrollerade. 
-                Vi har omfattande ansvarsförsäkring för din trygghet.
+                Yes, all our team members are fully insured, bonded, and background-checked. 
+                We carry comprehensive liability insurance for your peace of mind.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Vad händer om jag inte är nöjd med servicen?
+                What if I'm not satisfied with the service?
               </h3>
               <p className="text-gray-600">
-                Vi erbjuder 100% tillfredsställelsegaranti. Om du inte är helt nöjd med vår service 
-                återkommer vi inom 24 timmar för att göra det rätt utan extra kostnad.
+                We offer a 100% satisfaction guarantee. If you're not completely happy with our service, 
+                we'll return within 24 hours to make it right at no additional cost.
               </p>
             </div>
           </div>
@@ -686,10 +628,10 @@ ${formData.message}
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Redo att Boka Din Städning?
+            Ready to Schedule Your Cleaning?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Gå med i vår familj av hundratals nöjda kunder. Få ditt utrymme skinande rent idag!
+            Join hundreds of satisfied customers. Get your space sparkling clean today!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
