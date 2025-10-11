@@ -176,8 +176,8 @@ ${formData.message}
     {
       icon: EnvelopeIcon,
       title: 'E-post',
-      details: ['info@mlexpresstad.se', 'Vi svarar inom 2 timmar'],
-      link: 'mailto:info@mlexpresstad.se'
+      details: ['contact@mlexpress.se', 'Vi svarar under dagen'],
+      link: 'mailto:contact@mlexpress.se'
     },
     {
       icon: MapPinIcon,
@@ -332,7 +332,7 @@ ${formData.message}
                   🎯 <strong className="text-yellow-600">Huvudsättet att beställa service</strong>
                 </p>
                 <p className="text-gray-600">
-                  Fyll i formuläret nedan så kontaktar vi dig inom 2 timmar med en detaljerad offert. 
+                  Fyll i formuläret nedan så kontaktar vi dig under dagen med en detaljerad offert. 
                   Formuläret skickas direkt till vårt team.
                 </p>
                 <p className="text-sm text-blue-600 mt-3 font-semibold">
@@ -348,7 +348,7 @@ ${formData.message}
                   <CheckCircleIcon className="h-6 w-6 text-green-600 mr-3" />
                   <div>
                     <p className="text-green-800 font-semibold">Tack! Din förfrågan har skickats.</p>
-                    <p className="text-green-700 text-sm">Vi kontaktar dig inom 2 timmar med din offert.</p>
+                    <p className="text-green-700 text-sm">Vi kontaktar dig under dagen med din offert.</p>
                   </div>
                 </div>
               )}
@@ -629,58 +629,7 @@ ${formData.message}
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Vanliga Frågor
-            </h2>
-          </div>
-
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Hur långt i förväg ska jag boka?
-              </h3>
-              <p className="text-gray-600">
-                Vi rekommenderar att boka minst 48 timmar i förväg för vanliga städtjänster. 
-                För djupstädning eller speciella evenemang föredrar vi 1 veckas förvarning.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Behöver jag tillhandahålla städmaterial?
-              </h3>
-              <p className="text-gray-600">
-                Nej! Vi tar med alla våra egna professionella, miljövänliga städprodukter och utrustning. 
-                Du behöver inte tillhandahålla något.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Är er personal försäkrad och certifierad?
-              </h3>
-              <p className="text-gray-600">
-                Ja, alla våra teammedlemmar är fullt försäkrade, certifierade och bakgrundskontrollerade. 
-                Vi har omfattande ansvarsförsäkring för din trygghet.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Vad händer om jag inte är nöjd med servicen?
-              </h3>
-              <p className="text-gray-600">
-                Vi erbjuder 100% tillfredsställelsegaranti. Om du inte är helt nöjd med vår service 
-                återkommer vi inom 24 timmar för att göra det rätt utan extra kostnad.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
@@ -699,7 +648,7 @@ ${formData.message}
               Skicka SMS: +46 76 552 31 87
             </a>
             <a
-              href="mailto:info@mlexpresstad.se"
+              href="mailto:contact@mlexpress.se"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
             >
               Skicka E-post

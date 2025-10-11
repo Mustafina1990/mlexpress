@@ -92,7 +92,7 @@ const Services = () => {
         'Fönsterputsning vid behov',
         'Specialstädning efter behov',
         'Flexibel schemaläggning',
-        'Miljövänliga produkter'
+        'Professionell utrustning'
       ],
       detailedFeatures: {
         'Kontorsstädning': [
@@ -206,7 +206,7 @@ const Services = () => {
         'Djuprengöring av kök och badrum',
         'Element och vägg dammtorkning',
         'Professionell utrustning',
-        'Miljövänliga produkter'
+        'Snabb och effektiv service'
       ],
       detailedFeatures: {
         'Entré och alla rum': [
@@ -260,7 +260,7 @@ const Services = () => {
       title: 'Flyttstädning',
       description: 'Komplett städning för inflyttning eller utflyttning. Vi säkerställer att bostaden lämnas i perfekt skick.',
       icon: CalendarDaysIcon,
-      price: '350 kr/timme + moms',
+      price: '400 kr/timme + moms + städprodukter',
       duration: '6-8 timmar',
       frequency: 'Inflyttning, Utflyttning',
       features: [
@@ -415,14 +415,18 @@ const Services = () => {
                     <h3 className="text-4xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">{service.title}</h3>
                     <p className="text-gray-600 mb-8 leading-relaxed text-lg font-light">{service.description}</p>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                    {service.title === 'Flyttstädning' && (
+                      <div className="bg-yellow-50 border-2 border-yellow-400 p-4 rounded-lg mb-6">
+                        <p className="text-sm text-gray-700">
+                          <strong className="text-yellow-700">💡 Observera:</strong> Kostnaden för städprodukter tillkommer och faktureras separat baserat på användning.
+                        </p>
+                      </div>
+                    )}
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                       <div className="luxury-card-small">
                         <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.price}</div>
                         <div className="text-sm text-gray-500 font-medium">Baspris</div>
-                      </div>
-                      <div className="luxury-card-small">
-                        <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.duration}</div>
-                        <div className="text-sm text-gray-500 font-medium">Varaktighet</div>
                       </div>
                       <div className="luxury-card-small">
                         <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.frequency}</div>
@@ -469,59 +473,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Pricing Information */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="luxury-card p-10 text-center">
-            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-yellow-400/20 to-yellow-200/20 px-6 py-3 rounded-full text-sm font-medium mb-8 border border-yellow-400/30">
-              <SparklesIcon className="h-5 w-5 text-yellow-600" />
-              <span className="text-gray-700">Transparent Prissättning</span>
-            </div>
-            
-            <h2 className="text-3xl md:text-4xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">
-              Enkel Timprissättning
-            </h2>
-            
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-8 rounded-2xl mb-8">
-              <div className="text-6xl font-bold mb-4">350 kr</div>
-              <div className="text-xl mb-2">per timme + moms</div>
-              <div className="text-blue-100">för alla våra tjänster</div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-              <div className="flex items-start">
-                <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <div className="font-semibold text-gray-900">Inga dolda avgifter</div>
-                  <div className="text-gray-600">Vad du ser är vad du betalar</div>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <div className="font-semibold text-gray-900">Flexibel tid</div>
-                  <div className="text-gray-600">Betala bara för den tid vi arbetar</div>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                <div>
-                  <div className="font-semibold text-gray-900">Allt inkluderat</div>
-                  <div className="text-gray-600">Material och utrustning ingår</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 p-6 bg-yellow-50 border border-yellow-200 rounded-xl">
-              <p className="text-gray-700">
-                <strong>Estimerad tid:</strong> Vi ger dig en uppskattning baserat på hem storlek och tjänst typ, 
-                men du betalar bara för faktisk arbetstid.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Cleaning Process */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -544,6 +495,46 @@ const Services = () => {
                 <p className="text-gray-600 leading-relaxed">{step.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Promotional Banner - Bring a Friend Discount */}
+      <section className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-blue-500/5 to-yellow-500/5"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="luxury-card bg-white/95 backdrop-blur-sm p-8 md:p-12 rounded-2xl border-4 border-yellow-400 shadow-2xl">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 gold-gradient rounded-full mb-6 shadow-xl">
+                <UserGroupIcon className="w-10 h-10 text-white" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 font-['Playfair_Display']">
+                <span className="luxury-text-gradient">🎉 Spara 15% Rabatt! 🎉</span>
+              </h2>
+              <p className="text-2xl md:text-3xl text-gray-800 font-bold mb-4">
+                Ta med en vän och få 15% rabatt på en städning
+              </p>
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Dela glädjen med rena utrymmen! När du rekommenderar en vän får ni båda njuta av vår premium service med 15% rabatt på er nästa städning.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  to="/contact#contact-form"
+                  className="luxury-button text-lg px-8 py-4 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                >
+                  📞 Boka Nu med Rabatt
+                </Link>
+                <a
+                  href="sms:+46765523187?body=Hej! Jag vill ta del av er vän-rabatt på 15%"
+                  className="px-8 py-4 border-2 border-yellow-400 rounded-xl font-semibold text-lg hover:bg-yellow-50 transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  💬 SMS: +46 76 552 31 87
+                </a>
+              </div>
+              <p className="text-sm text-gray-500 mt-6 italic">
+                * Erbjudandet gäller för både befintliga och nya kunder. Kontakta oss för mer information.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -31,8 +31,8 @@ const About = () => {
     },
     {
       icon: GlobeAltIcon,
-      title: 'Miljövänlig',
-      description: 'Vi använder miljöansvariga städprodukter som är säkra för din familj, husdjur och planeten.'
+      title: 'Flexibilitet',
+      description: 'Vi anpassar oss efter dina behov och schema för att ge dig bästa möjliga service när det passar dig.'
     }
   ];
 
@@ -99,7 +99,7 @@ const About = () => {
 
   const whyChooseUs = [
     'Erfarna och utbildade städproffs',
-    'Miljövänliga och säkra städprodukter',
+    'Professionell utrustning för bästa resultat',
     'Flexibel schemaläggning som passar dina behov',
     'Tillfredsställelsegaranti på alla tjänster',
     'Konkurrenskraftiga priser utan dolda avgifter',

@@ -139,12 +139,12 @@ const Footer = () => {
                 <EnvelopeIcon className="h-5 w-5 text-yellow-400 mt-1 flex-shrink-0" />
                 <div>
                   <a
-                    href="mailto:info@mlexpresstad.se"
+                    href="mailto:contact@mlexpress.se"
                     className="text-gray-200 hover:text-yellow-300 transition-colors block font-medium text-sm"
                   >
-                    info@mlexpresstad.se
+                    contact@mlexpress.se
                   </a>
-                  <p className="text-gray-400 text-xs">Svar inom 2h</p>
+                  <p className="text-gray-400 text-xs">Svar under dagen</p>
                 </div>
               </div>
               

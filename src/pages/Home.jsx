@@ -21,8 +21,8 @@ const Home = () => {
     },
     {
       icon: SparklesIcon,
-      title: 'Miljövänliga Produkter',
-      description: 'Vi använder miljösäkra städprodukter som är säkra för din familj och husdjur.'
+      title: 'Erfaren Personal',
+      description: 'Vårt team består av utbildade och erfarna städproffs som vet hur man får varje utrymme att glänsa.'
     },
     {
       icon: ClockIcon,
@@ -54,7 +54,7 @@ const Home = () => {
     {
       title: 'Flyttstädning',
       description: 'Professionell flyttstädning för inflyttning eller utflyttning med garanti för godkännande.',
-      price: '350 kr/timme + moms',
+      price: '400 kr/timme + moms + städprodukter',
       icon: BuildingOfficeIcon,
       features: ['Garderober invändigt', 'Skåp in- & utvändigt', 'Komplett fönsterputsning']
     }
@@ -242,6 +242,11 @@ const Home = () => {
                     </li>
                   ))}
                 </ul>
+                {service.title === 'Flyttstädning' && (
+                  <p className="text-xs text-yellow-700 bg-yellow-50 p-2 rounded mb-4 border border-yellow-200">
+                    💡 Städprodukter faktureras separat
+                  </p>
+                )}
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-bold text-blue-600">{service.price}</span>
                   <Link
