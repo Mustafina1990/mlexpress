@@ -25,14 +25,14 @@ const Navbar = () => {
               <div className="relative">
                 <img 
                   src={logo} 
-                  alt="ML expresstäd AB" 
+                  alt="ML Expresstäd AB" 
                   className="h-16 w-16 object-contain hover:scale-105 transition-transform duration-300"
                   style={{filter: 'drop-shadow(0 10px 20px rgba(251, 191, 36, 0.3))'}}
                 />
               </div>
               <div>
                 <span className="text-2xl font-bold font-['Playfair_Display'] luxury-text-gradient">
-                  ML expresstäd AB
+                  ML Expresstäd AB
                 </span>
                 <div className="text-xs text-gray-600 -mt-1 font-medium tracking-wide">Professionell Städexcellens</div>
               </div>

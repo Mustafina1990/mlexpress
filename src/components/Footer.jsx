@@ -53,14 +53,14 @@ const Footer = () => {
               <div className="relative">
                 <img 
                   src={logo} 
-                  alt="ML expresstäd AB" 
+                  alt="ML Expresstäd AB" 
                   className="h-16 w-16 object-contain"
                   style={{filter: 'drop-shadow(0 10px 25px rgba(251, 191, 36, 0.4))'}}
                 />
               </div>
               <div>
                 <span className="text-2xl font-bold font-['Playfair_Display'] bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent whitespace-nowrap">
-                  ML expresstäd AB
+                  ML Expresstäd AB
                 </span>
                 <div className="text-xs text-gray-300 font-medium tracking-wide">Lyxig Städexcellens</div>
               </div>
@@ -172,7 +172,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
             <div className="text-gray-400 text-sm font-light">
-              © 2025 ML expresstäd AB. Alla rättigheter förbehållna.
+              © 2025 ML Expresstäd AB. Alla rättigheter förbehållna.
             </div>
             <div className="flex space-x-6 text-gray-400 text-sm">
               <a href="#" className="hover:text-yellow-400 transition-colors duration-300">

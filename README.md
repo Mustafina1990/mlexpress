@@ -1,4 +1,4 @@
-# ML expresstäd AB - Professional Cleaning Services
+# ML Expresstäd AB - Professional Cleaning Services
 
 A modern, responsive single-page application (SPA) for a professional cleaning company built with React, Vite, and Tailwind CSS.
 
@@ -69,4 +69,6 @@ src/
 
 ## License
 
-© 2025 ML expresstäd AB. All rights reserved.
+---
+
+© 2025 ML Expresstäd AB. All rights reserved.

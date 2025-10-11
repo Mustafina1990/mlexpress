@@ -80,10 +80,10 @@ const Contact = () => {
         preferred_time: formData.time,
         address: formData.address,
         message: formData.message,
-        subject: 'Ny förfrågan från ML expresstäd AB webbplats',
+        subject: 'Ny förfrågan från ML Expresstäd AB webbplats',
         // Formatted message for email body
         email_body: `
-Ny förfrågan från ML expresstäd AB webbplats:
+Ny förfrågan från ML Expresstäd AB webbplats:
 
 📧 KONTAKTINFORMATION:
 • Namn: ${formData.name}
@@ -140,7 +140,7 @@ Skickat automatiskt från ML expresstäd AB webbplats
       
       // Fallback to mailto as backup
       const emailBody = `
-Ny förfrågan från ML expresstäd AB webbplats:
+Ny förfrågan från ML Expresstäd AB webbplats:
 
 Namn: ${formData.name}
 E-post: ${formData.email}
@@ -157,7 +157,7 @@ Meddelande:
 ${formData.message}
       `;
       
-      const mailtoLink = `mailto:mystafinayulija@gmail.com?subject=Ny förfrågan från ML expresstäd AB&body=${encodeURIComponent(emailBody)}`;
+      const mailtoLink = `mailto:contact@mlexpress.se?subject=Ny förfrågan från ML Expresstäd AB&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
       
       setTimeout(() => {

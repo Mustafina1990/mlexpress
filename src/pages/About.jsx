@@ -41,7 +41,7 @@ const About = () => {
       name: 'Anna Lindström',
       role: 'Grundare & VD',
       image: '👩‍💼',
-      bio: 'Med över 10 års erfarenhet inom städbranschen grundade Anna ML expresstäd AB med en vision att erbjuda exceptionella städtjänster som upptagna familjer och företag kan lita på.',
+      bio: 'Med över 10 års erfarenhet inom städbranschen grundade Anna ML Expresstäd AB med en vision att erbjuda exceptionella städtjänster som upptagna familjer och företag kan lita på.',
       experience: '10+ år'
     },
     {
@@ -125,17 +125,8 @@ const About = () => {
               <SparklesIcon className="h-5 w-5 text-yellow-400" />
               <span className="text-yellow-400">Om ML expresstäd AB</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8">
-              <span className="text-white block mb-2">Pålitliga Städproffs</span>
-              <span className="block relative" style={{
-                background: 'linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #FBBF24 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}>
-                Med Passion för Renhet
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-yellow-500/20 blur-lg -z-10"></div>
-              </span>
+                        <h1 className="text-4xl md:text-6xl font-bold mb-6 font-['Playfair_Display']">
+              <span className="text-yellow-400">Om ML Expresstäd AB</span>
             </h1>
             <p className="text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
               Vi tror att renhet är mer än bara ordning i hemmet eller på kontoret. Det är ett friare andetag, 

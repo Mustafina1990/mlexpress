@@ -65,7 +65,7 @@ const Home = () => {
       name: 'Anna Andersson',
       location: 'Östermalm',
       rating: 5,
-      text: 'ML expresstäd AB förvandlade mitt hem! Deras team är professionellt, grundligt och alltid i tid. Jag rekommenderar starkt deras tjänster.',
+      text: 'ML Expresstäd AB förvandlade mitt hem! Deras team är professionellt, grundligt och alltid i tid. Jag rekommenderar starkt deras tjänster.',
       image: '👩‍💼'
     },
     {
@@ -79,7 +79,7 @@ const Home = () => {
       name: 'Emily Johansson',
       location: 'Vasastan',
       rating: 5,
-      text: 'Jag älskar att komma hem till ett fläckfritt hus! ML expresstäd AB har gjort mitt liv så mycket enklare. Värt varenda krona!',
+      text: 'Jag älskar att komma hem till ett fläckfritt hus! ML Expresstäd AB har gjort mitt liv så mycket enklare. Värt varenda krona!',
       image: '👩‍🏫'
     }
   ];
@@ -106,7 +106,7 @@ const Home = () => {
           <div className="text-center">
             <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-semibold mb-8 border-2 border-yellow-200">
               <div className="w-3 h-3 gold-gradient rounded-full animate-pulse"></div>
-              <span className="luxury-text-gradient">Luxury Cleaning Services Since 2020</span>
+              <span className="luxury-text-gradient">Luxury Cleaning Services Since 2025</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-8 font-['Playfair_Display']">
@@ -142,6 +142,46 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Promotional Banner - Bring a Friend */}
+      <section className="py-12 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-yellow-500"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="luxury-card bg-white/95 backdrop-blur-sm p-8 md:p-12 rounded-2xl border-4 border-yellow-400 shadow-2xl">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 gold-gradient rounded-full mb-6">
+                <UserGroupIcon className="w-10 h-10 text-white" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 font-['Playfair_Display']">
+                <span className="luxury-text-gradient">🎉 Spara 15% Rabatt! 🎉</span>
+              </h2>
+              <p className="text-2xl md:text-3xl text-gray-800 font-bold mb-4">
+                Ta med en vän och få 15% rabatt på en städning
+              </p>
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Dela glädjen med rena utrymmen! När du rekommenderar en vän får ni båda njuta av vår premium service med 15% rabatt på er nästa städning.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  to="/contact"
+                  className="luxury-button text-lg px-8 py-4 font-bold"
+                >
+                  📞 Boka Nu med Rabatt
+                </Link>
+                <a
+                  href="sms:+46765523187?body=Hej! Jag vill ta del av er vän-rabatt på 15%"
+                  className="px-8 py-4 border-2 border-yellow-400 rounded-xl font-semibold text-lg hover:bg-yellow-50 transition-all duration-300"
+                >
+                  💬 SMS: +46 76 552 31 87
+                </a>
+              </div>
+              <p className="text-sm text-gray-500 mt-6 italic">
+                * Erbjudandet gäller för både befintliga och nya kunder. Kontakta oss för mer information.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Luxury Features Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-yellow-50"></div>
@@ -149,7 +189,7 @@ const Home = () => {
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display']">
               <span className="text-gray-800">Varför Välja </span>
-              <span className="luxury-text-gradient">ML expresstäd AB?</span>
+              <span className="luxury-text-gradient">ML Expresstäd AB?</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               Upplev toppen av <span className="gold-accent font-bold">lyxiga städtjänster</span> 
@@ -289,7 +329,7 @@ const Home = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Redo att Uppleva ML expresstäd AB Skillnaden?
+            Redo att Uppleva ML Expresstäd AB Skillnaden?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
             Gå med hundratals nöjda kunder som litar på oss för sina städbehov. 
