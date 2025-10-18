@@ -115,10 +115,10 @@ const About = () => {
               <SparklesIcon className="h-5 w-5 text-yellow-400" />
               <span className="text-yellow-400">Om ML expresstäd AB</span>
             </div>
-                        <h1 className="text-4xl md:text-6xl font-bold mb-6 font-['Playfair_Display']">
+                        <h1 className="hero-title text-4xl md:text-6xl font-bold mb-6 font-['Playfair_Display']">
               <span className="text-yellow-400">Om ML Expresstäd AB</span>
             </h1>
-            <p className="text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="hero-subtitle text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
               Vi tror att renhet är mer än bara ordning i hemmet eller på kontoret. Det är ett friare andetag, 
               klarare tankar och en känsla av lugn. När omgivningen är välskött och fräsch finns det mer plats 
               i livet för glädje, inspiration och nya möjligheter.
@@ -226,9 +226,9 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid-responsive grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="luxury-card text-center p-8 group hover:shadow-2xl transition-all duration-300">
+              <div key={index} className="luxury-card service-card text-center p-8 group hover:shadow-2xl transition-all duration-300">
                 <div className="relative mb-8">
                   <div className="bg-gradient-to-r from-yellow-400 to-yellow-200 w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-2xl group-hover:scale-110 transition-transform duration-300">
                     <value.icon className="h-10 w-10 text-blue-900" />

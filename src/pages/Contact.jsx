@@ -241,7 +241,7 @@ ${formData.message}
               <SparklesIcon className="h-5 w-5 text-yellow-400" />
               <span className="text-yellow-400">Få Din Kostnadsfria Offert</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8 leading-tight">
+            <h1 className="hero-title text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8 leading-tight">
               <span className="text-white block mb-2">Redo att</span>
               <span className="block relative pb-2" style={{
                 background: 'linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #FBBF24 100%)',
@@ -254,7 +254,7 @@ ${formData.message}
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-yellow-500/20 blur-lg -z-10"></div>
               </span>
             </h1>
-            <p className="text-xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="hero-subtitle text-xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
               <strong className="text-yellow-300">Fyll i formuläret nedan</strong> för att få din kostnadsfria, 
               förpliktelsefria offert. Vi skapar en anpassad städplan som passar dina behov och budget. 
               Snabbt svar garanterat!
@@ -280,9 +280,9 @@ ${formData.message}
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid-responsive grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Primary Method - Form */}
-            <div className="luxury-card text-center p-8 border-2 border-yellow-400 relative">
+            <div className="service-card luxury-card text-center p-8 border-2 border-yellow-400 relative">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-blue-900 px-4 py-1 rounded-full text-sm font-bold">
                 REKOMMENDERAS
               </div>

@@ -1,8 +1,11 @@
 const FloralSideDecoration = ({ bottomPosition = '14rem' }) => {
   return (
     <>
-      {/* Left side decoration */}
-      <div className="absolute left-0 hidden lg:block" style={{ width: '30rem', bottom: bottomPosition }}>
+      {/* Left side decoration - Hidden on screens smaller than 1800px */}
+      <div 
+        className="absolute left-0 floral-decoration-show" 
+        style={{ width: '30rem', bottom: bottomPosition }}
+      >
         <img 
           src="/decorations/floral-swirl.svg" 
           alt="Decorative floral element" 
@@ -11,8 +14,11 @@ const FloralSideDecoration = ({ bottomPosition = '14rem' }) => {
         />
       </div>
 
-      {/* Right side decoration */}
-      <div className="absolute right-0 hidden lg:block" style={{ width: '30rem', bottom: bottomPosition }}>
+      {/* Right side decoration - Hidden on screens smaller than 1800px */}
+      <div 
+        className="absolute right-0 floral-decoration-show" 
+        style={{ width: '30rem', bottom: bottomPosition }}
+      >
         <img 
           src="/decorations/floral-swirl.svg" 
           alt="Decorative floral element" 

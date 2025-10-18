@@ -375,13 +375,13 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/50 to-yellow-200/50 rounded-full blur-xl animate-pulse"></div>
               </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8">
+            <h1 className="hero-title text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8">
               <span className="text-white">Våra Premium</span>
               <span className="block bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
                 Städtjänster
               </span>
             </h1>
-            <p className="text-xl text-gray-200 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+            <p className="hero-subtitle text-xl text-gray-200 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
               Från regelbundet hemunderhåll till djup kommersiell städning, vi erbjuder omfattande 
               lyxiga tjänster skräddarsydda för att möta dina specifika behov och överträffa dina förväntningar.
             </p>
@@ -491,9 +491,9 @@ const Services = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid-responsive grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {cleaningProcess.map((step, index) => (
-              <div key={index} className="text-center">
+              <div key={index} className="service-card text-center">
                 <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">{step.step}</span>
                 </div>

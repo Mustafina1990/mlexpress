@@ -26,21 +26,21 @@ const Navbar = () => {
                 <img 
                   src={logo} 
                   alt="ML Expresstäd AB" 
-                  className="h-16 w-16 object-contain hover:scale-105 transition-transform duration-300"
+                  className="navbar-logo h-16 w-16 object-contain hover:scale-105 transition-transform duration-300"
                   style={{filter: 'drop-shadow(0 10px 20px rgba(251, 191, 36, 0.3))'}}
                 />
               </div>
               <div>
                 <span className="text-2xl font-bold font-['Playfair_Display'] luxury-text-gradient">
-                  ML Expresstäd AB
+                  ML Expresstäd<span className="ml-1">AB</span>
                 </span>
-                <div className="text-xs text-gray-600 -mt-1 font-medium tracking-wide">Professionell Städexcellens</div>
+                <div className="navbar-tagline text-xs text-gray-600 -mt-1 font-medium tracking-wide">Professionell Städexcellens</div>
               </div>
             </Link>
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="navbar-nav hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}

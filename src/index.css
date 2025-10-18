@@ -189,3 +189,86 @@ input:focus, textarea:focus, select:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
+
+/* Floral decorations - Hidden on screens smaller than 1800px */
+.floral-decoration-show {
+  display: none;
+}
+
+/* Navbar fixes for 1048px breakpoint */
+@media (max-width: 1048px) and (min-width: 768px) {
+  /* Reduce button size */
+  .luxury-button {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap;
+  }
+  
+  /* Reduce company name font size */
+  .luxury-text-gradient {
+    font-size: 1.4rem !important;
+    line-height: 1.2;
+  }
+  
+  /* Reduce logo size */
+  .navbar-logo {
+    height: 3rem !important;
+    width: 3rem !important;
+  }
+  
+  /* Reduce navigation items spacing */
+  .navbar-nav {
+    gap: 0.75rem !important;
+  }
+  
+  .navbar-nav > div {
+    padding-left: 0.75rem !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Reduce tagline font size */
+  .navbar-tagline {
+    font-size: 0.65rem !important;
+    margin-top: -0.125rem !important;
+  }
+  
+  /* Adjust navigation links */
+  .navbar-nav a {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (min-width: 1800px) {
+  .floral-decoration-show {
+    display: block;
+  }
+}
+
+/* Enhanced responsive design for tablet/mobile around 780px */
+@media (max-width: 780px) {
+  .luxury-card {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+    padding: 0 1rem !important;
+  }
+  
+  .service-card {
+    padding: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}

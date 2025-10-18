@@ -109,7 +109,7 @@ const Home = () => {
               <span className="luxury-text-gradient">Luxury Cleaning Services Since 2025</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 font-['Playfair_Display']">
+            <h1 className="hero-title text-5xl md:text-7xl font-bold mb-8 font-['Playfair_Display']">
               <span className="text-gray-800 block mb-2">Ditt Utrymme Förtjänar</span>
               <span className="luxury-text-gradient block relative">
                 Exceptionell Excellens
@@ -117,7 +117,7 @@ const Home = () => {
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="hero-subtitle text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
               Förvandla din miljö med våra <span className="font-bold gold-accent">premium städtjänster</span>. 
               Vi levererar ojämförliga resultat med lyxig omsorg, ger dig ultimat sinnesro.
             </p>
@@ -197,9 +197,9 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid-responsive grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="group text-center luxury-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border border-yellow-100">
+              <div key={index} className="service-card group text-center luxury-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border border-yellow-100">
                 <div className="relative mb-6">
                   <div className="royal-gradient w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 elegant-shadow">
                     <feature.icon className="h-10 w-10 text-white" />
