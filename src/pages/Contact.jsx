@@ -14,6 +14,7 @@ import {
   CalendarDaysIcon,
   ClipboardDocumentCheckIcon
 } from '@heroicons/react/24/outline';
+import FloralSideDecoration from '../components/FloralSideDecoration';
 
 const Contact = () => {
   const location = useLocation();
@@ -226,6 +227,9 @@ ${formData.message}
       <section className="relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
       }}>
+        {/* Side Floral Decorations */}
+        <FloralSideDecoration bottomPosition="8rem" />
+        
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
@@ -291,7 +295,7 @@ ${formData.message}
               <p className="text-gray-600 leading-relaxed font-light mb-4">
                 Fyll i det detaljerade formuläret nedan för att få din kostnadsfria offert. Detta är det snabbaste sättet att få service.
               </p>
-              <p className="text-sm text-yellow-600 font-semibold">📧 Skickas till: mystafinayulija@gmail.com</p>
+              <p className="text-sm text-yellow-600 font-semibold">📧 Skickas till: contact@mlexpress.se</p>
             </div>
             
             {/* Secondary Methods */}
@@ -336,7 +340,7 @@ ${formData.message}
                   Formuläret skickas direkt till vårt team.
                 </p>
                 <p className="text-sm text-blue-600 mt-3 font-semibold">
-                  📧 Skickas automatiskt till: mystafinayulija@gmail.com
+                  📧 Skickas automatiskt till: contact@mlexpress.se
                 </p>
               </div>
             </div>

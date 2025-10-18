@@ -11,6 +11,8 @@ import {
   BuildingOfficeIcon,
   WrenchScrewdriverIcon
 } from '@heroicons/react/24/outline';
+import LaurelDecoration from '../components/LaurelDecoration';
+import FloralSideDecoration from '../components/FloralSideDecoration';
 
 const Home = () => {
   const features = [
@@ -28,11 +30,6 @@ const Home = () => {
       icon: ClockIcon,
       title: 'Pålitlig & Punktlig',
       description: 'Vi kommer i tid och slutför vårt arbete effektivt, respekterar din värdefulla tid.'
-    },
-    {
-      icon: ShieldCheckIcon,
-      title: 'Fully Insured',
-      description: 'All vår personal är bakgrundskontrollerad, försäkrad och bonded för din trygghet.'
     }
   ];
 
@@ -96,6 +93,9 @@ const Home = () => {
                    rgba(254, 243, 199, 0.9) 75%,
                    rgba(254, 252, 232, 0.95) 100%)`
                }}>
+        {/* Side Floral Decorations */}
+        <FloralSideDecoration />
+        
         {/* Luxury Background Pattern */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-yellow-200/20 rounded-full blur-3xl"></div>
@@ -197,7 +197,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="group text-center luxury-card p-8 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border border-yellow-100">
                 <div className="relative mb-6">
@@ -212,6 +212,9 @@ const Home = () => {
               </div>
             ))}
           </div>
+          
+          {/* Decorative Laurel */}
+          <LaurelDecoration />
         </div>
       </section>
 

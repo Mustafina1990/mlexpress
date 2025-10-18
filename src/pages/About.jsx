@@ -11,6 +11,9 @@ import {
   GlobeAltIcon,
   HandRaisedIcon
 } from '@heroicons/react/24/outline';
+import LaurelDecoration from '../components/LaurelDecoration';
+import GoldenDivider from '../components/GoldenDivider';
+import FloralSideDecoration from '../components/FloralSideDecoration';
 
 const About = () => {
   const values = [
@@ -18,11 +21,6 @@ const About = () => {
       icon: HeartIcon,
       title: 'Kunden Först',
       description: 'Din tillfredsställelse är vår högsta prioritet. Vi går utöver för att överträffa dina förväntningar med varje tjänst.'
-    },
-    {
-      icon: ShieldCheckIcon,
-      title: 'Förtroende & Pålitlighet',
-      description: 'All vår personal är bakgrundskontrollerad, försäkrad och bonded. Ditt hem och företag är säkert hos oss.'
     },
     {
       icon: SparklesIcon,
@@ -84,16 +82,6 @@ const About = () => {
       icon: StarIcon,
       title: '4.9/5 Customer Rating',
       description: 'Based on 200+ verified reviews'
-    },
-    {
-      icon: ShieldCheckIcon,
-      title: 'Fully Licensed & Insured',
-      description: 'Complete protection for our clients'
-    },
-    {
-      icon: UserGroupIcon,
-      title: 'Trained Professionals',
-      description: 'All staff certified and background-checked'
     }
   ];
 
@@ -103,7 +91,6 @@ const About = () => {
     'Flexibel schemaläggning som passar dina behov',
     'Tillfredsställelsegaranti på alla tjänster',
     'Konkurrenskraftiga priser utan dolda avgifter',
-    'Fullt försäkrat och certifierat team',
     'Samma team för konsistens och förtroende',
     'Akut- och sista minuten-städning tillgänglig'
   ];
@@ -114,6 +101,9 @@ const About = () => {
       <section className="relative overflow-hidden min-h-screen flex items-center" style={{
         background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
       }}>
+        {/* Side Floral Decorations */}
+        <FloralSideDecoration />
+        
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
@@ -236,7 +226,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <div key={index} className="luxury-card text-center p-8 group hover:shadow-2xl transition-all duration-300">
                 <div className="relative mb-8">
@@ -250,21 +240,26 @@ const About = () => {
               </div>
             ))}
           </div>
+          
+          {/* Decorative Laurel */}
+          <LaurelDecoration />
         </div>
       </section>
 
       {/* Varför Välja Oss */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Varför Välja ML expresstäd AB?
-              </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Vi förstår att bjuda in någon i ditt hem eller företag är ett stort beslut. 
-                Här är varför hundratals kunder litar på oss med sina städbehov:
-              </p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Varför Välja ML expresstäd AB?
+            </h2>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto">
+              Vi förstår att bjuda in någon i ditt hem eller företag är ett stort beslut. 
+              Här är varför hundratals kunder litar på oss med sina städbehov:
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
+            <div className="w-full">
               <div className="grid grid-cols-1 gap-4">
                 {whyChooseUs.map((reason, index) => (
                   <div key={index} className="flex items-start">
@@ -274,17 +269,19 @@ const About = () => {
                 ))}
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-8 rounded-2xl">
-              <div className="text-center">
-                <HandRaisedIcon className="h-16 w-16 text-blue-600 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">100% Tillfredsställelsegaranti</h3>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Vi står bakom vårt arbete. Om du inte är helt nöjd med vår service 
-                  återkommer vi inom 24 timmar för att göra det rätt utan extra kostnad.
-                </p>
-                <div className="bg-white p-4 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-600">24-Timmar</div>
-                  <div className="text-gray-600">Servicegaranti</div>
+            <div className="w-full">
+              <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-8 rounded-2xl h-full">
+                <div className="text-center">
+                  <HandRaisedIcon className="h-16 w-16 text-blue-600 mx-auto mb-6" />
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">100% Tillfredsställelsegaranti</h3>
+                  <p className="text-gray-700 leading-relaxed mb-6">
+                    Vi står bakom vårt arbete. Om du inte är helt nöjd med vår service 
+                    återkommer vi inom 24 timmar för att göra det rätt utan extra kostnad.
+                  </p>
+                  <div className="bg-white p-4 rounded-lg">
+                    <div className="text-3xl font-bold text-blue-600">24-Timmar</div>
+                    <div className="text-gray-600">Servicegaranti</div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -11,6 +11,9 @@ import {
   SparklesIcon,
   ClipboardDocumentCheckIcon
 } from '@heroicons/react/24/outline';
+import LaurelDecoration from '../components/LaurelDecoration';
+import GoldenDivider from '../components/GoldenDivider';
+import FloralSideDecoration from '../components/FloralSideDecoration';
 
 const Services = () => {
   const mainServices = [
@@ -353,6 +356,9 @@ const Services = () => {
       <section className="relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
       }}>
+        {/* Side Floral Decorations */}
+        <FloralSideDecoration bottomPosition="8rem" />
+        
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>

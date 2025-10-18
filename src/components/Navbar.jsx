@@ -59,7 +59,7 @@ const Navbar = () => {
             ))}
             <div className="flex items-center space-x-6 border-l border-gray-200 pl-6 ml-2">
               <Link
-                to="/contact"
+                to="/contact#contact-form"
                 className="luxury-button text-sm font-bold tracking-wide"
               >
                 Få Premium Offert
