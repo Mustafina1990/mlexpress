@@ -62,7 +62,7 @@ const Contact = () => {
     try {
       // EmailJS configuration
       const serviceID = 'service_b54jta9'; // Your actual service ID
-      const templateID = 'template_mlexpress'; // Your template ID (update if different)
+      const templateID = 'template_veo5rgk'; // Your template ID
       const publicKey = 'RZkbfClXLJeqyJY_Q'; // Your public key
       
       // Prepare template parameters matching your EmailJS template
