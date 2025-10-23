@@ -19,7 +19,7 @@ const About = () => {
   const values = [
     {
       icon: HeartIcon,
-      title: 'Kunden Först',
+      title: 'Kunden först',
       description: 'Din tillfredsställelse är vår högsta prioritet. Vi går utöver för att överträffa dina förväntningar med varje tjänst.'
     },
     {
@@ -31,57 +31,6 @@ const About = () => {
       icon: GlobeAltIcon,
       title: 'Flexibilitet',
       description: 'Vi anpassar oss efter dina behov och schema för att ge dig bästa möjliga service när det passar dig.'
-    }
-  ];
-
-  const teamMembers = [
-    {
-      name: 'Anna Lindström',
-      role: 'Grundare & VD',
-      image: '👩‍💼',
-      bio: 'Med över 10 års erfarenhet inom städbranschen grundade Anna ML Expresstäd AB med en vision att erbjuda exceptionella städtjänster som upptagna familjer och företag kan lita på.',
-      experience: '10+ år'
-    },
-    {
-      name: 'Erik Johansson',
-      role: 'Operationschef',
-      image: '👨‍💻',
-      bio: 'Mike ensures our cleaning teams are properly trained and equipped to deliver consistent, high-quality results. He oversees quality control and customer satisfaction.',
-      experience: '7+ years'
-    },
-    {
-      name: 'Emily Chen',
-      role: 'Customer Success Manager',
-      image: '👩‍💼',
-      bio: 'Emily is dedicated to ensuring every customer has an exceptional experience. She handles scheduling, special requests, and maintains our high service standards.',
-      experience: '5+ years'
-    },
-    {
-      name: 'David Wilson',
-      role: 'Head of Training',
-      image: '👨‍🏫',
-      bio: 'David develops our training programs and ensures all team members are equipped with the latest cleaning techniques and safety protocols.',
-      experience: '8+ years'
-    }
-  ];
-
-  const stats = [
-    { number: '500+', label: 'Happy Customers' },
-    { number: '5,000+', label: 'Cleanings Completed' },
-    { number: '5', label: 'Years in Business' },
-    { number: '4.9/5', label: 'Average Rating' }
-  ];
-
-  const achievements = [
-    {
-      icon: TrophyIcon,
-      title: 'Best Cleaning Service 2024',
-      description: 'Local Business Excellence Award'
-    },
-    {
-      icon: StarIcon,
-      title: '4.9/5 Customer Rating',
-      description: 'Based on 200+ verified reviews'
     }
   ];
 
@@ -109,12 +58,8 @@ const About = () => {
           <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+        <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
           <div className="text-center">
-            <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-medium mb-8 border border-yellow-400/30">
-              <SparklesIcon className="h-5 w-5 text-yellow-400" />
-              <span className="text-yellow-400">Om ML expresstäd AB</span>
-            </div>
                         <h1 className="hero-title text-4xl md:text-6xl font-bold mb-6 font-['Playfair_Display']">
               <span className="text-yellow-400">Om ML Expresstäd AB</span>
             </h1>
@@ -154,7 +99,7 @@ const About = () => {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-8 mb-8">
               <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text">
-                Vår Historia
+                Vår historia
               </h2>
               <div className="flex-shrink-0 relative top-2 left-4">
                 <div className="relative">
@@ -197,7 +142,7 @@ const About = () => {
                   <span className="luxury-text-gradient">✨</span>
                 </div>
                 <h3 className="text-3xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6 text-center">
-                  Vårt Uppdrag
+                  Vårt uppdrag
                 </h3>
                 <div className="space-y-6 text-gray-700 leading-relaxed text-lg font-light">
                   <p>
@@ -219,7 +164,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">
-              Våra Kärnvärden
+              Våra kärnvärden
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
               Dessa värderingar styr allt vi gör och formar hur vi betjänar våra kunder
@@ -251,7 +196,7 @@ const About = () => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Varför Välja ML expresstäd AB?
+              Varför välja ML Expresstäd AB?
             </h2>
             <p className="text-lg text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto">
               Vi förstår att bjuda in någon i ditt hem eller företag är ett stort beslut. 
@@ -273,14 +218,14 @@ const About = () => {
               <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-8 rounded-2xl h-full">
                 <div className="text-center">
                   <HandRaisedIcon className="h-16 w-16 text-blue-600 mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">100% Tillfredsställelsegaranti</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">100% tillfredsställelsegaranti</h3>
                   <p className="text-gray-700 leading-relaxed mb-6">
                     Vi står bakom vårt arbete. Om du inte är helt nöjd med vår service 
                     återkommer vi inom 24 timmar för att göra det rätt utan extra kostnad.
                   </p>
                   <div className="bg-white p-4 rounded-lg">
-                    <div className="text-3xl font-bold text-blue-600">24-Timmar</div>
-                    <div className="text-gray-600">Servicegaranti</div>
+                    <div className="text-3xl font-bold text-blue-600">24-timmar</div>
+                    <div className="text-gray-600">servicegaranti</div>
                   </div>
                 </div>
               </div>
@@ -293,18 +238,18 @@ const About = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Redo att Uppleva Skillnaden?
+            Redo att uppleva skillnaden?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Gå med i vår familj av nöjda kunder och upptäck varför ML expresstäd AB är det 
-            pålitliga valet för professionella städtjänster. Få din gratis offert idag!
+            Gå med i vår familj av nöjda kunder och upptäck varför ML Expresstäd AB är det
+            pålitliga valet för professionella städtjänster. Kontakta oss idag!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Få Gratis Offert
+              Kontakta oss
             </Link>
             <a
               href="sms:+46765523187"

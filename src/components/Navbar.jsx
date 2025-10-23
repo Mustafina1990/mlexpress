@@ -57,14 +57,6 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            <div className="flex items-center space-x-6 border-l border-gray-200 pl-6 ml-2">
-              <Link
-                to="/contact#contact-form"
-                className="luxury-button text-sm font-bold tracking-wide"
-              >
-                Få Premium Offert
-              </Link>
-            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -109,15 +101,6 @@ const Navbar = () => {
                 <PhoneIcon className="h-6 w-6" />
                 <span className="text-base">+46 76 552 31 87</span>
               </a>
-              <div className="px-1">
-                <Link
-                  to="/contact"
-                  className="block luxury-button text-center text-base w-full"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Få Premium Offert
-                </Link>
-              </div>
             </div>
           </div>
         </div>

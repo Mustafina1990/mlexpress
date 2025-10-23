@@ -23,7 +23,7 @@ const Services = () => {
       icon: HomeIcon,
       price: '350 kr/timme + moms',
       duration: '1-3 timmar',
-      frequency: 'Veckovis, Varannan vecka, Månadsvis',
+      frequency: 'veckovis, varannan vecka, månadsvis',
       features: [
         'Entré och alla rum - komplett rengöring',
         'Kök - vitvaror, spis, mikro, kakel och bänkar',
@@ -86,7 +86,7 @@ const Services = () => {
       icon: BuildingOfficeIcon,
       price: '350 kr/timme + moms',
       duration: '2-4 timmar',
-      frequency: 'Dagligen, Veckovis, Anpassat schema',
+      frequency: 'dagligen, veckovis, anpassat schema',
       features: [
         'Kontorsstädning - entré och alla rum',
         'Kök och personalutrymmen',
@@ -139,7 +139,7 @@ const Services = () => {
       icon: WrenchScrewdriverIcon,
       price: '350 kr/timme + moms',
       duration: '4-8 timmar',
-      frequency: 'Säsongsvis, Efter behov',
+      frequency: 'säsongsvis, efter behov',
       features: [
         'Komplett rengöring av alla rum och ytor',
         'Invändig rengöring av vitvaror',
@@ -200,7 +200,7 @@ const Services = () => {
       icon: ClipboardDocumentCheckIcon,
       price: '350 kr/timme + moms',
       duration: '4-6 timmar',
-      frequency: 'Efter behov, Renovering',
+      frequency: 'efter behov, renovering',
       features: [
         'Specialiserad rengöring efter byggarbete',
         'Byggdamm och skräp borttagning',
@@ -265,7 +265,7 @@ const Services = () => {
       icon: CalendarDaysIcon,
       price: '400 kr/timme + moms + städprodukter',
       duration: '6-8 timmar',
-      frequency: 'Inflyttning, Utflyttning',
+      frequency: 'inflyttning, utflyttning',
       features: [
         'Komplett genomgång hela bostaden',
         'Invändig rengöring alla vitvaror',
@@ -329,17 +329,17 @@ const Services = () => {
   const cleaningProcess = [
     {
       step: 1,
-      title: 'Första Konsultation',
+      title: 'Första konsultation',
       description: 'Vi bedömer ditt utrymme och diskuterar dina specifika städbehov och önskemål.'
     },
     {
       step: 2,
-      title: 'Anpassad Städplan',
+      title: 'Anpassad städplan',
       description: 'Vi skapar en skräddarsydd städplan som passar ditt schema och din budget.'
     },
     {
       step: 3,
-      title: 'Professionell Service',
+      title: 'Professionell service',
       description: 'Vårt utbildade team kommer med all utrustning och levererar exceptionella resultat.'
     },
     {
@@ -376,9 +376,9 @@ const Services = () => {
               </div>
             </div>
             <h1 className="hero-title text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8">
-              <span className="text-white">Våra Premium</span>
+              <span className="text-white">Våra premium</span>
               <span className="block bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
-                Städtjänster
+                städtjänster
               </span>
             </h1>
             <p className="hero-subtitle text-xl text-gray-200 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
@@ -389,7 +389,7 @@ const Services = () => {
               to="/contact#contact-form"
               className="bg-white text-blue-900 px-10 py-5 text-xl font-semibold rounded-xl border-2 border-yellow-400 hover:bg-yellow-50 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              Få Anpassad Offert
+               Fyll i kontaktformulär
             </Link>
           </div>
         </div>
@@ -400,7 +400,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">
-              Våra Huvudtjänster
+              Våra huvudtjänster
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
               Välj från vårt omfattande utbud av professionella lyxiga städtjänster
@@ -444,14 +444,14 @@ const Services = () => {
                       to={`/contact#contact-form?service=${encodeURIComponent(service.title)}`}
                       className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg inline-block"
                     >
-                      Boka Denna Tjänst
+                      Boka denna tjänst
                     </Link>
                   </div>
                 </div>
 
                 <div className="lg:w-1/2">
                   <div className="bg-white p-8 rounded-2xl shadow-lg">
-                    <h4 className="text-xl font-bold text-gray-900 mb-6">Detta Ingår:</h4>
+                    <h4 className="text-xl font-bold text-gray-900 mb-6">Detta ingår:</h4>
                     <div className="grid grid-cols-1 gap-3 mb-8">
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start">
@@ -484,7 +484,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Vår Städprocess
+              Vår städprocess
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Vi följer ett systematiskt tillvägagångssätt för att säkerställa konsekventa, högkvalitativa resultat varje gång
@@ -515,7 +515,7 @@ const Services = () => {
                 <UserGroupIcon className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 font-['Playfair_Display']">
-                <span className="luxury-text-gradient">🎉 Spara 15% Rabatt! 🎉</span>
+                <span className="luxury-text-gradient">🎉 Spara 15% rabatt! 🎉</span>
               </h2>
               <p className="text-2xl md:text-3xl text-gray-800 font-bold mb-4">
                 Ta med en vän och få 15% rabatt på en städning
@@ -528,7 +528,7 @@ const Services = () => {
                   to="/contact#contact-form"
                   className="luxury-button text-lg px-8 py-4 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
-                  📞 Boka Nu med Rabatt
+                  📞 Boka nu med rabatt
                 </Link>
                 <a
                   href="sms:+46765523187?body=Hej! Jag vill ta del av er vän-rabatt på 15%"
@@ -549,10 +549,10 @@ const Services = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Redo Att Komma Igång?
+            Redo att komma igång?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Kontakta oss idag för en kostnadsfri konsultation och anpassad offert. Vi hjälper dig att välja 
+            Kontakta oss idag för en kostnadsfri konsultation. Vi hjälper dig att välja 
             den perfekta städplanen för dina behov och budget.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -560,7 +560,7 @@ const Services = () => {
               to="/contact#contact-form"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Få Kostnadsfri Offert
+              Kontakta oss
             </Link>
             <a
               href="sms:+46765523187"

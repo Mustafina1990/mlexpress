@@ -18,17 +18,17 @@ const Home = () => {
   const features = [
     {
       icon: CheckCircleIcon,
-      title: 'Professionell Kvalitet',
+      title: 'Professionell kvalitet',
       description: 'Våra utbildade proffs levererar exceptionella städresultat varje gång med uppmärksamhet på detaljer.'
     },
     {
       icon: SparklesIcon,
-      title: 'Erfaren Personal',
+      title: 'Erfaren personal',
       description: 'Vårt team består av utbildade och erfarna städproffs som vet hur man får varje utrymme att glänsa.'
     },
     {
       icon: ClockIcon,
-      title: 'Pålitlig & Punktlig',
+      title: 'Pålitlig & punktlig',
       description: 'Vi kommer i tid och slutför vårt arbete effektivt, respekterar din värdefulla tid.'
     }
   ];
@@ -106,13 +106,13 @@ const Home = () => {
           <div className="text-center">
             <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-semibold mb-8 border-2 border-yellow-200">
               <div className="w-3 h-3 gold-gradient rounded-full animate-pulse"></div>
-              <span className="luxury-text-gradient">Luxury Cleaning Services Since 2025</span>
+              <span className="luxury-text-gradient">Luxury cleaning services since 2025</span>
             </div>
             
             <h1 className="hero-title text-5xl md:text-7xl font-bold mb-8 font-['Playfair_Display']">
-              <span className="text-gray-800 block mb-2">Ditt Utrymme Förtjänar</span>
+              <span className="text-gray-800 block mb-2">Ditt utrymme förtjänar</span>
               <span className="luxury-text-gradient block relative">
-                Exceptionell Excellens
+                exceptionell excellens
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-yellow-500/20 blur-lg -z-10"></div>
               </span>
             </h1>
@@ -126,7 +126,7 @@ const Home = () => {
                 to="/contact#contact-form"
                 className="luxury-button text-lg px-10 py-5 font-bold tracking-wide"
               >
-                ✨ Få Premium Offert
+                Kontakta oss
               </Link>
               <a
                 href="sms:+46765523187"
@@ -152,7 +152,7 @@ const Home = () => {
                 <UserGroupIcon className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 font-['Playfair_Display']">
-                <span className="luxury-text-gradient">🎉 Spara 15% Rabatt! 🎉</span>
+                <span className="luxury-text-gradient">🎉 Spara 15% rabatt! 🎉</span>
               </h2>
               <p className="text-2xl md:text-3xl text-gray-800 font-bold mb-4">
                 Ta med en vän och få 15% rabatt på en städning
@@ -165,7 +165,7 @@ const Home = () => {
                   to="/contact"
                   className="luxury-button text-lg px-8 py-4 font-bold"
                 >
-                  📞 Boka Nu med Rabatt
+                  📞 Boka nu med rabatt
                 </Link>
                 <a
                   href="sms:+46765523187?body=Hej! Jag vill ta del av er vän-rabatt på 15%"
@@ -188,7 +188,7 @@ const Home = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display']">
-              <span className="text-gray-800">Varför Välja </span>
+              <span className="text-gray-800">Varför välja </span>
               <span className="luxury-text-gradient">ML Expresstäd AB?</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -223,7 +223,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Våra Populära Tjänster
+              Våra populära tjänster
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Professionella städlösningar anpassade för att möta dina specifika behov och schema
@@ -256,7 +256,7 @@ const Home = () => {
                     to="/contact#contact-form"
                     className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
                   >
-                    Boka Nu
+                    Boka nu
                   </Link>
                 </div>
               </div>
@@ -267,7 +267,7 @@ const Home = () => {
               to="/services"
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg"
             >
-              Se Alla Tjänster
+              Se alla tjänster
               <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -282,11 +282,11 @@ const Home = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-medium mb-8 border border-blue-200">
               <SparklesIcon className="h-5 w-5 text-blue-600" />
-              <span className="text-gray-700">Våra Serviceområden</span>
+              <span className="text-gray-700">Våra serviceområden</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display']">
-              <span className="text-gray-800">Vi Täcker </span>
-              <span className="luxury-text-gradient">Stockholm & Närområden</span>
+              <span className="text-gray-800">Vi täcker </span>
+              <span className="luxury-text-gradient">Stockholm & närområden</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Professionella städtjänster i <span className="font-bold text-blue-600">Stockholm</span> och omkringliggande kommuner. 
@@ -323,7 +323,7 @@ const Home = () => {
                 to="/contact#contact-form"
                 className="inline-flex items-center luxury-button text-base px-6 py-3 font-semibold"
               >
-                Kontakta Oss
+                Kontakta oss
                 <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -337,18 +337,18 @@ const Home = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Redo att Uppleva ML Expresstäd AB Skillnaden?
+            Redo att uppleva ML Expresstäd AB skillnaden?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
             Gå med hundratals nöjda kunder som litar på oss för sina städbehov. 
-            Fyll i vårt formulär idag för din kostnadsfria offert och se varför vi är förstahandsvalet för professionella städtjänster.
+            Kontakta oss idag och se varför vi är förstahandsvalet för professionella städtjänster.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact#contact-form"
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Fyll i Formulär för Offert
+              📝 Fyll i Kontaktformulär
             </Link>
             <a
               href="sms:+46765523187"

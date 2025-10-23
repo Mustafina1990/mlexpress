@@ -60,57 +60,47 @@ const Contact = () => {
     setFormStatus('sending');
     
     try {
-      // EmailJS configuration for Gmail
-      // You'll need to replace these with your actual EmailJS credentials
-      const serviceID = 'gmail'; // or your custom service ID
-      const templateID = 'template_mlexpress';
-      const publicKey = 'YOUR_EMAILJS_PUBLIC_KEY';
+      // EmailJS configuration
+      const serviceID = 'service_b54jta9'; // Your actual service ID
+      const templateID = 'template_mlexpress'; // Your template ID (update if different)
+      const publicKey = 'RZkbfClXLJeqyJY_Q'; // Your public key
       
-      // Prepare template parameters for Gmail sending
+      // Prepare template parameters matching your EmailJS template
       const templateParams = {
-        to_email: 'mystafinayulija@gmail.com',
-        from_name: formData.name,
-        from_email: formData.email,
+        subject: 'Ny kundförfrågan från ML Expresstäd AB',
+        name: formData.name,
+        email: formData.email,
         reply_to: formData.email,
         phone: formData.phone,
-        service: formData.service,
-        property_type: formData.propertyType,
-        square_footage: formData.squareFootage,
-        frequency: formData.frequency,
-        preferred_date: formData.date,
-        preferred_time: formData.time,
-        address: formData.address,
-        message: formData.message,
-        subject: 'Ny förfrågan från ML Expresstäd AB webbplats',
-        // Formatted message for email body
-        email_body: `
-Ny förfrågan från ML Expresstäd AB webbplats:
+        // Formatted HTML message for email body
+        message_html: `
+<strong>Ny förfrågan från ML Expresstäd AB webbplats</strong><br><br>
 
-📧 KONTAKTINFORMATION:
-• Namn: ${formData.name}
-• E-post: ${formData.email}
-• Telefon: ${formData.phone}
+<strong>📧 KONTAKTINFORMATION:</strong><br>
+• Namn: ${formData.name}<br>
+• E-post: ${formData.email}<br>
+• Telefon: ${formData.phone}<br><br>
 
-🏠 TJÄNSTINFORMATION:
-• Tjänst: ${formData.service}
-• Fastighetstyp: ${formData.propertyType}
-• Kvadratmeter: ${formData.squareFootage}
-• Frekvens: ${formData.frequency}
+<strong>🏠 TJÄNSTINFORMATION:</strong><br>
+• Tjänst: ${formData.service}<br>
+• Fastighetstyp: ${formData.propertyType}<br>
+• Kvadratmeter: ${formData.squareFootage}<br>
+• Frekvens: ${formData.frequency}<br><br>
 
-📅 SCHEMA:
-• Önskat datum: ${formData.date}
-• Tid: ${formData.time}
-• Adress: ${formData.address}
+<strong>📅 SCHEMA:</strong><br>
+• Önskat datum: ${formData.date}<br>
+• Tid: ${formData.time}<br>
+• Adress: ${formData.address}<br><br>
 
-💬 MEDDELANDE:
-${formData.message}
+<strong>💬 MEDDELANDE:</strong><br>
+${formData.message}<br><br>
 
----
-Skickat automatiskt från ML expresstäd AB webbplats
+<hr>
+<em>Skickat automatiskt från ML expresstäd AB webbplats</em>
         `
       };
 
-      // Send email using EmailJS (will use your Gmail account)
+      // Send email using EmailJS
       const result = await emailjs.send(serviceID, templateID, templateParams, publicKey);
       
       if (result.status === 200) {
@@ -183,7 +173,7 @@ ${formData.message}
     {
       icon: MapPinIcon,
       title: 'Serviceområde',
-      details: ['Stockholm & Närområden', 'Premium service täckning'],
+      details: ['Stockholm & närområden', 'Premium service täckning'],
       link: '#service-area'
     },
     {
@@ -235,11 +225,11 @@ ${formData.message}
           <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 py-24">
           <div className="text-center">
             <div className="inline-flex items-center space-x-3 luxury-card px-6 py-3 rounded-full text-sm font-medium mb-8 border border-yellow-400/30">
               <SparklesIcon className="h-5 w-5 text-yellow-400" />
-              <span className="text-yellow-400">Få Din Kostnadsfria Offert</span>
+              <span className="text-yellow-400">Kontakta oss</span>
             </div>
             <h1 className="hero-title text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-8 leading-tight">
               <span className="text-white block mb-2">Redo att</span>
@@ -250,13 +240,13 @@ ${formData.message}
                 WebkitTextFillColor: 'transparent',
                 lineHeight: '1.1'
               }}>
-                Komma igång?
+                komma igång?
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-yellow-500/20 blur-lg -z-10"></div>
               </span>
             </h1>
             <p className="hero-subtitle text-xl text-gray-100 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-              <strong className="text-yellow-300">Fyll i formuläret nedan</strong> för att få din kostnadsfria, 
-              förpliktelsefria offert. Vi skapar en anpassad städplan som passar dina behov och budget. 
+              <strong className="text-yellow-300">Fyll i formuläret nedan</strong> så kontaktar vi dig. 
+              Vi skapar en anpassad städplan som passar dina behov och budget. 
               Snabbt svar garanterat!
             </p>
             <div className="mb-8">
@@ -273,7 +263,7 @@ ${formData.message}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-4">
-              Hur Du Kontaktar Oss
+              Hur du kontaktar oss
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
               Vi rekommenderar starkt att du använder formuläret nedan för snabbast service
@@ -329,7 +319,7 @@ ${formData.message}
             {/* Form Introduction */}
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">
-                Beställ Din Städtjänst
+                Beställ din städtjänst
               </h2>
               <div className="luxury-card p-6 mb-8 border-2 border-yellow-400">
                 <p className="text-lg text-gray-700 font-medium mb-2">
@@ -378,7 +368,7 @@ ${formData.message}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Fullständigt Namn *
+                        Fullständigt namn *
                       </label>
                       <input
                         type="text"
@@ -519,7 +509,7 @@ ${formData.message}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Önskat Datum
+                        Önskat datum
                       </label>
                       <input
                         type="date"
@@ -532,7 +522,7 @@ ${formData.message}
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Önskad Tid
+                        Önskad tid
                       </label>
                       <select
                         name="time"
@@ -552,7 +542,7 @@ ${formData.message}
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Ytterligare Detaljer
+                      Ytterligare detaljer
                     </label>
                     <textarea
                       name="message"
@@ -568,13 +558,13 @@ ${formData.message}
                     type="submit"
                     className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 text-lg font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
-                    Skicka Min Förfrågan
+                    Skicka min förfrågan
                   </button>
                 </form>
 
               {/* Quick Tips */}
               <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl mt-8">
-                <h3 className="text-xl font-bold text-blue-800 mb-4">Tips för Bättre Offert</h3>
+                <h3 className="text-xl font-bold text-blue-800 mb-4">Tips för bättre offert</h3>
                 <ul className="space-y-3 text-blue-700">
                   <li className="flex items-start">
                     <CheckCircleIcon className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
@@ -604,7 +594,7 @@ ${formData.message}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Områden Vi Täcker
+              Områden vi täcker
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Vi betjänar Stockholm och omkringliggande områden med stolthet
@@ -639,7 +629,7 @@ ${formData.message}
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Redo att Boka Din Städning?
+            Redo att boka din städning?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
             Gå med i vår familj av hundratals nöjda kunder. Få ditt utrymme skinande rent idag!
