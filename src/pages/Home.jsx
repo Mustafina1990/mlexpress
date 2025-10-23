@@ -57,29 +57,7 @@ const Home = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: 'Anna Andersson',
-      location: 'Östermalm',
-      rating: 5,
-      text: 'ML Expresstäd AB förvandlade mitt hem! Deras team är professionellt, grundligt och alltid i tid. Jag rekommenderar starkt deras tjänster.',
-      image: '👩‍💼'
-    },
-    {
-      name: 'Michael Chen',
-      location: 'Södermalm',
-      rating: 5,
-      text: 'Enastående kommersiell städservice. Vårt kontor har aldrig sett bättre ut. Teamet är pålitligt och uppmärksammar varje detalj.',
-      image: '👨‍💻'
-    },
-    {
-      name: 'Emily Johansson',
-      location: 'Vasastan',
-      rating: 5,
-      text: 'Jag älskar att komma hem till ett fläckfritt hus! ML Expresstäd AB har gjort mitt liv så mycket enklare. Värt varenda krona!',
-      image: '👩‍🏫'
-    }
-  ];
+
 
   return (
     <div className="min-h-screen">

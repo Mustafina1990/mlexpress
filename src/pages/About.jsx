@@ -105,7 +105,7 @@ const About = () => {
                 <div className="relative">
                   <img 
                     src="/src/assets/logo.png" 
-                    alt="ML expresstäd AB" 
+                    alt="ML Expresstäd AB" 
                     className="h-28 md:h-32 w-auto transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
                   />
                   <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/30 to-blue-400/30 rounded-lg blur-lg opacity-60"></div>
@@ -241,7 +241,7 @@ const About = () => {
             Redo att uppleva skillnaden?
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Gå med i vår familj av nöjda kunder och upptäck varför ML Expresstäd AB är det
+            Gå med i vår familj av nöjda kunder och upptäck varför ML Expresstäd AB är det 
             pålitliga valet för professionella städtjänster. Kontakta oss idag!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -96,7 +96,7 @@ const Contact = () => {
 ${formData.message}<br><br>
 
 <hr>
-<em>Skickat automatiskt från ML expresstäd AB webbplats</em>
+<em>Skickat automatiskt från ML Expresstäd AB webbplats</em>
         `
       };
 
@@ -341,8 +341,8 @@ ${formData.message}
                 <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8 flex items-center">
                   <CheckCircleIcon className="h-6 w-6 text-green-600 mr-3" />
                   <div>
-                    <p className="text-green-800 font-semibold">Tack! Din förfrågan har skickats.</p>
-                    <p className="text-green-700 text-sm">Vi kontaktar dig under dagen med din offert.</p>
+                    <p className="text-green-800 font-semibold">✅ Meddelandet har skickats!</p>
+                    <p className="text-green-700 text-sm">Tack för din förfrågan! Vi återkommer till dig inom kort.</p>
                   </div>
                 </div>
               )}
