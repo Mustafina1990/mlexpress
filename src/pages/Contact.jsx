@@ -68,6 +68,7 @@ const Contact = () => {
       // Prepare template parameters matching your EmailJS template
       const templateParams = {
         subject: 'Ny kundförfrågan från ML Expresstäd AB',
+        company_name: 'ML Expresstäd AB',
         name: formData.name,
         email: formData.email,
         reply_to: formData.email,
@@ -337,34 +338,35 @@ ${formData.message}
             
             {/* Quote Form */}
             <div className="luxury-card p-10">
-              {formStatus === 'success' && (
-                <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8 flex items-center">
-                  <CheckCircleIcon className="h-6 w-6 text-green-600 mr-3" />
-                  <div>
-                    <p className="text-green-800 font-semibold">✅ Meddelandet har skickats!</p>
-                    <p className="text-green-700 text-sm">Tack för din förfrågan! Vi återkommer till dig inom kort.</p>
-                  </div>
-                </div>
-              )}
-              
-              {formStatus === 'sending' && (
-                <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8 flex items-center">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mr-3"></div>
-                  <p className="text-blue-800">Skickar din förfrågan...</p>
-                </div>
-              )}
-
-              {formStatus === 'error' && (
-                <div className="bg-yellow-50 border border-yellow-200 p-6 rounded-lg mb-8 flex items-center">
-                  <ClockIcon className="h-6 w-6 text-yellow-600 mr-3" />
-                  <div>
-                    <p className="text-yellow-800 font-semibold">Automatisk e-post misslyckades</p>
-                    <p className="text-yellow-700 text-sm">Din e-postklient öppnas som backup. Skicka e-posten manuellt.</p>
-                  </div>
-                </div>
-              )}
-
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  
+                  {/* Status Messages - Inside Form at Top */}
+                  {formStatus === 'success' && (
+                    <div className="bg-green-50 border-2 border-green-400 p-6 rounded-lg flex items-center shadow-lg">
+                      <CheckCircleIcon className="h-8 w-8 text-green-600 mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="text-green-800 font-bold text-lg">✅ Meddelandet har skickats!</p>
+                        <p className="text-green-700">Tack för din förfrågan! Vi återkommer till dig inom kort.</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {formStatus === 'sending' && (
+                    <div className="bg-blue-50 border-2 border-blue-400 p-6 rounded-lg flex items-center shadow-lg">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3 flex-shrink-0"></div>
+                      <p className="text-blue-800 font-semibold text-lg">Skickar din förfrågan...</p>
+                    </div>
+                  )}
+
+                  {formStatus === 'error' && (
+                    <div className="bg-yellow-50 border-2 border-yellow-400 p-6 rounded-lg flex items-center shadow-lg">
+                      <ClockIcon className="h-8 w-8 text-yellow-600 mr-3 flex-shrink-0" />
+                      <div>
+                        <p className="text-yellow-800 font-bold text-lg">Automatisk e-post misslyckades</p>
+                        <p className="text-yellow-700">Din e-postklient öppnas som backup. Skicka e-posten manuellt.</p>
+                      </div>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
