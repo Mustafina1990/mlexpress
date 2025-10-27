@@ -33,32 +33,6 @@ const Home = () => {
     }
   ];
 
-  const services = [
-    {
-      title: 'Hemstädning',
-      description: 'Regelbunden hemstädning med alla vardagsliga uppgifter - kök, badrum, dammsugning och våttorkning.',
-      price: '350 kr/timme + moms',
-      icon: HomeIcon,
-      features: ['Veckovis/Varannan vecka', 'Tvättning & strykning', 'Byte av lakan & handdukar']
-    },
-    {
-      title: 'Storstädning',
-      description: 'Grundlig storstädning med invändig rengöring av vitvaror, fönsterputsning och avloppsrengöring.',
-      price: '350 kr/timme + moms',
-      icon: WrenchScrewdriverIcon,
-      features: ['Komplett djuprengöring', 'Fönsterputsning ingår', 'Invändig vitvaror']
-    },
-    {
-      title: 'Flyttstädning',
-      description: 'Professionell flyttstädning för inflyttning eller utflyttning med garanti för godkännande.',
-      price: '400 kr/timme + moms + städprodukter',
-      icon: BuildingOfficeIcon,
-      features: ['Garderober invändigt', 'Skåp in- & utvändigt', 'Komplett fönsterputsning']
-    }
-  ];
-
-
-
   return (
     <div className="min-h-screen">
       {/* Luxury Hero Section */}
@@ -130,13 +104,13 @@ const Home = () => {
                 <UserGroupIcon className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 font-['Playfair_Display']">
-                <span className="luxury-text-gradient">🎉 Spara 15% rabatt! 🎉</span>
+                <span className="luxury-text-gradient">🎉 Få 15% rabatt! 🎉</span>
               </h2>
               <p className="text-2xl md:text-3xl text-gray-800 font-bold mb-4">
-                Ta med en vän och få 15% rabatt på en städning
+                Ta med en vän och få 15% rabatt på din nästa städning
               </p>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Dela glädjen med rena utrymmen! När du rekommenderar en vän får ni båda njuta av vår premium service med 15% rabatt på er nästa städning.
+                Dela glädjen med rena utrymmen! När du tar med en vän som bokar vår service får du 15% rabatt på din nästa städning.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
@@ -153,7 +127,7 @@ const Home = () => {
                 </a>
               </div>
               <p className="text-sm text-gray-500 mt-6 italic">
-                * Erbjudandet gäller för både befintliga och nya kunder. Kontakta oss för mer information.
+                * Du får rabatten när din vän bokar och genomför en städning. Kontakta oss för mer information.
               </p>
             </div>
           </div>
@@ -193,64 +167,6 @@ const Home = () => {
           
           {/* Decorative Laurel */}
           <LaurelDecoration />
-        </div>
-      </section>
-
-      {/* Services Preview */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Våra populära tjänster
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Professionella städlösningar anpassade för att möta dina specifika behov och schema
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                  <service.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <CheckCircleIcon className="h-4 w-4 text-green-500 mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                {service.title === 'Flyttstädning' && (
-                  <p className="text-xs text-yellow-700 bg-yellow-50 p-2 rounded mb-4 border border-yellow-200">
-                    💡 Städprodukter faktureras separat
-                  </p>
-                )}
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-blue-600">{service.price}</span>
-                  <Link
-                    to="/contact#contact-form"
-                    className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
-                  >
-                    Boka nu
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link
-              to="/services"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg"
-            >
-              Se alla tjänster
-              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
         </div>
       </section>
 

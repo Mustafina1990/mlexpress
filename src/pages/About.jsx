@@ -193,41 +193,25 @@ const About = () => {
 
       {/* Varför Välja Oss */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-4">
               Varför välja ML Expresstäd AB?
             </h2>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed max-w-2xl mx-auto font-light">
               Vi förstår att bjuda in någon i ditt hem eller företag är ett stort beslut. 
               Här är varför hundratals kunder litar på oss med sina städbehov:
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
-            <div className="w-full">
-              <div className="grid grid-cols-1 gap-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="luxury-card p-8 md:p-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {whyChooseUs.map((reason, index) => (
-                  <div key={index} className="flex items-start">
-                    <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{reason}</span>
+                  <div key={index} className="flex items-start group">
+                    <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                    <span className="text-gray-700 leading-relaxed">{reason}</span>
                   </div>
                 ))}
-              </div>
-            </div>
-            <div className="w-full">
-              <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-8 rounded-2xl h-full">
-                <div className="text-center">
-                  <HandRaisedIcon className="h-16 w-16 text-blue-600 mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">100% tillfredsställelsegaranti</h3>
-                  <p className="text-gray-700 leading-relaxed mb-6">
-                    Vi står bakom vårt arbete. Om du inte är helt nöjd med vår service 
-                    återkommer vi inom 24 timmar för att göra det rätt utan extra kostnad.
-                  </p>
-                  <div className="bg-white p-4 rounded-lg">
-                    <div className="text-3xl font-bold text-blue-600">24-timmar</div>
-                    <div className="text-gray-600">servicegaranti</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

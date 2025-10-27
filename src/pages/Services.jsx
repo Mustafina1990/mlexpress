@@ -339,11 +339,6 @@ const Services = () => {
     },
     {
       step: 3,
-      title: 'Professionell service',
-      description: 'Vårt utbildade team kommer med all utrustning och levererar exceptionella resultat.'
-    },
-    {
-      step: 4,
       title: 'Kvalitetssäkring',
       description: 'Vi utför en slutlig inspektion för att säkerställa att allt uppfyller våra höga standarder.'
     }
@@ -491,7 +486,7 @@ const Services = () => {
             </p>
           </div>
 
-          <div className="grid-responsive grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid-responsive grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cleaningProcess.map((step, index) => (
               <div key={index} className="service-card text-center">
                 <div className="bg-gradient-to-r from-blue-600 to-cyan-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -505,45 +500,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Promotional Banner - Bring a Friend Discount */}
-      <section className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-blue-500/5 to-yellow-500/5"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="luxury-card bg-white/95 backdrop-blur-sm p-8 md:p-12 rounded-2xl border-4 border-yellow-400 shadow-2xl">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 gold-gradient rounded-full mb-6 shadow-xl">
-                <UserGroupIcon className="w-10 h-10 text-white" />
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 font-['Playfair_Display']">
-                <span className="luxury-text-gradient">🎉 Spara 15% rabatt! 🎉</span>
-              </h2>
-              <p className="text-2xl md:text-3xl text-gray-800 font-bold mb-4">
-                Ta med en vän och få 15% rabatt på en städning
-              </p>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Dela glädjen med rena utrymmen! När du rekommenderar en vän får ni båda njuta av vår premium service med 15% rabatt på er nästa städning.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link
-                  to="/contact#contact-form"
-                  className="luxury-button text-lg px-8 py-4 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                >
-                  📞 Boka nu med rabatt
-                </Link>
-                <a
-                  href="sms:+46765523187?body=Hej! Jag vill ta del av er vän-rabatt på 15%"
-                  className="px-8 py-4 border-2 border-yellow-400 rounded-xl font-semibold text-lg hover:bg-yellow-50 transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                  💬 SMS: +46 76 552 31 87
-                </a>
-              </div>
-              <p className="text-sm text-gray-500 mt-6 italic">
-                * Erbjudandet gäller för både befintliga och nya kunder. Kontakta oss för mer information.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">

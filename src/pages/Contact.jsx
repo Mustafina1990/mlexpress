@@ -12,7 +12,8 @@ import {
   BuildingOfficeIcon,
   WrenchScrewdriverIcon,
   CalendarDaysIcon,
-  ClipboardDocumentCheckIcon
+  ClipboardDocumentCheckIcon,
+  XMarkIcon
 } from '@heroicons/react/24/outline';
 import FloralSideDecoration from '../components/FloralSideDecoration';
 
@@ -122,7 +123,7 @@ ${formData.message}<br><br>
             address: ''
           });
           setFormStatus('');
-        }, 3000);
+        }, 5000); // Keep popup visible for 5 seconds
       } else {
         throw new Error('Email sending failed');
       }
@@ -214,6 +215,65 @@ ${formData.message}
 
   return (
     <div className="min-h-screen pt-20">
+      {/* Success/Error Popup Modal */}
+      {formStatus === 'success' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 animate-fade-in">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full transform animate-scale-in">
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                <CheckCircleIcon className="h-10 w-10 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">✅ Meddelandet har skickats!</h3>
+              <p className="text-gray-600 mb-6">
+                Tack för din förfrågan! Vi återkommer till dig inom kort.
+              </p>
+              <button
+                onClick={() => setFormStatus('')}
+                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Stäng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {formStatus === 'sending' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-4">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Skickar din förfrågan...</h3>
+              <p className="text-gray-600">Vänligen vänta ett ögonblick</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {formStatus === 'error' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 animate-fade-in">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full transform animate-scale-in">
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-yellow-100 mb-4">
+                <ClockIcon className="h-10 w-10 text-yellow-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Automatisk e-post misslyckades</h3>
+              <p className="text-gray-600 mb-6">
+                Din e-postklient öppnas som backup. Skicka e-posten manuellt.
+              </p>
+              <button
+                onClick={() => setFormStatus('')}
+                className="bg-gradient-to-r from-yellow-600 to-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-yellow-700 hover:to-yellow-600 transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Stäng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Luxury Hero Section */}
       <section className="relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
@@ -339,34 +399,6 @@ ${formData.message}
             {/* Quote Form */}
             <div className="luxury-card p-10">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  
-                  {/* Status Messages - Inside Form at Top */}
-                  {formStatus === 'success' && (
-                    <div className="bg-green-50 border-2 border-green-400 p-6 rounded-lg flex items-center shadow-lg">
-                      <CheckCircleIcon className="h-8 w-8 text-green-600 mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="text-green-800 font-bold text-lg">✅ Meddelandet har skickats!</p>
-                        <p className="text-green-700">Tack för din förfrågan! Vi återkommer till dig inom kort.</p>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {formStatus === 'sending' && (
-                    <div className="bg-blue-50 border-2 border-blue-400 p-6 rounded-lg flex items-center shadow-lg">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3 flex-shrink-0"></div>
-                      <p className="text-blue-800 font-semibold text-lg">Skickar din förfrågan...</p>
-                    </div>
-                  )}
-
-                  {formStatus === 'error' && (
-                    <div className="bg-yellow-50 border-2 border-yellow-400 p-6 rounded-lg flex items-center shadow-lg">
-                      <ClockIcon className="h-8 w-8 text-yellow-600 mr-3 flex-shrink-0" />
-                      <div>
-                        <p className="text-yellow-800 font-bold text-lg">Automatisk e-post misslyckades</p>
-                        <p className="text-yellow-700">Din e-postklient öppnas som backup. Skicka e-posten manuellt.</p>
-                      </div>
-                    </div>
-                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
