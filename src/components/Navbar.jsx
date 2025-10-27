@@ -34,7 +34,7 @@ const Navbar = () => {
                 <span className="text-2xl font-bold font-['Playfair_Display'] luxury-text-gradient">
                   ML Expresstäd<span className="ml-1">AB</span>
                 </span>
-                <div className="navbar-tagline text-xs text-gray-600 -mt-1 font-medium tracking-wide">Professionell Städexcellens</div>
+                <div className="navbar-tagline text-xs text-gray-600 -mt-1 font-medium tracking-wide">Professionell städexcellens</div>
               </div>
             </Link>
           </div>

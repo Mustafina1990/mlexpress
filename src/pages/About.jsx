@@ -47,23 +47,22 @@ const About = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Luxury Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex items-center" style={{
-        background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
+      <section className="relative overflow-visible flex flex-col" style={{
+        background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)',
+        minHeight: 'calc(100vh - 5rem)'
       }}>
-        {/* Side Floral Decorations */}
-        <FloralSideDecoration />
-        
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
         
-        <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
-          <div className="text-center">
-                        <h1 className="hero-title text-4xl md:text-6xl font-bold mb-6 font-['Playfair_Display']">
+        {/* Text Content */}
+        <div className="relative flex-1 flex items-center justify-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center w-full">
+            <h1 className="hero-title text-4xl md:text-6xl font-bold mb-6 font-['Playfair_Display']">
               <span className="text-yellow-400">Om ML Expresstäd AB</span>
             </h1>
-            <p className="hero-subtitle text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="hero-subtitle text-xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
               Vi tror att renhet är mer än bara ordning i hemmet eller på kontoret. Det är ett friare andetag, 
               klarare tankar och en känsla av lugn. När omgivningen är välskött och fräsch finns det mer plats 
               i livet för glädje, inspiration och nya möjligheter.
@@ -71,8 +70,13 @@ const About = () => {
           </div>
         </div>
 
+        {/* Side Floral Decorations */}
+        <div className="relative flex-shrink-0" style={{ height: '250px' }}>
+          <FloralSideDecoration bottomPosition="100px" />
+        </div>
+
         {/* Decorative Wave Transition */}
-        <div className="absolute bottom-0 left-0 w-full">
+        <div className="relative w-full flex-shrink-0">
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-24">
             <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" className="fill-yellow-400"></path>
             <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" className="fill-blue-400"></path>

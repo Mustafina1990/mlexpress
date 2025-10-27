@@ -16,6 +16,8 @@ import {
   XMarkIcon
 } from '@heroicons/react/24/outline';
 import FloralSideDecoration from '../components/FloralSideDecoration';
+import LaurelDecoration from '../components/LaurelDecoration';
+import GoldenDivider from '../components/GoldenDivider';
 
 const Contact = () => {
   const location = useLocation();
@@ -370,6 +372,9 @@ ${formData.message}
               </div>
             ))}
           </div>
+          
+          {/* Decorative Laurel */}
+          <LaurelDecoration />
         </div>
       </section>
 
@@ -654,6 +659,9 @@ ${formData.message}
               SMS oss för att kolla: +46 76 552 31 87
             </a>
           </div>
+          
+          {/* Decorative Laurel */}
+          <LaurelDecoration />
         </div>
       </section>
 

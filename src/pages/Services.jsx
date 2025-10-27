@@ -352,7 +352,7 @@ const Services = () => {
         background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 30%, #1E3A8A 70%, #0F172A 100%)'
       }}>
         {/* Side Floral Decorations */}
-        <FloralSideDecoration bottomPosition="8rem" />
+        <FloralSideDecoration bottomPosition="15rem" />
         
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
