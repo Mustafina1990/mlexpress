@@ -124,7 +124,7 @@ const About = () => {
                 <p>
                   Vårt uppdrag är enkelt: att städa snabbt, noggrant och utan onödigt besvär för dig. 
                   Vi värdesätter förtroende och gör allt för att varje kund ska vara nöjd. 
-                  <span className="font-semibold gold-accent">Renlighet är vårt arbete, din komfort är vårt mål.</span>
+                  Renlighet är vårt arbete, din komfort är vårt mål.
                 </p>
                 <p>
                   Vår historia började med en liten dröm: att hjälpa människor leva i harmoni. 

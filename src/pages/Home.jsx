@@ -110,7 +110,7 @@ const Home = () => {
                 Ta med en vän och få 15% rabatt på din nästa städning
               </p>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Dela glädjen med rena utrymmen! När du tar med en vän som bokar vår service får du 15% rabatt på din nästa städning.
+                Dela glädjen med rena utrymmen! När du tar med en vän som bokar vår service får du en gång 15% rabatt på din nästa städning.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
@@ -127,7 +127,7 @@ const Home = () => {
                 </a>
               </div>
               <p className="text-sm text-gray-500 mt-6 italic">
-                * Du får rabatten när din vän bokar och genomför en städning. Kontakta oss för mer information.
+                * Du får rabatten endast en gång när din vän bokar och genomför en städning. Kontakta oss för mer information.
               </p>
             </div>
           </div>

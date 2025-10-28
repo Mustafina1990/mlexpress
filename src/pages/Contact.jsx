@@ -626,46 +626,9 @@ ${formData.message}
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Service Areas */}
-      <section id="service-area" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Områden vi täcker
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vi betjänar Stockholm och omkringliggande områden med stolthet
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
-            {serviceAreas.map((area, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-50 to-cyan-50 p-4 rounded-lg text-center">
-                <div className="text-blue-600 font-semibold">{area}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <p className="text-gray-600 mb-4">
-              Ser du inte ditt område i listan? Vi kan fortfarande hjälpa dig!
-            </p>
-            <a
-              href="sms:+46765523187"
-              className="text-blue-600 hover:text-blue-700 font-semibold"
-            >
-              SMS oss för att kolla: +46 76 552 31 87
-            </a>
-          </div>
-          
-          {/* Decorative Laurel */}
+         {/* Decorative Laurel */}
           <LaurelDecoration />
-        </div>
       </section>
-
-    
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
