@@ -187,7 +187,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-   <div className="flex gap-4 mt-4">
+   <div className="flex gap-4 mt-4 relative z-10">
   <a 
     href="https://www.facebook.com/profile.php?id=61584200515030"
     target="_blank"
