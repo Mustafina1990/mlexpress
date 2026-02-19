@@ -187,7 +187,25 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+   <div className="flex gap-4 mt-4 relative z-10">
+  <a 
+    href="https://www.facebook.com/profile.php?id=61584200515030"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-white"
+  >
+    Facebook
+  </a>
+
+  <a 
+    href="https://www.instagram.com/mlexpress.se/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-white"
+  >
+    Instagram
+  </a>
+</div> </footer>
   );
 };
 
