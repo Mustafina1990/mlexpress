@@ -12,6 +12,7 @@ import {
   HandRaisedIcon
 } from '@heroicons/react/24/outline';
 import LaurelDecoration from '../components/LaurelDecoration';
+import logo from '../assets/logo.png';
 import GoldenDivider from '../components/GoldenDivider';
 import FloralSideDecoration from '../components/FloralSideDecoration';
 
@@ -108,7 +109,7 @@ const About = () => {
               <div className="flex-shrink-0 relative top-2 left-4">
                 <div className="relative">
                   <img 
-                    src="/src/assets/logo.png" 
+                    src={logo} 
                     alt="ML Expresstäd AB" 
                     className="h-28 md:h-32 w-auto transition-all duration-300 hover:scale-105 shadow-2xl rounded-lg"
                   />
