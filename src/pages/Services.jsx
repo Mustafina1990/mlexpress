@@ -21,7 +21,6 @@ const Services = () => {
       title: 'Hemstädning',
       description: 'Regelbunden hemstädning för att hålla ditt hem fräscht och rent. Vi tar hand om alla vardagsliga städuppgifter så att du kan fokusera på det som är viktigt för dig.',
       icon: HomeIcon,
-      price: '350 kr/timme + moms',
       duration: '1-3 timmar',
       frequency: 'veckovis, varannan vecka, månadsvis',
       features: [
@@ -84,7 +83,6 @@ const Services = () => {
       title: 'Företagsstädning & Trapphusstädning',
       description: 'Professionell kontors- och kommersiell lokalstädning samt trapphusstädning för företag och bostadsrättsföreningar. Vi säkerställer en ren och professionell miljö.',
       icon: BuildingOfficeIcon,
-      price: '350 kr/timme + moms',
       duration: '2-4 timmar',
       frequency: 'dagligen, veckovis, anpassat schema',
       features: [
@@ -137,7 +135,6 @@ const Services = () => {
       title: 'Storstädning',
       description: 'Grundlig storstädning som täcker alla detaljer som ofta missas i vardagsstädning. Perfekt för säsongsrengöring eller när ditt hem behöver extra omsorg.',
       icon: WrenchScrewdriverIcon,
-      price: '350 kr/timme + moms',
       duration: '4-8 timmar',
       frequency: 'säsongsvis, efter behov',
       features: [
@@ -198,7 +195,6 @@ const Services = () => {
       title: 'Byggstädning',
       description: 'Specialiserad städning efter renovering eller byggnadsarbete. Vi tar hand om byggdamm och återställer ditt hem till perfekt skick.',
       icon: ClipboardDocumentCheckIcon,
-      price: '350 kr/timme + moms',
       duration: '4-6 timmar',
       frequency: 'efter behov, renovering',
       features: [
@@ -263,7 +259,6 @@ const Services = () => {
       title: 'Flyttstädning',
       description: 'Komplett städning för inflyttning eller utflyttning. Vi säkerställer att bostaden lämnas i perfekt skick.',
       icon: CalendarDaysIcon,
-      price: '400 kr/timme + moms + städprodukter',
       duration: '6-8 timmar',
       frequency: 'inflyttning, utflyttning',
       features: [
@@ -415,20 +410,16 @@ const Services = () => {
                     </div>
                     <h3 className="text-4xl font-bold font-['Playfair_Display'] text-transparent bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text mb-6">{service.title}</h3>
                     <p className="text-gray-600 mb-8 leading-relaxed text-lg font-light">{service.description}</p>
-                    
+
                     {service.title === 'Flyttstädning' && (
                       <div className="bg-yellow-50 border-2 border-yellow-400 p-4 rounded-lg mb-6">
                         <p className="text-sm text-gray-700">
-                          <strong className="text-yellow-700">💡 Observera:</strong> Kostnaden för städprodukter tillkommer och faktureras separat baserat på användning.
+                          <strong className="text-yellow-700">💡 Observera:</strong> Städprodukter tillkommer och faktureras separat baserat på användning.
                         </p>
                       </div>
                     )}
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                      <div className="luxury-card-small">
-                        <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.price}</div>
-                        <div className="text-sm text-gray-500 font-medium">Baspris</div>
-                      </div>
+
+                    <div className="mb-8">
                       <div className="luxury-card-small">
                         <div className="text-xl font-bold text-transparent bg-gradient-to-r from-yellow-600 to-yellow-500 bg-clip-text">{service.frequency}</div>
                         <div className="text-sm text-gray-500 font-medium">Frekvens</div>
@@ -462,7 +453,7 @@ const Services = () => {
                         <div key={idx} className="flex items-center py-2 border-b border-gray-100">
                           <CheckCircleIcon className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
                           <span className="text-gray-700">{addon.name}</span>
-                          <span className="text-sm text-gray-500 ml-auto">Inkluderat i timpris</span>
+
                         </div>
                       ))}
                     </div>
@@ -509,7 +500,7 @@ const Services = () => {
           </h2>
           <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
             Kontakta oss idag för en kostnadsfri konsultation. Vi hjälper dig att välja 
-            den perfekta städplanen för dina behov och budget.
+            den perfekta städplanen för dina behov.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
