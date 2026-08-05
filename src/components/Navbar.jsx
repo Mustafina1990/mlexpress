@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: 'Hem', href: '/' },
     { name: 'Tjänster', href: '/services' },
     { name: 'Om oss', href: '/about' },
+    { name: 'Presentkort', href: '/presentkort' },
     { name: 'Kontakt', href: '/contact' },
   ];
 

@@ -190,9 +190,15 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* Floral decorations - Hidden on screens smaller than 1280px */
+/* Floral decorations - Hidden below 1280px */
 .floral-decoration-show {
   display: none;
+}
+
+.floral-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Navbar fixes for 1048px breakpoint */
@@ -242,6 +248,25 @@ input:focus, textarea:focus, select:focus {
 @media (min-width: 1280px) {
   .floral-decoration-show {
     display: block;
+    width: 16rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .floral-decoration-show {
+    width: 20rem;
+  }
+}
+
+@media (min-width: 1680px) {
+  .floral-decoration-show {
+    width: 24rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .floral-decoration-show {
+    width: 28rem;
   }
 }
 

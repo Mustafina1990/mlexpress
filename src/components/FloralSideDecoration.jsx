@@ -1,28 +1,31 @@
-const FloralSideDecoration = ({ bottomPosition = '14rem' }) => {
+const FloralSideDecoration = ({ bottomPosition = '10rem' }) => {
   return (
     <>
-      {/* Left side decoration - Hidden on screens smaller than 1800px */}
-      <div 
-        className="absolute left-0 floral-decoration-show" 
-        style={{ width: '30rem', bottom: bottomPosition }}
+      {/* Left side decoration */}
+      <div
+        className="absolute left-0 floral-decoration-show"
+        style={{ bottom: bottomPosition, pointerEvents: 'none' }}
+        aria-hidden="true"
       >
-        <img 
-          src="/decorations/floral-swirl.svg" 
-          alt="Decorative floral element" 
-          className="w-full h-auto"
-          style={{ transform: 'scaleX(-1)' }}
+        <img
+          src="/decorations/floral-swirl.svg"
+          alt=""
+          className="floral-img"
+          style={{ transform: 'scaleX(-1)', opacity: 0.65 }}
         />
       </div>
 
-      {/* Right side decoration - Hidden on screens smaller than 1800px */}
-      <div 
-        className="absolute right-0 floral-decoration-show" 
-        style={{ width: '30rem', bottom: bottomPosition }}
+      {/* Right side decoration */}
+      <div
+        className="absolute right-0 floral-decoration-show"
+        style={{ bottom: bottomPosition, pointerEvents: 'none' }}
+        aria-hidden="true"
       >
-        <img 
-          src="/decorations/floral-swirl.svg" 
-          alt="Decorative floral element" 
-          className="w-full h-auto"
+        <img
+          src="/decorations/floral-swirl.svg"
+          alt=""
+          className="floral-img"
+          style={{ opacity: 0.65 }}
         />
       </div>
     </>

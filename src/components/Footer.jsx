@@ -12,6 +12,7 @@ const Footer = () => {
     { name: 'Hem', path: '/' },
     { name: 'Tjänster', path: '/services' },
     { name: 'Om Oss', path: '/about' },
+    { name: 'Presentkort', path: '/presentkort' },
     { name: 'Kontakt', path: '/contact' }
   ];
 
