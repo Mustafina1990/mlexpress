@@ -12,6 +12,7 @@ import {
 } from '@heroicons/react/24/outline';
 import FloralSideDecoration from '../components/FloralSideDecoration';
 import GoldenDivider from '../components/GoldenDivider';
+import logoUrl from '../assets/logo.png';
 
 const PRESET_HOURS = [2, 3, 4, 5, 8, 10];
 
@@ -22,6 +23,35 @@ const CERT_TPL     = 'template_zuvt0sa';  // Gift Card Certificate template
 const PUBLIC_KEY   = 'RZkbfClXLJeqyJY_Q';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
+// replaceWhite: [r, g, b] to swap near-white pixels (logo bg → card cream)
+function imageToBase64(url, replaceWhite = null) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      if (replaceWhite) {
+        const [r, g, b] = replaceWhite;
+        const id = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const d = id.data;
+        for (let i = 0; i < d.length; i += 4) {
+          if (d[i] > 252 && d[i + 1] > 252 && d[i + 2] > 252) {
+            d[i] = r; d[i + 1] = g; d[i + 2] = b;
+          }
+        }
+        ctx.putImageData(id, 0, 0);
+      }
+      resolve(canvas.toDataURL('image/png'));
+    };
+    img.onerror = () => resolve(null);
+    img.src = url;
+  });
+}
+
 function makeCertNumber() {
   const ts   = Date.now().toString(36).toUpperCase();
   const rand = Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -34,134 +64,153 @@ function makeValidUntil() {
   return d.toLocaleDateString('sv-SE', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil }) {
+function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil, logoDataUri }) {
   const recipient = recipientName || 'Mottagaren';
-  const msgBlock = personalMessage ? `
-    <tr>
-      <td style="padding:0 48px 32px 48px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-          <tr>
-            <td style="background-color:#EFF6FF;border-left:4px solid #3B82F6;border-radius:0 6px 6px 0;padding:18px 22px;">
-              <p style="color:#6B7280;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px 0;font-family:Arial,sans-serif;">Personligt meddelande</p>
-              <p style="color:#1E3A8A;font-size:15px;line-height:1.8;margin:0;font-style:italic;">&ldquo;${personalMessage}&rdquo;</p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>` : '';
+
+  // ── SVG corner ornaments and divider (base64 data URIs) ────────────────────
+  const GOLD  = '#C09B3A';
+  const CREAM = '#F5EDD8';
+
+  // Corner ornament — TL orientation; other corners use SVG transforms
+  const corner = (transform) => {
+    const inner = [
+      `<path d="M5,5 C5,33 22,50 40,45 C58,40 62,23 52,15 C42,7 28,13 28,23 C28,33 40,36 46,30" stroke="${GOLD}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+      `<path d="M46,30 C49,27 50,22 47,18" stroke="${GOLD}" stroke-width="1.3" fill="none" stroke-linecap="round"/>`,
+      `<path d="M5,5 Q0,14 1,23 Q9,18 11,10 Q8,6 5,5Z" fill="${GOLD}" opacity="0.85"/>`,
+      `<path d="M5,5 Q14,0 23,1 Q18,9 10,11 Q6,8 5,5Z" fill="${GOLD}" opacity="0.85"/>`,
+      `<circle cx="5" cy="5" r="5" fill="${GOLD}"/>`,
+      `<circle cx="5" cy="5" r="2" fill="${CREAM}"/>`,
+    ].join('');
+    const g = transform ? `<g transform="${transform}">${inner}</g>` : inner;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">${g}</svg>`;
+    return 'data:image/svg+xml;base64,' + btoa(svg);
+  };
+
+  const TL = corner('');
+  const TR = corner('translate(80,0) scale(-1,1)');
+  const BL = corner('translate(0,80) scale(1,-1)');
+  const BR = corner('rotate(180,40,40)');
+
+  // Decorative wave divider
+  const divSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="30" viewBox="0 0 400 30"><line x1="0" y1="15" x2="155" y2="15" stroke="${GOLD}" stroke-width="1.2"/><line x1="245" y1="15" x2="400" y2="15" stroke="${GOLD}" stroke-width="1.2"/><path d="M155,15 C163,7 173,7 181,15 C189,23 199,23 207,15 C215,7 225,7 245,15" stroke="${GOLD}" stroke-width="1.6" fill="none"/><circle cx="200" cy="4" r="4" fill="${GOLD}"/><circle cx="38" cy="15" r="3" fill="${GOLD}"/><circle cx="362" cy="15" r="3" fill="${GOLD}"/></svg>`;
+  const DIV = 'data:image/svg+xml;base64,' + btoa(divSVG);
+
+  // 1 px gold rule
+  const rule = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="height:1px;background-color:${GOLD};font-size:0;">&nbsp;</td></tr></table>`;
+
+  // Shared top corner row (logo between TL / TR)
+  const logoImg = logoDataUri
+    ? `<img src="${logoDataUri}" width="36" height="36" style="display:inline-block;vertical-align:middle;margin-right:9px;border-radius:4px;" alt=""/>`
+    : '';
+
+  const topRow = `
+  <tr>
+    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:top;">
+      <img src="${TL}" width="80" height="80" style="display:block;" alt=""/>
+    </td>
+    <td style="vertical-align:middle;text-align:center;padding:0 20px;">
+      <p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:13px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d AB</p>
+    </td>
+    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:top;text-align:right;">
+      <img src="${TR}" width="80" height="80" style="display:block;margin-left:auto;" alt=""/>
+    </td>
+  </tr>`;
+
+  // Bottom corner row factory (optional center content, e.g. cert number)
+  const bottomRow = (mid = '') => `
+  <tr>
+    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:bottom;">
+      <img src="${BL}" width="80" height="80" style="display:block;" alt=""/>
+    </td>
+    <td style="vertical-align:middle;text-align:center;padding:0 16px;">${mid}</td>
+    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:bottom;text-align:right;">
+      <img src="${BR}" width="80" height="80" style="display:block;margin-left:auto;" alt=""/>
+    </td>
+  </tr>`;
+
+  // Content row with 80 px side gutters that align with the corner images
+  const row = (html, pad = '0 50px 24px') => `
+  <tr>
+    <td style="width:80px;"></td>
+    <td style="padding:${pad};">${html}</td>
+    <td style="width:80px;"></td>
+  </tr>`;
+
+  // Labelled field row used on the back card (FRÅN / TILL / GÅR UT)
+  const field = (label, val) => row(
+    `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0 0 5px 0;">${label}</p>` +
+    `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:20px;color:#2C1E0F;margin:0 0 10px 0;">${val}</p>` +
+    rule,
+    '16px 50px 0'
+  );
+
+  // Outer card table wrapper
+  const card = (rows) =>
+    `<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background-color:${CREAM};border:2.5px solid ${GOLD};border-collapse:collapse;">${rows}</table>`;
+
+  // ── FRONT card ─────────────────────────────────────────────────────────────
+  const frontCard = card(
+    topRow +
+    row(
+      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:50px;font-weight:700;color:#1B2A54;letter-spacing:9px;text-transform:uppercase;margin:0 0 10px 0;line-height:1.1;text-align:center;">PRESENTKORT</h1>` +
+      `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:22px;color:#B8943F;font-style:italic;margin:0;line-height:1.5;text-align:center;">p&aring; ${hours} timmars professionell st&auml;dning</p>`,
+      '8px 30px 16px'
+    ) +
+    row(`<img src="${DIV}" width="400" height="30" style="display:block;margin:0 auto;" alt=""/>`, '0 0 12px') +
+    row(
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:#1B2A54;letter-spacing:4px;text-transform:uppercase;margin:0 0 8px 0;text-align:center;">Vi tar hand om st&auml;dningen.</p>` +
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:#1B2A54;letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">Du tar hand om dig sj&auml;lv.</p>`,
+      '0 40px 20px'
+    ) +
+    bottomRow()
+  );
+
+  // ── BACK card ──────────────────────────────────────────────────────────────
+  const msgContent = personalMessage
+    ? `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:17px;color:#3A2E22;font-style:italic;line-height:1.8;margin:0;">&ldquo;${personalMessage}&rdquo;</p>`
+    : `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:17px;color:#B8943F;font-style:italic;line-height:1.8;margin:0;text-align:center;">&ldquo;Grattis! Du f&ouml;rtj&auml;nar ett skinande rent hem &ndash; nu kan du koppla av medan vi tar hand om resten.&rdquo;</p>`;
+
+  const backCard = card(
+    topRow +
+    field('Fr&aring;n', senderName) +
+    field('Till', recipient) +
+    field('G&aring;r ut', validUntil) +
+    row(
+      `<p style="font-size:22px;color:${GOLD};margin:0 0 8px 0;text-align:center;">&#9829;</p>` +
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0 0 4px 0;text-align:center;">Personliga h&auml;lsningen</p>` +
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0;text-align:center;">fr&aring;n avs&auml;ndaren:</p>`,
+      '22px 40px 14px'
+    ) +
+    row(msgContent, '0 50px 12px') +
+    bottomRow(`<p style="font-family:monospace;font-size:11px;color:#9C8A6A;letter-spacing:2px;margin:0;">${certNumber}</p>`)
+  );
 
   return `<!DOCTYPE html>
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Presentkort – ML Expresstäd AB</title>
+  <title>Presentkort &ndash; ML Expresst&auml;d AB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 </head>
-<body style="margin:0;padding:0;background-color:#FEF9EE;font-family:Georgia,'Times New Roman',serif;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FEF9EE;padding:40px 20px;">
+<body style="margin:0;padding:0;background-color:#E8E1D1;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#E8E1D1;padding:40px 20px;">
   <tr><td align="center">
 
-    <table role="presentation" width="580" cellpadding="0" cellspacing="0" style="max-width:580px;background-color:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #E5E7EB;">
+    ${frontCard}
 
-      <!-- Top gold bar -->
-      <tr><td style="background-color:#F59E0B;height:6px;font-size:0;line-height:0;">&nbsp;</td></tr>
-
-      <!-- Header -->
-      <tr>
-        <td style="background-color:#1E3A8A;padding:44px 48px 36px 48px;text-align:center;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-              <td style="border:1px solid rgba(245,158,11,0.55);border-radius:10px;padding:26px 20px;">
-                <p style="color:#FCD34D;font-size:11px;letter-spacing:5px;margin:0 0 10px 0;text-transform:uppercase;font-family:Arial,sans-serif;">Professionell städexcellens</p>
-                <h1 style="color:#FFFFFF;font-size:34px;margin:0 0 8px 0;font-weight:normal;letter-spacing:1px;font-family:Georgia,serif;">ML Expresstäd AB</h1>
-                <p style="color:#93C5FD;font-size:12px;letter-spacing:5px;margin:0;text-transform:uppercase;font-family:Arial,sans-serif;">Presentkort &bull; Städtjänst</p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-      <!-- Hours -->
-      <tr>
-        <td style="background-color:#FEFCE8;padding:44px 48px 28px 48px;text-align:center;">
-          <table role="presentation" cellpadding="0" cellspacing="0" align="center">
-            <tr>
-              <td style="background-color:#1E40AF;border-radius:50%;width:130px;height:130px;text-align:center;vertical-align:middle;">
-                <span style="color:#FFFFFF;font-size:50px;font-weight:bold;font-family:Georgia,serif;display:block;line-height:130px;">${hours}</span>
-              </td>
-            </tr>
-          </table>
-          <p style="color:#374151;font-size:12px;letter-spacing:5px;text-transform:uppercase;margin:16px 0 0 0;font-family:Arial,sans-serif;">Timmar städning</p>
-        </td>
-      </tr>
-
-      <!-- Gold divider -->
-      <tr><td style="padding:0 48px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="height:1px;background-color:#F59E0B;font-size:0;">&nbsp;</td></tr></table></td></tr>
-
-      <!-- To / From -->
-      <tr>
-        <td style="background-color:#FEFCE8;padding:32px 48px;text-align:center;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="50%" style="text-align:center;padding-right:20px;border-right:1px solid #E5E7EB;">
-                <p style="color:#9CA3AF;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px 0;font-family:Arial,sans-serif;">Till</p>
-                <p style="color:#111827;font-size:20px;margin:0;font-family:Georgia,serif;">${recipient}</p>
-              </td>
-              <td width="50%" style="text-align:center;padding-left:20px;">
-                <p style="color:#9CA3AF;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px 0;font-family:Arial,sans-serif;">Från</p>
-                <p style="color:#111827;font-size:20px;margin:0;font-family:Georgia,serif;">${senderName}</p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-      <!-- Personal message (conditional) -->
-      ${msgBlock}
-
-      <!-- Gold divider -->
-      <tr><td style="padding:0 48px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="height:1px;background-color:#F59E0B;font-size:0;">&nbsp;</td></tr></table></td></tr>
-
-      <!-- Cert number & validity -->
-      <tr>
-        <td style="padding:24px 48px;text-align:center;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="50%" style="text-align:center;padding-right:16px;border-right:1px solid #E5E7EB;">
-                <p style="color:#9CA3AF;font-size:10px;letter-spacing:3px;text-transform:uppercase;margin:0 0 6px 0;font-family:Arial,sans-serif;">Certifikatnummer</p>
-                <p style="color:#1E3A8A;font-size:13px;font-family:monospace;margin:0;font-weight:bold;letter-spacing:1px;">${certNumber}</p>
-              </td>
-              <td width="50%" style="text-align:center;padding-left:16px;">
-                <p style="color:#9CA3AF;font-size:10px;letter-spacing:3px;text-transform:uppercase;margin:0 0 6px 0;font-family:Arial,sans-serif;">Giltigt till</p>
-                <p style="color:#374151;font-size:13px;font-family:Arial,sans-serif;margin:0;font-weight:bold;">${validUntil}</p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-      <!-- Redemption instructions -->
-      <tr>
-        <td style="background-color:#F8FAFC;padding:22px 48px;text-align:center;">
-          <p style="color:#6B7280;font-size:12px;line-height:1.9;margin:0;font-family:Arial,sans-serif;">
-            För att lösa in presentkortet, kontakta oss och uppge ditt certifikatnummer.<br>
-            <strong style="color:#1E40AF;">contact@mlexpress.se</strong>&nbsp;&nbsp;&bull;&nbsp;&nbsp;<strong style="color:#1E40AF;">+46 76 552 31 87</strong>
-          </p>
-        </td>
-      </tr>
-
-      <!-- Bottom gold bar -->
-      <tr><td style="background-color:#F59E0B;height:6px;font-size:0;line-height:0;">&nbsp;</td></tr>
-
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
+      <tr><td style="height:28px;"></td></tr>
     </table>
 
-    <!-- Footer -->
-    <table role="presentation" width="580" cellpadding="0" cellspacing="0" style="max-width:580px;margin-top:20px;">
+    ${backCard}
+
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;margin-top:18px;">
       <tr>
         <td style="text-align:center;padding:0 20px;">
-          <p style="color:#9CA3AF;font-size:11px;line-height:1.8;margin:0;font-family:Arial,sans-serif;">
-            &copy; ML Expresstäd AB &bull; Stockholm &bull; mlexpress.se<br>
-            Presentkortet är personligt och kan ej bytas mot kontanter.
+          <p style="color:#8C7A5A;font-size:11px;line-height:1.8;margin:0;font-family:Arial,Helvetica,sans-serif;">
+            &copy; ML Expresst&auml;d AB &bull; Stockholm &bull; mlexpress.se<br>
+            Presentkortet &auml;r personligt och kan ej bytas mot kontanter.
           </p>
         </td>
       </tr>
@@ -235,6 +284,7 @@ ${formData.message || '(inget meddelande)'}<br><br>
       //    To email  →  {{to_email}}
       //    Subject   →  {{subject}}
       //    Body HTML →  {{message_html}}   (HTML mode ON)
+      const logoDataUri = await imageToBase64(logoUrl, [245, 237, 216]); // #F5EDD8 = card cream
       await emailjs.send(SERVICE_ID, CERT_TPL, {
         email:       formData.email,
         subject:     `Ditt presentkort från ML Expresstäd AB – ${certNumber}`,
@@ -244,7 +294,8 @@ ${formData.message || '(inget meddelande)'}<br><br>
           recipientName:   formData.recipientName,
           personalMessage: formData.message,
           certNumber,
-          validUntil
+          validUntil,
+          logoDataUri
         })
       }, PUBLIC_KEY);
 
