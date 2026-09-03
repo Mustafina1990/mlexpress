@@ -14,6 +14,12 @@ import FloralSideDecoration from '../components/FloralSideDecoration';
 import GoldenDivider from '../components/GoldenDivider';
 import logoUrl from '../assets/logo.png';
 
+// Corner ornament PNGs are in public/ and served at root URL
+const cornerTLUrl = '/decorations/corner-TL.png';
+const cornerTRUrl = '/decorations/corner-TR.png';
+const cornerBLUrl = '/decorations/corner-BL.png';
+const cornerBRUrl = '/decorations/corner-BR.png';
+
 const PRESET_HOURS = [2, 3, 4, 5, 8, 10];
 
 // ── EmailJS IDs ─────────────────────────────────────────────────────────────
@@ -64,124 +70,112 @@ function makeValidUntil() {
   return d.toLocaleDateString('sv-SE', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil, logoDataUri }) {
+function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil, logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR }) {
   const recipient = recipientName || 'Mottagaren';
-
-  // ── SVG corner ornaments and divider (base64 data URIs) ────────────────────
   const GOLD  = '#C09B3A';
-  const CREAM = '#F5EDD8';
+  const CREAM = '#F8F5F1';
+  const NAVY  = '#1B2A54';
 
-  // Corner ornament — TL orientation; other corners use SVG transforms
-  const corner = (transform) => {
-    const inner = [
-      `<path d="M5,5 C5,33 22,50 40,45 C58,40 62,23 52,15 C42,7 28,13 28,23 C28,33 40,36 46,30" stroke="${GOLD}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
-      `<path d="M46,30 C49,27 50,22 47,18" stroke="${GOLD}" stroke-width="1.3" fill="none" stroke-linecap="round"/>`,
-      `<path d="M5,5 Q0,14 1,23 Q9,18 11,10 Q8,6 5,5Z" fill="${GOLD}" opacity="0.85"/>`,
-      `<path d="M5,5 Q14,0 23,1 Q18,9 10,11 Q6,8 5,5Z" fill="${GOLD}" opacity="0.85"/>`,
-      `<circle cx="5" cy="5" r="5" fill="${GOLD}"/>`,
-      `<circle cx="5" cy="5" r="2" fill="${CREAM}"/>`,
-    ].join('');
-    const g = transform ? `<g transform="${transform}">${inner}</g>` : inner;
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">${g}</svg>`;
-    return 'data:image/svg+xml;base64,' + btoa(svg);
-  };
+  // Use real baroque corner ornament images (gold-on-transparent PNGs)
+  const TL = cornerTL;
+  const TR = cornerTR;
+  const BL = cornerBL;
+  const BR = cornerBR;
 
-  const TL = corner('');
-  const TR = corner('translate(80,0) scale(-1,1)');
-  const BL = corner('translate(0,80) scale(1,-1)');
-  const BR = corner('rotate(180,40,40)');
-
-  // Decorative wave divider
-  const divSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="30" viewBox="0 0 400 30"><line x1="0" y1="15" x2="155" y2="15" stroke="${GOLD}" stroke-width="1.2"/><line x1="245" y1="15" x2="400" y2="15" stroke="${GOLD}" stroke-width="1.2"/><path d="M155,15 C163,7 173,7 181,15 C189,23 199,23 207,15 C215,7 225,7 245,15" stroke="${GOLD}" stroke-width="1.6" fill="none"/><circle cx="200" cy="4" r="4" fill="${GOLD}"/><circle cx="38" cy="15" r="3" fill="${GOLD}"/><circle cx="362" cy="15" r="3" fill="${GOLD}"/></svg>`;
+  // Wave divider matching the PDF centre ornament
+  const divSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="34" viewBox="0 0 420 34"><line x1="0" y1="17" x2="160" y2="17" stroke="${GOLD}" stroke-width="1.3"/><line x1="260" y1="17" x2="420" y2="17" stroke="${GOLD}" stroke-width="1.3"/><path d="M160,17 C170,7 182,7 192,17 C202,27 214,27 224,17 C234,7 246,7 260,17" stroke="${GOLD}" stroke-width="1.8" fill="none"/><circle cx="210" cy="5" r="5" fill="${GOLD}"/><circle cx="40" cy="17" r="3.5" fill="${GOLD}"/><circle cx="380" cy="17" r="3.5" fill="${GOLD}"/></svg>`;
   const DIV = 'data:image/svg+xml;base64,' + btoa(divSVG);
 
-  // 1 px gold rule
   const rule = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="height:1px;background-color:${GOLD};font-size:0;">&nbsp;</td></tr></table>`;
 
-  // Shared top corner row (logo between TL / TR)
   const logoImg = logoDataUri
-    ? `<img src="${logoDataUri}" width="36" height="36" style="display:inline-block;vertical-align:middle;margin-right:9px;border-radius:4px;" alt=""/>`
+    ? `<img src="${logoDataUri}" width="55" height="55" style="display:inline-block;vertical-align:middle;margin-right:12px;" alt=""/>`
     : '';
 
-  const topRow = `
+  // ── Shared corner rows ──────────────────────────────────────────────────────
+  const topRow = (center) => `
   <tr>
-    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:top;">
-      <img src="${TL}" width="80" height="80" style="display:block;" alt=""/>
+    <td width="115" style="width:115px;height:115px;padding:0;vertical-align:top;">
+      <img src="${TL}" width="115" height="115" style="display:block;" alt=""/>
     </td>
-    <td style="vertical-align:middle;text-align:center;padding:0 20px;">
-      <p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:13px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d AB</p>
-    </td>
-    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:top;text-align:right;">
-      <img src="${TR}" width="80" height="80" style="display:block;margin-left:auto;" alt=""/>
+    <td style="vertical-align:middle;text-align:center;padding:0 14px;">${center}</td>
+    <td width="115" style="width:115px;height:115px;padding:0;vertical-align:top;text-align:right;">
+      <img src="${TR}" width="115" height="115" style="display:block;margin-left:auto;" alt=""/>
     </td>
   </tr>`;
 
-  // Bottom corner row factory (optional center content, e.g. cert number)
-  const bottomRow = (mid = '') => `
+  const bottomRow = (center = '') => `
   <tr>
-    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:bottom;">
-      <img src="${BL}" width="80" height="80" style="display:block;" alt=""/>
+    <td width="115" style="width:115px;height:115px;padding:0;vertical-align:bottom;">
+      <img src="${BL}" width="115" height="115" style="display:block;" alt=""/>
     </td>
-    <td style="vertical-align:middle;text-align:center;padding:0 16px;">${mid}</td>
-    <td width="80" style="width:80px;height:80px;padding:0;vertical-align:bottom;text-align:right;">
-      <img src="${BR}" width="80" height="80" style="display:block;margin-left:auto;" alt=""/>
+    <td style="vertical-align:middle;text-align:center;padding:0 14px;">${center}</td>
+    <td width="115" style="width:115px;height:115px;padding:0;vertical-align:bottom;text-align:right;">
+      <img src="${BR}" width="115" height="115" style="display:block;margin-left:auto;" alt=""/>
     </td>
   </tr>`;
 
-  // Content row with 80 px side gutters that align with the corner images
-  const row = (html, pad = '0 50px 24px') => `
+  // Content row — 115px gutters align with corner images
+  const row = (html, pad = '0 36px 22px') => `
   <tr>
-    <td style="width:80px;"></td>
+    <td style="width:115px;"></td>
     <td style="padding:${pad};">${html}</td>
-    <td style="width:80px;"></td>
+    <td style="width:115px;"></td>
   </tr>`;
 
-  // Labelled field row used on the back card (FRÅN / TILL / GÅR UT)
-  const field = (label, val) => row(
-    `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0 0 5px 0;">${label}</p>` +
-    `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:20px;color:#2C1E0F;margin:0 0 10px 0;">${val}</p>` +
-    rule,
-    '16px 50px 0'
-  );
-
-  // Outer card table wrapper
   const card = (rows) =>
-    `<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background-color:${CREAM};border:2.5px solid ${GOLD};border-collapse:collapse;">${rows}</table>`;
+    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="max-width:660px;background-color:${CREAM};border:2px solid ${GOLD};border-collapse:collapse;">${rows}</table>`;
 
   // ── FRONT card ─────────────────────────────────────────────────────────────
+  const frontHeader = `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:15px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d <span style="color:#C8A248;">AB</span></p>`;
+
   const frontCard = card(
-    topRow +
+    topRow(frontHeader) +
     row(
-      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:50px;font-weight:700;color:#1B2A54;letter-spacing:9px;text-transform:uppercase;margin:0 0 10px 0;line-height:1.1;text-align:center;">PRESENTKORT</h1>` +
-      `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:22px;color:#B8943F;font-style:italic;margin:0;line-height:1.5;text-align:center;">p&aring; ${hours} timmars professionell st&auml;dning</p>`,
-      '8px 30px 16px'
+      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:44px;font-weight:700;color:${NAVY};letter-spacing:6px;text-transform:uppercase;margin:0 0 12px 0;line-height:1.1;text-align:center;">PRESENTKORT</h1>` +
+      `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:22px;color:${GOLD};font-style:italic;margin:0;line-height:1.5;text-align:center;">p&aring; ${hours} timmars professionell st&auml;dning</p>`,
+      '8px 24px 20px'
     ) +
-    row(`<img src="${DIV}" width="400" height="30" style="display:block;margin:0 auto;" alt=""/>`, '0 0 12px') +
+    row(`<img src="${DIV}" width="420" height="34" style="display:block;margin:0 auto;" alt=""/>`, '0 0 14px') +
     row(
-      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:#1B2A54;letter-spacing:4px;text-transform:uppercase;margin:0 0 8px 0;text-align:center;">Vi tar hand om st&auml;dningen.</p>` +
-      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:#1B2A54;letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">Du tar hand om dig sj&auml;lv.</p>`,
-      '0 40px 20px'
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:${NAVY};letter-spacing:4px;text-transform:uppercase;margin:0 0 8px 0;text-align:center;">Vi tar hand om st&auml;dningen.</p>` +
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:${NAVY};letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">Du tar hand om dig sj&auml;lv.</p>`,
+      '0 36px 20px'
     ) +
     bottomRow()
   );
 
   // ── BACK card ──────────────────────────────────────────────────────────────
-  const msgContent = personalMessage
-    ? `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:17px;color:#3A2E22;font-style:italic;line-height:1.8;margin:0;">&ldquo;${personalMessage}&rdquo;</p>`
-    : `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:17px;color:#B8943F;font-style:italic;line-height:1.8;margin:0;text-align:center;">&ldquo;Grattis! Du f&ouml;rtj&auml;nar ett skinande rent hem &ndash; nu kan du koppla av medan vi tar hand om resten.&rdquo;</p>`;
+  const fieldRow = (label, val) => row(
+    `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0 0 6px 0;">${label}</p>` +
+    `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:21px;color:#2C1E0F;margin:0 0 11px 0;">${val}</p>` +
+    rule,
+    '14px 44px 0'
+  );
+
+  // Message area — outlined gold rectangle matching the PDF's handwriting space
+  const msgBox = personalMessage
+    ? `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:18px;color:#3A2E22;font-style:italic;line-height:1.9;margin:0;">&ldquo;${personalMessage}&rdquo;</p>`
+    : `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:18px;color:${GOLD};font-style:italic;line-height:1.9;margin:0;text-align:center;">&ldquo;Grattis! Du f&ouml;rtj&auml;nar ett skinande rent hem &ndash; nu kan du koppla av medan vi tar hand om resten.&rdquo;</p>`;
+
+  const msgBoxHtml =
+    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${GOLD};background-color:${CREAM};">` +
+    `<tr><td style="padding:18px 20px;">${msgBox}</td></tr></table>`;
+
+  const backHeader = `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:15px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d AB</p>`;
 
   const backCard = card(
-    topRow +
-    field('Fr&aring;n', senderName) +
-    field('Till', recipient) +
-    field('G&aring;r ut', validUntil) +
+    topRow(backHeader) +
+    fieldRow('Fr&aring;n', senderName) +
+    fieldRow('Till', recipient) +
+    fieldRow('G&aring;r ut', validUntil) +
     row(
-      `<p style="font-size:22px;color:${GOLD};margin:0 0 8px 0;text-align:center;">&#9829;</p>` +
-      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0 0 4px 0;text-align:center;">Personliga h&auml;lsningen</p>` +
-      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:10px;font-weight:700;color:#1B2A54;letter-spacing:3px;text-transform:uppercase;margin:0;text-align:center;">fr&aring;n avs&auml;ndaren:</p>`,
-      '22px 40px 14px'
+      `<p style="font-size:24px;color:${GOLD};margin:0 0 8px 0;text-align:center;">&#9829;</p>` +
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0 0 4px 0;text-align:center;">Personliga h&auml;lsningen</p>` +
+      `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">fr&aring;n avs&auml;ndaren:</p>`,
+      '20px 36px 12px'
     ) +
-    row(msgContent, '0 50px 12px') +
+    row(msgBoxHtml, '0 44px 14px') +
     bottomRow(`<p style="font-family:monospace;font-size:11px;color:#9C8A6A;letter-spacing:2px;margin:0;">${certNumber}</p>`)
   );
 
@@ -193,19 +187,19 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   <title>Presentkort &ndash; ML Expresst&auml;d AB</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 </head>
-<body style="margin:0;padding:0;background-color:#E8E1D1;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#E8E1D1;padding:40px 20px;">
+<body style="margin:0;padding:0;background-color:#F8F5F1;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F8F5F1;padding:36px 16px;">
   <tr><td align="center">
 
     ${frontCard}
 
-    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;">
+    <table role="presentation" width="660" cellpadding="0" cellspacing="0" style="max-width:660px;">
       <tr><td style="height:28px;"></td></tr>
     </table>
 
     ${backCard}
 
-    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;margin-top:18px;">
+    <table role="presentation" width="660" cellpadding="0" cellspacing="0" style="max-width:660px;margin-top:16px;">
       <tr>
         <td style="text-align:center;padding:0 20px;">
           <p style="color:#8C7A5A;font-size:11px;line-height:1.8;margin:0;font-family:Arial,Helvetica,sans-serif;">
@@ -284,7 +278,13 @@ ${formData.message || '(inget meddelande)'}<br><br>
       //    To email  →  {{to_email}}
       //    Subject   →  {{subject}}
       //    Body HTML →  {{message_html}}   (HTML mode ON)
-      const logoDataUri = await imageToBase64(logoUrl, [245, 237, 216]); // #F5EDD8 = card cream
+      const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR] = await Promise.all([
+        imageToBase64(logoUrl, [245, 237, 216]),
+        imageToBase64(cornerTLUrl),
+        imageToBase64(cornerTRUrl),
+        imageToBase64(cornerBLUrl),
+        imageToBase64(cornerBRUrl),
+      ]);
       await emailjs.send(SERVICE_ID, CERT_TPL, {
         email:       formData.email,
         subject:     `Ditt presentkort från ML Expresstäd AB – ${certNumber}`,
@@ -295,7 +295,11 @@ ${formData.message || '(inget meddelande)'}<br><br>
           personalMessage: formData.message,
           certNumber,
           validUntil,
-          logoDataUri
+          logoDataUri,
+          cornerTL,
+          cornerTR,
+          cornerBL,
+          cornerBR,
         })
       }, PUBLIC_KEY);
 
