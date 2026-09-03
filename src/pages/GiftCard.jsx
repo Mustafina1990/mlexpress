@@ -58,6 +58,14 @@ function imageToBase64(url, replaceWhite = null) {
   });
 }
 
+// Fetch an SVG file and encode it as a base64 data URI
+function svgToBase64(url) {
+  return fetch(url)
+    .then(r => r.text())
+    .then(text => 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(text))))
+    .catch(() => null);
+}
+
 function makeCertNumber() {
   const ts   = Date.now().toString(36).toUpperCase();
   const rand = Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -70,7 +78,7 @@ function makeValidUntil() {
   return d.toLocaleDateString('sv-SE', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil, logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR }) {
+function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil, logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri }) {
   const recipient = recipientName || 'Mottagaren';
   const GOLD  = '#C09B3A';
   const CREAM = '#F8F5F1';
@@ -83,8 +91,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   const BR = cornerBR;
 
   // Wave divider matching the PDF centre ornament
-  const divSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="34" viewBox="0 0 420 34"><line x1="0" y1="17" x2="160" y2="17" stroke="${GOLD}" stroke-width="1.3"/><line x1="260" y1="17" x2="420" y2="17" stroke="${GOLD}" stroke-width="1.3"/><path d="M160,17 C170,7 182,7 192,17 C202,27 214,27 224,17 C234,7 246,7 260,17" stroke="${GOLD}" stroke-width="1.8" fill="none"/><circle cx="210" cy="5" r="5" fill="${GOLD}"/><circle cx="40" cy="17" r="3.5" fill="${GOLD}"/><circle cx="380" cy="17" r="3.5" fill="${GOLD}"/></svg>`;
-  const DIV = 'data:image/svg+xml;base64,' + btoa(divSVG);
+  const DIV = dividerDataUri || ('data:image/svg+xml;base64,' + btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="420" height="34" viewBox="0 0 420 34"><line x1="0" y1="17" x2="160" y2="17" stroke="${GOLD}" stroke-width="1.3"/><line x1="260" y1="17" x2="420" y2="17" stroke="${GOLD}" stroke-width="1.3"/><path d="M160,17 C170,7 182,7 192,17 C202,27 214,27 224,17 C234,7 246,7 260,17" stroke="${GOLD}" stroke-width="1.8" fill="none"/><circle cx="210" cy="5" r="5" fill="${GOLD}"/></svg>`));
 
   const rule = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td style="height:1px;background-color:${GOLD};font-size:0;">&nbsp;</td></tr></table>`;
 
@@ -124,7 +131,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   </tr>`;
 
   const card = (rows) =>
-    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="max-width:660px;background-color:${CREAM};border:2px solid ${GOLD};border-collapse:collapse;">${rows}</table>`;
+    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="max-width:660px;background-color:${CREAM};border-collapse:collapse;">${rows}</table>`;
 
   // ── FRONT card ─────────────────────────────────────────────────────────────
   const frontHeader = `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:15px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d <span style="color:#C8A248;">AB</span></p>`;
@@ -136,7 +143,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
       `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:22px;color:${GOLD};font-style:italic;margin:0;line-height:1.5;text-align:center;">p&aring; ${hours} timmars professionell st&auml;dning</p>`,
       '8px 24px 20px'
     ) +
-    row(`<img src="${DIV}" width="420" height="34" style="display:block;margin:0 auto;" alt=""/>`, '0 0 14px') +
+    row(`<img src="${DIV}" width="360" height="37" style="display:block;margin:0 auto;" alt=""/>`, '24px 0 14px') +
     row(
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:${NAVY};letter-spacing:4px;text-transform:uppercase;margin:0 0 8px 0;text-align:center;">Vi tar hand om st&auml;dningen.</p>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:${NAVY};letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">Du tar hand om dig sj&auml;lv.</p>`,
@@ -278,12 +285,13 @@ ${formData.message || '(inget meddelande)'}<br><br>
       //    To email  →  {{to_email}}
       //    Subject   →  {{subject}}
       //    Body HTML →  {{message_html}}   (HTML mode ON)
-      const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR] = await Promise.all([
-        imageToBase64(logoUrl, [245, 237, 216]),
+      const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri] = await Promise.all([
+        imageToBase64(logoUrl, [248, 245, 241]),
         imageToBase64(cornerTLUrl),
         imageToBase64(cornerTRUrl),
         imageToBase64(cornerBLUrl),
         imageToBase64(cornerBRUrl),
+        svgToBase64('/decorations/divider-ornament.svg'),
       ]);
       await emailjs.send(SERVICE_ID, CERT_TPL, {
         email:       formData.email,
@@ -300,6 +308,7 @@ ${formData.message || '(inget meddelande)'}<br><br>
           cornerTR,
           cornerBL,
           cornerBR,
+          dividerDataUri,
         })
       }, PUBLIC_KEY);
 
