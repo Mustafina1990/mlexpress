@@ -176,7 +176,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
     fieldRow('Till', recipient) +
     fieldRow('G&aring;r ut', validUntil) +
     row(
-      `<p style="font-size:24px;color:${GOLD};margin:0 0 8px 0;text-align:center;">&#9829;</p>` +
+      `<p style="font-size:24px;color:${GOLD};margin:0 0 8px 0;text-align:center;">&#9829;&#xFE0E;</p>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0 0 4px 0;text-align:center;">Personliga h&auml;lsningen</p>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">fr&aring;n avs&auml;ndaren:</p>`,
       '20px 36px 12px'
