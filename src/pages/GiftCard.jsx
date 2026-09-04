@@ -130,7 +130,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   </tr>`;
 
   const card = (rows) =>
-    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="width:660px;max-width:660px;min-width:660px;table-layout:fixed;background-color:${CREAM};border-collapse:collapse;margin:40px 0 0 0;">${rows}</table>`;
+    `<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;min-width:600px;table-layout:fixed;background-color:${CREAM};border-collapse:collapse;margin:40px auto 0 auto;">${rows}</table>`;
 
   // ── FRONT card ─────────────────────────────────────────────────────────────
   const frontHeader = `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:15px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d <span style="color:#C8A248;">AB</span></p>`;
@@ -138,7 +138,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   const frontCard = card(
     topRow(frontHeader) +
     row(
-      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:56px;font-weight:700;color:${NAVY};letter-spacing:6px;text-transform:uppercase;margin:0 0 12px 0;line-height:1.1;text-align:center;">PRESENTKORT</h1>` +
+      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:44px;font-weight:700;color:${NAVY};letter-spacing:4px;text-transform:uppercase;margin:0 0 12px 0;line-height:1.1;text-align:center;display:block;width:100%;">PRESENTKORT</h1>` +
       `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:22px;color:${GOLD};font-style:italic;margin:0;line-height:1.5;text-align:center;">p&aring; ${hours} timmars professionell st&auml;dning</p>`,
       '64px 0 20px'
     ) +
