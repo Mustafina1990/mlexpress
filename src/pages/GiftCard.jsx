@@ -131,7 +131,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   </tr>`;
 
   const card = (rows) =>
-    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="max-width:660px;background-color:${CREAM};border-collapse:collapse;">${rows}</table>`;
+    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="width:660px;max-width:660px;min-width:660px;table-layout:fixed;background-color:${CREAM};border-collapse:collapse;margin:40px 40px 0 40px;">${rows}</table>`;
 
   // ── FRONT card ─────────────────────────────────────────────────────────────
   const frontHeader = `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:15px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d <span style="color:#C8A248;">AB</span></p>`;
@@ -139,40 +139,40 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   const frontCard = card(
     topRow(frontHeader) +
     row(
-      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:44px;font-weight:700;color:${NAVY};letter-spacing:6px;text-transform:uppercase;margin:0 0 12px 0;line-height:1.1;text-align:center;">PRESENTKORT</h1>` +
+      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:56px;font-weight:700;color:${NAVY};letter-spacing:6px;text-transform:uppercase;margin:0 0 12px 0;line-height:1.1;text-align:center;position:relative;left:-27px;">PRESENTKORT</h1>` +
       `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:22px;color:${GOLD};font-style:italic;margin:0;line-height:1.5;text-align:center;">p&aring; ${hours} timmars professionell st&auml;dning</p>`,
-      '8px 24px 20px'
+      '64px 0 20px'
     ) +
-    row(`<img src="${DIV}" width="360" height="37" style="display:block;margin:0 auto;" alt=""/>`, '24px 0 14px') +
+    row(`<img src="${DIV}" width="360" height="30" style="display:block;margin:0 auto;" alt=""/>`, '30px 0 14px') +
     row(
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:${NAVY};letter-spacing:4px;text-transform:uppercase;margin:0 0 8px 0;text-align:center;">Vi tar hand om st&auml;dningen.</p>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;color:${NAVY};letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">Du tar hand om dig sj&auml;lv.</p>`,
-      '0 36px 20px'
+      '0 44px 20px'
     ) +
     bottomRow()
   );
 
   // ── BACK card ──────────────────────────────────────────────────────────────
   const fieldRow = (label, val) => row(
-    `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0 0 6px 0;">${label}</p>` +
-    `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:21px;color:#2C1E0F;margin:0 0 11px 0;">${val}</p>` +
+    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;"><tr>` +
+    `<td style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;padding:0 12px 11px 0;white-space:nowrap;vertical-align:baseline;">${label}</td>` +
+    `<td style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:21px;color:#2C1E0F;padding:0 0 11px 0;vertical-align:baseline;">${val}</td>` +
+    `</tr></table>` +
     rule,
     '14px 44px 0'
   );
 
-  // Message area — outlined gold rectangle matching the PDF's handwriting space
+  // Message area
   const msgBox = personalMessage
-    ? `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:18px;color:#3A2E22;font-style:italic;line-height:1.9;margin:0;">&ldquo;${personalMessage}&rdquo;</p>`
+    ? `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:18px;color:#3A2E22;font-style:italic;line-height:1.9;margin:0;text-align:center;">&ldquo;${personalMessage}&rdquo;</p>`
     : `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:18px;color:${GOLD};font-style:italic;line-height:1.9;margin:0;text-align:center;">&ldquo;Grattis! Du f&ouml;rtj&auml;nar ett skinande rent hem &ndash; nu kan du koppla av medan vi tar hand om resten.&rdquo;</p>`;
 
   const msgBoxHtml =
-    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${GOLD};background-color:${CREAM};">` +
+    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${CREAM};">` +
     `<tr><td style="padding:18px 20px;">${msgBox}</td></tr></table>`;
 
-  const backHeader = `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:15px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d AB</p>`;
-
   const backCard = card(
-    topRow(backHeader) +
+    topRow('') +
     fieldRow('Fr&aring;n', senderName) +
     fieldRow('Till', recipient) +
     fieldRow('G&aring;r ut', validUntil) +
@@ -195,7 +195,8 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 </head>
 <body style="margin:0;padding:0;background-color:#F8F5F1;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F8F5F1;padding:36px 16px;">
+<div style="padding:48px 32px;">
+<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="width:660px;margin:0 auto;background-color:#F8F5F1;">
   <tr><td align="center">
 
     ${frontCard}
@@ -219,6 +220,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
 
   </td></tr>
 </table>
+</div>
 </body>
 </html>`;
 }
