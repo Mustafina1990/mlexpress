@@ -77,7 +77,7 @@ function makeValidUntil() {
   return d.toLocaleDateString('sv-SE', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil, logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri }) {
+function buildCertificateHTML({ hours, senderName, recipientName, personalMessage, certNumber, validUntil, logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri, heartUrl }) {
   const recipient = recipientName || 'Mottagaren';
   const GOLD  = '#C09B3A';
   const CREAM = '#F8F5F1';
@@ -130,7 +130,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   </tr>`;
 
   const card = (rows) =>
-    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="width:660px;max-width:660px;min-width:660px;table-layout:fixed;background-color:${CREAM};border-collapse:collapse;margin:40px 40px 0 40px;">${rows}</table>`;
+    `<table role="presentation" width="660" cellpadding="0" cellspacing="0" style="width:660px;max-width:660px;min-width:660px;table-layout:fixed;background-color:${CREAM};border-collapse:collapse;margin:40px 0 0 0;">${rows}</table>`;
 
   // ── FRONT card ─────────────────────────────────────────────────────────────
   const frontHeader = `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:15px;font-weight:700;color:${NAVY};letter-spacing:3px;text-transform:uppercase;margin:0;">${logoImg}ML Expresst&auml;d <span style="color:#C8A248;">AB</span></p>`;
@@ -176,7 +176,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
     fieldRow('Till', recipient) +
     fieldRow('G&aring;r ut', validUntil) +
     row(
-      `<p style="margin:0 0 8px 0;text-align:center;"><img src="data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" viewBox="0 0 28 26"><path d="M14 24.5C8 19.2 1 13.4 1 7.5 1 4 3.8 2 7 2c1.5 0 4 .6 7 4.5C17 2.6 19.5 2 21 2c3.2 0 6 2 6 5.5 0 5.9-7 11.7-13 17z" fill="${GOLD}"/></svg>`)}" width="28" height="26" style="display:inline-block;vertical-align:middle;" alt=""/>` +
+      `<p style="margin:0 0 8px 0;text-align:center;"><img src="${heartUrl}" width="28" height="26" style="display:inline-block;vertical-align:middle;" alt=""/></p>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0 0 4px 0;text-align:center;">Personliga h&auml;lsningen</p>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">fr&aring;n avs&auml;ndaren:</p>`,
       '20px 36px 12px'
@@ -270,6 +270,7 @@ const GiftCard = () => {
         cornerBL:      base + cornerBLUrl,
         cornerBR:      base + cornerBRUrl,
         dividerDataUri: base + '/decorations/divider-ornament.svg',
+        heartUrl:       base + '/decorations/heart.svg',
       });
 
       const companyHtml =
