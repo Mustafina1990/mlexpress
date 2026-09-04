@@ -255,19 +255,38 @@ const GiftCard = () => {
     const validUntil = makeValidUntil();
 
     try {
-      // ── Send order variables to company via EmailJS template ─────────────
+      // Use absolute URLs so email clients load images from the deployed server
+      const base = window.location.origin;
+      const certificateHtml = buildCertificateHTML({
+        hours: finalHours,
+        senderName: formData.senderName,
+        recipientName: formData.recipientName,
+        personalMessage: formData.message,
+        certNumber,
+        validUntil,
+        logoDataUri:   base + logoUrl,
+        cornerTL:      base + cornerTLUrl,
+        cornerTR:      base + cornerTRUrl,
+        cornerBL:      base + cornerBLUrl,
+        cornerBR:      base + cornerBRUrl,
+        dividerDataUri: base + '/decorations/divider-ornament.svg',
+      });
+
+      const companyHtml =
+        certificateHtml +
+        `<div style="max-width:660px;margin:24px auto 0 auto;padding:16px 20px;background:#fff;border:1px solid #e7e2d6;font-family:Arial,Helvetica,sans-serif;color:#222;">` +
+        `<p style="margin:0 0 8px 0;font-weight:700;">Kontaktuppgifter från beställaren</p>` +
+        `<p style="margin:0 0 4px 0;">Namn: ${formData.senderName}</p>` +
+        `<p style="margin:0 0 4px 0;">E-post: ${formData.email}</p>` +
+        `<p style="margin:0;">Telefon: ${formData.phone || '–'}</p>` +
+        `</div>`;
+
       await emailjs.send(SERVICE_ID, CERT_TPL, {
-        to_email:      'contact@mlexpress.se',
-        email:         formData.email,
-        reply_to:      formData.email,
-        subject:       `Ny presentkortsbeställning – ${certNumber}`,
-        sender_name:   formData.senderName,
-        recipient_name: formData.recipientName,
-        phone:         formData.phone || '–',
-        message:       formData.message || '',
-        cert_number:   certNumber,
-        valid_until:   validUntil,
-        hours:         finalHours,
+        to_email:     'contact@mlexpress.se',
+        email:        'contact@mlexpress.se',
+        reply_to:     formData.email,
+        subject:      `Ny presentkortsbeställning – ${certNumber}`,
+        message_html: companyHtml,
       }, PUBLIC_KEY);
 
       setFormStatus('success');
