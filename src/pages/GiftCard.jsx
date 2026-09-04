@@ -255,46 +255,19 @@ const GiftCard = () => {
     const validUntil = makeValidUntil();
 
     try {
-      const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri] = await Promise.all([
-        imageToBase64(logoUrl, [248, 245, 241]),
-        imageToBase64(cornerTLUrl),
-        imageToBase64(cornerTRUrl),
-        imageToBase64(cornerBLUrl),
-        imageToBase64(cornerBRUrl),
-        svgToBase64('/decorations/divider-ornament.svg'),
-      ]);
-
-      const certificateHtml = buildCertificateHTML({
-        hours: finalHours,
-        senderName: formData.senderName,
-        recipientName: formData.recipientName,
-        personalMessage: formData.message,
-        certNumber,
-        validUntil,
-        logoDataUri,
-        cornerTL,
-        cornerTR,
-        cornerBL,
-        cornerBR,
-        dividerDataUri,
-      });
-
-      const companyHtml =
-        certificateHtml +
-        `<div style="max-width:660px;margin:24px auto 0 auto;padding:16px 20px;background:#fff;border:1px solid #e7e2d6;font-family:Arial,Helvetica,sans-serif;color:#222;">` +
-        `<p style="margin:0 0 8px 0;font-weight:700;">Kontaktuppgifter från beställaren</p>` +
-        `<p style="margin:0 0 4px 0;">Namn: ${formData.senderName}</p>` +
-        `<p style="margin:0 0 4px 0;">E-post: ${formData.email}</p>` +
-        `<p style="margin:0;">Telefon: ${formData.phone || '–'}</p>` +
-        `</div>`;
-
-      // ── 1. Send certificate/order copy to company (must succeed) ─────────
+      // ── Send order variables to company via EmailJS template ─────────────
       await emailjs.send(SERVICE_ID, CERT_TPL, {
-        to_email: 'contact@mlexpress.se',
-        email: 'contact@mlexpress.se',
-        reply_to: formData.email,
-        subject: `Ny presentkortsbeställning – ${certNumber}`,
-        message_html: companyHtml,
+        to_email:      'contact@mlexpress.se',
+        email:         formData.email,
+        reply_to:      formData.email,
+        subject:       `Ny presentkortsbeställning – ${certNumber}`,
+        sender_name:   formData.senderName,
+        recipient_name: formData.recipientName,
+        phone:         formData.phone || '–',
+        message:       formData.message || '',
+        cert_number:   certNumber,
+        valid_until:   validUntil,
+        hours:         finalHours,
       }, PUBLIC_KEY);
 
       setFormStatus('success');
@@ -308,7 +281,7 @@ const GiftCard = () => {
     } catch (notifyErr) {
       console.error('Company notification failed', notifyErr);
       // Fallback mailto only if company notification could not be sent
-      const body = `Presentkortsbeställning\n\nAvsändare: ${formData.senderName}\nE-post: ${formData.email}\nTelefon: ${formData.phone}\nMottagare: ${formData.recipientName}\nAntal timmar: ${finalHours} timmar städning\nCertifikatnummer: ${certNumber}\n\nMeddelande:\n${formData.message}`;
+      const body = `Presentkortsbeställning\n\nAvsändare: ${formData.senderName}\nE-post: ${formData.email}\nTelefon: ${formData.phone || '–'}\nMottagare: ${formData.recipientName}\nAntal timmar: ${finalHours} timmar städning\nCertifikatnummer: ${certNumber}\nGiltigt till: ${validUntil}\n\nMeddelande:\n${formData.message}`;
       window.location.href = `mailto:contact@mlexpress.se?subject=Presentkortsbeställning&body=${encodeURIComponent(body)}`;
       setFormStatus('error');
       setTimeout(() => setFormStatus(''), 4000);
