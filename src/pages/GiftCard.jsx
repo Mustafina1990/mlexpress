@@ -138,7 +138,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
   const frontCard = card(
     topRow(frontHeader) +
     row(
-      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:56px;font-weight:700;color:${NAVY};letter-spacing:6px;text-transform:uppercase;margin:0 0 12px 0;line-height:1.1;text-align:center;position:relative;left:-27px;">PRESENTKORT</h1>` +
+      `<h1 style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:56px;font-weight:700;color:${NAVY};letter-spacing:6px;text-transform:uppercase;margin:0 0 12px 0;line-height:1.1;text-align:center;">PRESENTKORT</h1>` +
       `<p style="font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:22px;color:${GOLD};font-style:italic;margin:0;line-height:1.5;text-align:center;">p&aring; ${hours} timmars professionell st&auml;dning</p>`,
       '64px 0 20px'
     ) +
