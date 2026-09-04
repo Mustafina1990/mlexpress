@@ -256,10 +256,12 @@ const GiftCard = () => {
     const validUntil = makeValidUntil();
 
     try {
-      // ── 1. Notify the company ──────────────────────────────────────────────
+      // ── 1. Notify the company (must succeed) ─────────────────────────────
       await emailjs.send(SERVICE_ID, NOTIFY_TPL, {
         subject: 'Presentkortsbeställning – ML Expresstäd AB',
         company_name: 'ML Expresstäd AB',
+        to_email: 'contact@mlexpress.se',
+        company_email: 'contact@mlexpress.se',
         name: formData.senderName,
         email: formData.email,
         reply_to: formData.email,
@@ -282,37 +284,38 @@ ${formData.message || '(inget meddelande)'}<br><br>
 <em>Skickat automatiskt från ML Expresstäd AB webbplats</em>`
       }, PUBLIC_KEY);
 
-      // ── 2. Send certificate to client ────────────────────────────────────
-      //  Requires "template_certificate" in EmailJS with:
-      //    To email  →  {{to_email}}
-      //    Subject   →  {{subject}}
-      //    Body HTML →  {{message_html}}   (HTML mode ON)
-      const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri] = await Promise.all([
-        imageToBase64(logoUrl, [248, 245, 241]),
-        imageToBase64(cornerTLUrl),
-        imageToBase64(cornerTRUrl),
-        imageToBase64(cornerBLUrl),
-        imageToBase64(cornerBRUrl),
-        svgToBase64('/decorations/divider-ornament.svg'),
-      ]);
-      await emailjs.send(SERVICE_ID, CERT_TPL, {
-        email:       formData.email,
-        subject:     `Ditt presentkort från ML Expresstäd AB – ${certNumber}`,
-        message_html: buildCertificateHTML({
-          hours:           finalHours,
-          senderName:      formData.senderName,
-          recipientName:   formData.recipientName,
-          personalMessage: formData.message,
-          certNumber,
-          validUntil,
-          logoDataUri,
-          cornerTL,
-          cornerTR,
-          cornerBL,
-          cornerBR,
-          dividerDataUri,
-        })
-      }, PUBLIC_KEY);
+      // ── 2. Send certificate to client (non-blocking for order success) ──
+      try {
+        const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri] = await Promise.all([
+          imageToBase64(logoUrl, [248, 245, 241]),
+          imageToBase64(cornerTLUrl),
+          imageToBase64(cornerTRUrl),
+          imageToBase64(cornerBLUrl),
+          imageToBase64(cornerBRUrl),
+          svgToBase64('/decorations/divider-ornament.svg'),
+        ]);
+        await emailjs.send(SERVICE_ID, CERT_TPL, {
+          to_email: formData.email,
+          email: formData.email,
+          subject: `Ditt presentkort från ML Expresstäd AB – ${certNumber}`,
+          message_html: buildCertificateHTML({
+            hours: finalHours,
+            senderName: formData.senderName,
+            recipientName: formData.recipientName,
+            personalMessage: formData.message,
+            certNumber,
+            validUntil,
+            logoDataUri,
+            cornerTL,
+            cornerTR,
+            cornerBL,
+            cornerBR,
+            dividerDataUri,
+          })
+        }, PUBLIC_KEY);
+      } catch (certErr) {
+        console.error('Certificate email failed', certErr);
+      }
 
       setFormStatus('success');
       setTimeout(() => {
@@ -322,8 +325,9 @@ ${formData.message || '(inget meddelande)'}<br><br>
         setUseCustom(false);
         setFormStatus('');
       }, 6000);
-    } catch {
-      // Fallback mailto
+    } catch (notifyErr) {
+      console.error('Company notification failed', notifyErr);
+      // Fallback mailto only if company notification could not be sent
       const body = `Presentkortsbeställning\n\nAvsändare: ${formData.senderName}\nE-post: ${formData.email}\nTelefon: ${formData.phone}\nMottagare: ${formData.recipientName}\nAntal timmar: ${finalHours} timmar städning\nCertifikatnummer: ${certNumber}\n\nMeddelande:\n${formData.message}`;
       window.location.href = `mailto:contact@mlexpress.se?subject=Presentkortsbeställning&body=${encodeURIComponent(body)}`;
       setFormStatus('error');
