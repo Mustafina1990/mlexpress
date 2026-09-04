@@ -24,7 +24,6 @@ const PRESET_HOURS = [2, 3, 4, 5, 8, 10];
 
 // ── EmailJS IDs ─────────────────────────────────────────────────────────────
 const SERVICE_ID   = 'service_b54jta9';
-const NOTIFY_TPL   = 'template_veo5rgk';   // existing — sends order to company
 const CERT_TPL     = 'template_zuvt0sa';  // Gift Card Certificate template
 const PUBLIC_KEY   = 'RZkbfClXLJeqyJY_Q';
 
@@ -256,62 +255,55 @@ const GiftCard = () => {
     const validUntil = makeValidUntil();
 
     try {
-      // ── 1. Notify the company (must succeed) ─────────────────────────────
-      await emailjs.send(SERVICE_ID, NOTIFY_TPL, {
-        subject: 'Presentkortsbeställning – ML Expresstäd AB',
-        company_name: 'ML Expresstäd AB',
+      const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri] = await Promise.all([
+        imageToBase64(logoUrl, [248, 245, 241]),
+        imageToBase64(cornerTLUrl),
+        imageToBase64(cornerTRUrl),
+        imageToBase64(cornerBLUrl),
+        imageToBase64(cornerBRUrl),
+        svgToBase64('/decorations/divider-ornament.svg'),
+      ]);
+
+      const certificateHtml = buildCertificateHTML({
+        hours: finalHours,
+        senderName: formData.senderName,
+        recipientName: formData.recipientName,
+        personalMessage: formData.message,
+        certNumber,
+        validUntil,
+        logoDataUri,
+        cornerTL,
+        cornerTR,
+        cornerBL,
+        cornerBR,
+        dividerDataUri,
+      });
+
+      const companyHtml =
+        certificateHtml +
+        `<div style="max-width:660px;margin:24px auto 0 auto;padding:16px 20px;background:#fff;border:1px solid #e7e2d6;font-family:Arial,Helvetica,sans-serif;color:#222;">` +
+        `<p style="margin:0 0 8px 0;font-weight:700;">Kontaktuppgifter från beställaren</p>` +
+        `<p style="margin:0 0 4px 0;">Namn: ${formData.senderName}</p>` +
+        `<p style="margin:0 0 4px 0;">E-post: ${formData.email}</p>` +
+        `<p style="margin:0;">Telefon: ${formData.phone || '–'}</p>` +
+        `</div>`;
+
+      // ── 1. Send certificate/order copy to company (must succeed) ─────────
+      await emailjs.send(SERVICE_ID, CERT_TPL, {
         to_email: 'contact@mlexpress.se',
-        company_email: 'contact@mlexpress.se',
-        name: formData.senderName,
-        email: formData.email,
+        email: 'contact@mlexpress.se',
         reply_to: formData.email,
-        phone: formData.phone,
-        message_html: `
-<strong>🎁 NY PRESENTKORTSBESTÄLLNING</strong><br><br>
-<strong>📧 AVSÄNDARE:</strong><br>
-• Namn: ${formData.senderName}<br>
-• E-post: ${formData.email}<br>
-• Telefon: ${formData.phone}<br><br>
-<strong>🎀 MOTTAGARE:</strong><br>
-• Namn: ${formData.recipientName || '–'}<br><br>
-<strong>⏱ ANTAL TIMMAR:</strong><br>
-• ${finalHours} timmar städning<br><br>
-<strong>🔖 CERTIFIKATNUMMER:</strong><br>
-• ${certNumber}<br><br>
-<strong>💬 PERSONLIGT MEDDELANDE:</strong><br>
-${formData.message || '(inget meddelande)'}<br><br>
-<hr>
-<em>Skickat automatiskt från ML Expresstäd AB webbplats</em>`
+        subject: `Ny presentkortsbeställning – ${certNumber}`,
+        message_html: companyHtml,
       }, PUBLIC_KEY);
 
-      // ── 2. Send certificate to client (non-blocking for order success) ──
+      // ── 2. Send certificate to customer (non-blocking for order success) ─
       try {
-        const [logoDataUri, cornerTL, cornerTR, cornerBL, cornerBR, dividerDataUri] = await Promise.all([
-          imageToBase64(logoUrl, [248, 245, 241]),
-          imageToBase64(cornerTLUrl),
-          imageToBase64(cornerTRUrl),
-          imageToBase64(cornerBLUrl),
-          imageToBase64(cornerBRUrl),
-          svgToBase64('/decorations/divider-ornament.svg'),
-        ]);
         await emailjs.send(SERVICE_ID, CERT_TPL, {
           to_email: formData.email,
           email: formData.email,
           subject: `Ditt presentkort från ML Expresstäd AB – ${certNumber}`,
-          message_html: buildCertificateHTML({
-            hours: finalHours,
-            senderName: formData.senderName,
-            recipientName: formData.recipientName,
-            personalMessage: formData.message,
-            certNumber,
-            validUntil,
-            logoDataUri,
-            cornerTL,
-            cornerTR,
-            cornerBL,
-            cornerBR,
-            dividerDataUri,
-          })
+          message_html: certificateHtml,
         }, PUBLIC_KEY);
       } catch (certErr) {
         console.error('Certificate email failed', certErr);
