@@ -297,18 +297,6 @@ const GiftCard = () => {
         message_html: companyHtml,
       }, PUBLIC_KEY);
 
-      // ── 2. Send certificate to customer (non-blocking for order success) ─
-      try {
-        await emailjs.send(SERVICE_ID, CERT_TPL, {
-          to_email: formData.email,
-          email: formData.email,
-          subject: `Ditt presentkort från ML Expresstäd AB – ${certNumber}`,
-          message_html: certificateHtml,
-        }, PUBLIC_KEY);
-      } catch (certErr) {
-        console.error('Certificate email failed', certErr);
-      }
-
       setFormStatus('success');
       setTimeout(() => {
         setFormData({ senderName: '', recipientName: '', email: '', phone: '', message: '' });
