@@ -176,7 +176,7 @@ function buildCertificateHTML({ hours, senderName, recipientName, personalMessag
     fieldRow('Till', recipient) +
     fieldRow('G&aring;r ut', validUntil) +
     row(
-      `<p style="font-size:24px;color:${GOLD};margin:0 0 8px 0;text-align:center;">&#9829;&#xFE0E;</p>` +
+      `<p style="margin:0 0 8px 0;text-align:center;"><img src="data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" viewBox="0 0 28 26"><path d="M14 24.5C8 19.2 1 13.4 1 7.5 1 4 3.8 2 7 2c1.5 0 4 .6 7 4.5C17 2.6 19.5 2 21 2c3.2 0 6 2 6 5.5 0 5.9-7 11.7-13 17z" fill="${GOLD}"/></svg>`)}" width="28" height="26" style="display:inline-block;vertical-align:middle;" alt=""/>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0 0 4px 0;text-align:center;">Personliga h&auml;lsningen</p>` +
       `<p style="font-family:'Cinzel',Georgia,'Times New Roman',serif;font-size:11px;font-weight:700;color:${GOLD};letter-spacing:4px;text-transform:uppercase;margin:0;text-align:center;">fr&aring;n avs&auml;ndaren:</p>`,
       '20px 36px 12px'
